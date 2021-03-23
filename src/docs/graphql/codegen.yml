@@ -15,6 +15,6 @@ generates:
     config:
       includeDirectives: true
       sort: true
-  ../graphiql/src/generated.ts:
+  ../server/src/generated.ts:
     plugins:
       - "typescript"

@@ -1,10 +1,13 @@
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
+import Typography from '@material-ui/core/Typography';
 import React, { useState } from 'react';
 import Code from './Code';
 
 enum ScreenLanguage {
-  grapqhl,
+  grapqhl = 'graphql',
+  json = 'json',
+  typescript = 'typescript',
 }
 
 interface Screen {
@@ -12,6 +15,7 @@ interface Screen {
   name: string;
   source: string;
   eval?: string;
+  description?: string;
 }
 
 interface Props {
@@ -37,12 +41,28 @@ export default function Screens({ screens }: Props) {
           <Tab
             label={screen.eval ? 'Result' : screen.name}
             key={`${screen.name}-${screen.eval ? 'eval' : ''}`}
+            color={screen.eval ? 'secondary' : 'default'}
           />
         ))}
       </Tabs>
+      {selectedScreen.description && (
+        <Typography
+          style={{
+            padding: 12,
+            paddingLeft: 24,
+            borderLeft: '5px solid #ccc',
+          }}
+        >
+          {selectedScreen.description}
+        </Typography>
+      )}
       <Code
         language={(selectedScreen.language as unknown) as string}
-        value={selectedScreen.source}
+        value={
+          selectedScreen.language === ScreenLanguage.json
+            ? JSON.stringify(selectedScreen.source, null, 2)
+            : selectedScreen.source
+        }
       />
     </div>
   );
