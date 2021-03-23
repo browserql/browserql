@@ -1,0 +1,3 @@
+fragment PackageFragment on Package {
+  name
+}

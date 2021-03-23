@@ -1,0 +1,6 @@
+type Query {
+  viewExample(
+    module: String!
+    example: String!
+  ): String!
+}

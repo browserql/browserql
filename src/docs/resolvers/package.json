@@ -1,0 +1,32 @@
+{
+  "name": "@browserql/docs-resolvers-list",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "license": "ISC",
+  "keywords": [
+    "browserql",
+    "graphql",
+    "apollo",
+    "browser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pierrot.le.foo/browserql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pierrot.le.foo/browserql/issues"
+  },
+  "scripts": {
+    "build": "rm -rf dist && yarn tsc",
+    "watch": "yarn build -w",
+    "test": "jest dist",
+    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test"
+  },
+  "dependencies": {
+    "mdast-util-from-markdown": "^0.8.5",
+    "mdast-util-to-markdown": "^0.6.5",
+    "yaml": "^1.10.2"
+  }
+}

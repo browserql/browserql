@@ -1,0 +1,23 @@
+{
+  "name": "browserql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "w": "bash scripts/worskpace.sh"
+  },
+  "workspaces": [
+    "src/docs/*",
+    "src/modules/*",
+    "src/utils",
+    "src/examples/**/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^14.14.35",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "graphql": "^15.5.0"
+  }
+}

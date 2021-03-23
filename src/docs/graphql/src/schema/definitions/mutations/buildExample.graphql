@@ -1,0 +1,6 @@
+type Mutation {
+  buildExample(
+    example: String!
+    module: String!
+  ): String!
+}

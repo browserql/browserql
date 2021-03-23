@@ -1,0 +1,48 @@
+{
+  "name": "@browserql/docs-web",
+  "version": "1.0.0",
+  "main": "dist/index.html",
+  "license": "ISC",
+  "keywords": [
+    "browserql",
+    "graphql",
+    "apollo",
+    "browser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pierrot.le.foo/browserql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pierrot.le.foo/browserql/issues"
+  },
+  "scripts": {
+    "build": "rm -rf dist && yarn tsc",
+    "watch": "yarn build -w",
+    "test": "jest dist",
+    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",
+    "start": "rm -rf dist .parcel-cache && parcel serve ./src/index.html --cache-dir .parcel-cache"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@types/react-syntax-highlighter": "^13.5.0",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-markdown": "^5.0.3",
+    "react-router-dom": "^5.2.0",
+    "react-syntax-highlighter": "^15.4.3",
+    "remark-gfm": "^1.0.0",
+    "yaml": "^1.10.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-graphql": "^2.0.0-alpha.3",
+    "@types/lodash": "^4.14.168",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-router-dom": "^5.1.7",
+    "parcel": "^2.0.0-beta.2"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@browserql/docs-graphql",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pierrot.le.foo/browserql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pierrot.le.foo/browserql/issues"
+  },
+  "scripts": {
+    "build": "rm -rf dist && yarn tsc",
+    "watch": "yarn build -w",
+    "test": "jest dist",
+    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",
+    "codegen": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "@graphql-codegen/cli": "^1.21.3",
+    "graphql": "^15.5.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "1.21.3",
+    "@graphql-codegen/introspection": "1.18.1",
+    "@graphql-codegen/schema-ast": "^1.18.1",
+    "@graphql-codegen/typescript": "1.21.1",
+    "@graphql-codegen/typescript-operations": "1.17.15",
+    "@graphql-codegen/typescript-react-apollo": "2.2.3"
+  }
+}

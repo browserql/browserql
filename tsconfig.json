@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "strict": true,
+    "target": "es5",
+    "declaration": true,
+    "declarationMap": true,
+    "types": ["node"],
+    "jsx": "preserve",
+    "lib": ["esnext.asynciterable", "ES2016", "DOM"],
+    "resolveJsonModule": true
+  }
+}

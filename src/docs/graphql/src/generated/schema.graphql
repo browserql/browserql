@@ -1,0 +1,19 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+type Mutation {
+  buildExample(example: String!, module: String!): String!
+  buildExamplesList: String!
+}
+type Package {
+  name: String!
+}
+type Query {
+  getPackage(input: getPackageInput!): Package
+  getPackages: [Package!]!
+  viewExample(example: String!, module: String!): String!
+}
+input getPackageInput {
+  name: String
+}
