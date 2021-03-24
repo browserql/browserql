@@ -36,8 +36,8 @@ screens:
 
 
       export default async () => {
-        const schema = gql((await readFile(join(__dirname, 'schema.graphql'))).toString())
-        const type = getType('Foo')(schema)
+        const schema = (await readFile(join(__dirname, 'schema.graphql'))).toString()
+        const type = getType('Foo')(gql(schema))
         return getName(type)
       }
     description: Proof of concept -- Get type's name with fpql

@@ -74,6 +74,15 @@ Nav.defaultProps = {
               name: 'Get',
               nav: [
                 {
+                  name: 'Fields',
+                  examples: [
+                    {
+                      name: 'Get fields',
+                      example: 'fpql/get-fields',
+                    },
+                  ],
+                },
+                {
                   name: 'Name',
                   examples: [
                     {
