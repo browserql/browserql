@@ -12,7 +12,7 @@ export default function Layout() {
       <aside>
         <Nav />
       </aside>
-      <main>
+      <main style={{ flex: 1 }}>
         <Router />
       </main>
     </div>
