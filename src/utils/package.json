@@ -24,7 +24,8 @@
     "test": "jest dist",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",
     "add:module": "ts-node src/add-module.ts",
-    "add:example": "ts-node src/add-example.ts"
+    "add:example": "ts-node src/add-example.ts",
+    "reinstall": "cd ../.. && rm -rf node_modules yarn.lock src/**/*/node_modules src/examples/*/*/node_modules && yarn"
   },
   "dependencies": {
     "lodash": "^4.17.21",

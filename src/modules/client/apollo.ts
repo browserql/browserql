@@ -1,6 +1,5 @@
 import type { GraphQLSchema } from 'graphql'
-import { ApolloClient } from '@apollo/client'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
 import type { Context } from '@browserql/types'
 
 import SchemaLink from './SchemaLink'
@@ -19,6 +18,7 @@ export default function makeApolloClient(
   context: Context
 ) {
   return new ApolloClient({
+    // @ts-ignore
     link: new SchemaLink({
       rootValue,
       schema,

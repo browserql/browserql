@@ -71,7 +71,7 @@ export class SchemaLink extends ApolloLink {
             ? data
             : createAsyncIterator([data])
 
-          forAwaitEach(iterable as any, (value) => observer.next(value))
+          forAwaitEach(iterable as any, (value) => observer.next(value  as FetchResult<{ [key: string]: any; }, Record<string, any>, Record<string, any>>))
             .then(() => observer.complete())
             .catch((error) => observer.error(error))
         })

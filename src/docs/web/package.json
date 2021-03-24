@@ -23,6 +23,7 @@
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",
     "start": "rm -rf dev .parcel-cache && parcel serve ./src/index.html --cache-dir .parcel-cache --dist-dir dev",
     "bundle": "rm -rf dist .parcel-cache && parcel build ./src/index.html --cache-dir .parcel-cache --dist-dir dist",
+    "serve": "serve dist",
     "deploy": "firebase deploy --only hosting"
   },
   "dependencies": {
@@ -38,6 +39,7 @@
     "react-spring": "^9.0.0",
     "react-syntax-highlighter": "^15.4.3",
     "remark-gfm": "^1.0.0",
+    "serve": "^11.3.2",
     "yaml": "^1.10.2"
   },
   "devDependencies": {

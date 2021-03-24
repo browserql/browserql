@@ -1,10 +1,8 @@
 import Typography from '@material-ui/core/Typography';
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import Aside from './Aside';
 import Nav from './Nav';
 import Router from './Router';
-import { IconButton } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
 
 function V1() {
   return (
@@ -39,7 +37,7 @@ function V1() {
           boxShadow: '5px 5px 150px 50px rgba(171, 85, 70, 0.25)',
           maxWidth: 1200,
           minWidth: 995,
-          height: 'calc(100vh - 50px)',
+          height: 'calc(100vh - 75px)',
           overflow: 'auto',
         }}
       >
@@ -50,8 +48,6 @@ function V1() {
 }
 
 export default function Layout() {
-  const [on, set] = useState(false);
-  const toggle = useCallback(() => set(!on), [on]);
   return (
     <div
       style={{
@@ -59,9 +55,6 @@ export default function Layout() {
         height: '100vh',
       }}
     >
-      <IconButton onClick={toggle} style={{ position: 'fixed', top: 0 }}>
-        <MenuIcon />
-      </IconButton>
       <aside
         style={{
           height: '100vh',
@@ -69,13 +62,7 @@ export default function Layout() {
           backgroundColor: 'white',
         }}
       >
-        <div
-          style={{
-            backgroundColor: `rgba(225, 225, 225, ${on ? 0 : 1})`,
-            height: 50,
-            transition: 'all 0.5s ease-out',
-          }}
-        ></div>
+        <Aside />
       </aside>
       <main
         style={{

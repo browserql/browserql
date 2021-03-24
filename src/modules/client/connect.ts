@@ -1,4 +1,4 @@
-import { DocumentNode, print } from 'graphql'
+import type { DocumentNode } from 'graphql'
 
 import type {
   BrowserqlClient,
@@ -137,7 +137,13 @@ export default function connect(
 
   const schema = makeSchema([finalSchema], directives)
 
-  const apollo = makeApolloClient(rootValue, schema, cache, context)
+  const apollo = makeApolloClient(
+    rootValue,
+    schema,
+    // @ts-ignore
+    cache,
+    context,
+  )
 
   const browserqlClient = {
     apollo,
