@@ -7,10 +7,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pierrot.le.foo/browserql.git"
+    "url": "https://github.com/browserql/browserql.git"
   },
   "bugs": {
-    "url": "https://github.com/pierrot.le.foo/browserql/issues"
+    "url": "https://github.com/browserql/browserql/issues"
   },
   "scripts": {
     "build": "rm -rf dist && yarn tsc",

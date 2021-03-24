@@ -20,8 +20,16 @@ screens:
       type Query {
         whatTimeIsIt: String !
       }
-    description: The GraphQL we'll use. For the sake of example it has only one query.
+    description: The GraphQL schema we'll use. For the sake of example it has only
+      one query.
     name: schema.graphql
+  - language: graphql
+    source: |-
+      query {
+        whatTimeIsIt
+      }
+    description: The GraphQL executable query we'll use on the client
+    name: operations.graphql
   - language: typescript
     source: |
       export function whatTimeIsIt() {
@@ -33,7 +41,7 @@ screens:
     eval: index.ts
     description: File result
     name: index.ts
-    source: Hello world!
+    source: 1
 
 \`\`\`
 `
