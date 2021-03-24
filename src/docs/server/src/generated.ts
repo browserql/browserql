@@ -15,6 +15,18 @@ export type GetPackageInput = {
   name?: Maybe<Scalars['String']>;
 };
 
+export type Mutation = {
+  __typename?: 'Mutation';
+  buildExample: Scalars['String'];
+  buildExamplesList: Scalars['String'];
+};
+
+
+export type MutationBuildExampleArgs = {
+  example: Scalars['String'];
+  module: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   getPackage?: Maybe<Package>;
