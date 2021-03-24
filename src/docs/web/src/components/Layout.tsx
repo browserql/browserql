@@ -26,14 +26,14 @@ export default function Layout() {
       <main
         style={{
           flex: 1,
-          padding: 12,
+          padding: 24,
           marginRight: 12,
           border: "3px solid #9799C4",
           borderBottom: "none",
           borderRadius: "6px 6px 0 0",
           marginTop: 24,
           backgroundColor: "white",
-          boxShadow: "5px 5px 25px 25px rgba(171, 85, 70, 0.25)",
+          boxShadow: "5px 5px 150px 50px rgba(171, 85, 70, 0.25)",
           maxWidth: 1200,
         }}
       >
