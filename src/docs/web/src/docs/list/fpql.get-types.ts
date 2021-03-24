@@ -26,7 +26,7 @@ screens:
     description: The schema graphql we'll use
     name: schema.graphql
   - language: typescript
-    source: |-
+    source: |
       import getTypes from '@browserql/fpql/get/types'
       import gql from 'graphql-tag'
       import { join } from 'path'

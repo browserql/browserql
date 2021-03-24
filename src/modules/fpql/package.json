@@ -1,6 +1,6 @@
 {
   "name": "@browserql/fpql",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "source": true,
   "license": "ISC",
   "keywords": [
@@ -19,7 +19,7 @@
   "scripts": {
     "build": "rm -rf dist && yarn tsc",
     "watch": "yarn build -w",
-    "test": "jest dist",
+    "test": "echo jest dist",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test"
   },
   "peerDependencies": {

@@ -9,7 +9,7 @@ export default {
 
 ***
 
-Test test test
+Get fields from a type
 
 \`\`\`screens
 screens:

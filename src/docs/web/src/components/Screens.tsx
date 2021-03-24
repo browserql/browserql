@@ -1,14 +1,16 @@
-import Paper from "@material-ui/core/Paper";
-import Tab from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
-import Typography from "@material-ui/core/Typography";
-import React, { useState } from "react";
-import Code from "./Code";
+import Paper from '@material-ui/core/Paper';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+import Typography from '@material-ui/core/Typography';
+import React, { useState } from 'react';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+
+import Code from './Code';
 
 enum ScreenLanguage {
-  grapqhl = "graphql",
-  json = "json",
-  typescript = "typescript",
+  grapqhl = 'graphql',
+  json = 'json',
+  typescript = 'typescript',
 }
 
 interface Screen {
@@ -33,15 +35,15 @@ export default function Screens({ screens }: Props) {
     <Paper style={{ marginTop: 12 }} elevation={5}>
       <Tabs
         value={tab}
-        indicatorColor="primary"
+        indicatorColor='primary'
         onChange={handleChange}
-        variant="fullWidth"
+        variant='fullWidth'
       >
-        {screens.map((screen) => (
+        {screens.map(screen => (
           <Tab
-            label={screen.eval ? "Result" : screen.name}
-            key={`${screen.name}-${screen.eval ? "eval" : ""}`}
-            color={screen.eval ? "secondary" : "default"}
+            label={screen.eval ? 'Result' : screen.name}
+            key={`${screen.name}-${screen.eval ? 'eval' : ''}`}
+            color={screen.eval ? 'secondary' : 'default'}
           />
         ))}
       </Tabs>
@@ -50,9 +52,16 @@ export default function Screens({ screens }: Props) {
           style={{
             padding: 12,
             paddingLeft: 24,
-            borderLeft: "5px solid #ccc",
+            paddingRight: 24,
+            borderLeft: '5px solid #ccc',
+            borderRight: '5px solid #ccc',
+            backgroundColor: '#efefef',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 24,
           }}
         >
+          <HelpOutlineIcon />
           {selectedScreen.description}
         </Typography>
       )}

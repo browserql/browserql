@@ -12,11 +12,10 @@ export default function Layout() {
       }}
     >
       <aside
-        style={
-          {
-            // background: "linear-gradient(to bottom, #D0F6FA, 65%, #A9C2DA)",
-          }
-        }
+        style={{
+          height: '100vh',
+          overflow: 'auto',
+        }}
       >
         <div style={{ padding: 16, textAlign: 'center' }}>
           <Typography variant='h5'>browserql</Typography>

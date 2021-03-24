@@ -1,0 +1,3 @@
+import { ArgumentNode, DefinitionNode, FieldDefinitionNode, InputValueDefinitionNode, ObjectFieldNode, TypeNode, SelectionNode, DirectiveNode, DirectiveDefinitionNode } from 'graphql';
+export default function getName(type: undefined | ArgumentNode | DefinitionNode | FieldDefinitionNode | InputValueDefinitionNode | ObjectFieldNode | TypeNode | SelectionNode | DirectiveNode | DirectiveDefinitionNode): string;
+//# sourceMappingURL=name.d.ts.map

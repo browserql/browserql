@@ -11,6 +11,8 @@ export default {
 
 Get a type from a schema by name.
 
+***
+
 \`\`\`screens
 screens:
   - language: graphql

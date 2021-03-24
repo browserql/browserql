@@ -65,6 +65,15 @@ function Nav({ navigation, history }: Props & RouteComponentProps) {
 Nav.defaultProps = {
   navigation: [
     {
+      name: 'Client',
+      examples: [
+        {
+          name: 'Example',
+          example: 'client/example',
+        },
+      ],
+    },
+    {
       name: 'GraphQL utilities',
       nav: [
         {
@@ -105,6 +114,20 @@ Nav.defaultProps = {
                   ],
                 },
               ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'Misc',
+      nav: [
+        {
+          name: 'Types',
+          examples: [
+            {
+              name: 'About',
+              example: 'types/about',
             },
           ],
         },

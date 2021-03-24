@@ -21,7 +21,7 @@
     "watch": "yarn build -w",
     "test": "jest dist",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",
-    "start": "rm -rf dist .parcel-cache && parcel serve ./src/index.html --cache-dir .parcel-cache",
+    "start": "rm -rf dist .parcel-cache && parcel serve ./src/index.html --cache-dir .parcel-cache --dist-dir dev",
     "bundle": "rm -rf dist .parcel-cache && parcel build ./src/index.html --cache-dir .parcel-cache --dist-dir dist",
     "deploy": "firebase deploy --only hosting"
   },
