@@ -126,8 +126,8 @@ Nav.defaultProps = {
           name: 'Types',
           examples: [
             {
-              name: 'About',
-              example: 'types/about',
+              name: 'Usage',
+              example: 'types/usage',
             },
           ],
         },

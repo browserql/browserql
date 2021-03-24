@@ -21,7 +21,7 @@
     "watch": "yarn build -w",
     "test": "jest dist",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",
-    "start": "rm -rf dist .parcel-cache && parcel serve ./src/index.html --cache-dir .parcel-cache --dist-dir dev",
+    "start": "rm -rf dev .parcel-cache && parcel serve ./src/index.html --cache-dir .parcel-cache --dist-dir dev",
     "bundle": "rm -rf dist .parcel-cache && parcel build ./src/index.html --cache-dir .parcel-cache --dist-dir dist",
     "deploy": "firebase deploy --only hosting"
   },
@@ -35,6 +35,7 @@
     "react-dom": "^17.0.2",
     "react-markdown": "^5.0.3",
     "react-router-dom": "^5.2.0",
+    "react-spring": "^9.0.0",
     "react-syntax-highlighter": "^15.4.3",
     "remark-gfm": "^1.0.0",
     "yaml": "^1.10.2"

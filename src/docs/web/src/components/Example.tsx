@@ -1,8 +1,10 @@
 import React from 'react';
-import { UseQuery } from '@browserql/react';
 import gql from 'graphql-tag';
 import { RouteComponentProps } from 'react-router';
+
+import { UseQuery } from '@browserql/react';
 import { Query } from '@browserql/docs-graphql/src/generated/graphql';
+
 import MD from './MD';
 
 const QUERY = gql`

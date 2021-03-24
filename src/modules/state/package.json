@@ -1,0 +1,27 @@
+{
+  "name": "@browserql/state",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "license": "ISC",
+  "keywords": [
+    "browserql",
+    "graphql",
+    "apollo",
+    "browser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pierrot.le.foo/browserql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pierrot.le.foo/browserql/issues"
+  },
+  "scripts": {
+    "build": "rm -rf dist && yarn tsc",
+    "watch": "yarn build -w",
+    "test": "jest dist",
+    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test"
+  }
+}

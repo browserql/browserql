@@ -12,7 +12,16 @@ export type Operations = Record<
   string,
   (variables: any, ctx: BrowserqlClientContext) => any
 >
+
+/**
+ * Collection object of scalars
+ * [Graphql reference](https://github.com/graphql/graphql-js/blob/main/src/type/definition.d.ts#L300)
+ */
 export type Scalars = Record<string, GraphQLScalarType>
+
+/**
+ * List of subscriptions [WIP]
+ */
 export type Subscriptions = Record<
   string,
   {
@@ -41,6 +50,12 @@ export type BrowserqlClientContext = Context & {
   browserqlClient: BrowserqlClient
 }
 
+/**
+ * Browserql client
+ * @example require('@browserql/client')(
+ * <br>&nbsp;&nbsp;require('graphql').parse('type Query { hello: String! }')
+ * <br>)
+ */
 export interface BrowserqlClient extends BrowserqlClientProperty {
   apollo: ApolloClient<any>
   cache: InMemoryCache

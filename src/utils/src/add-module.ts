@@ -29,7 +29,7 @@ async function run() {
   if (!pkg.name) {
     throw new Error('Missing package name')
   }
-  const path = join(process.cwd(), '../..')
+  const path = join(process.cwd(), '../../src')
   await mkdir(join(path, 'modules', pkg.name))
   await mkdir(join(path, 'modules', pkg.name, 'src'))
   await Promise.all([
