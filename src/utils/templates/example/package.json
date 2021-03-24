@@ -1,0 +1,4 @@
+{
+  "name": "@browserql/example-{{ example.module }}.{{ example.name }}",
+  "version": "1.0.0"
+}

@@ -12,7 +12,7 @@ const QUERY = gql`
 `;
 
 function ExampleError(error: Error) {
-  return <div>{error.message}</div>;
+  return <div>Error getting example: {error.message}</div>;
 }
 
 export default function Example({

@@ -1,7 +1,17 @@
 export default {
   module: "fpql",
   name: "get-type-name",
-  source: `## fpql::getName | Get type's name
+  source: `# fpql
+
+***
+
+## getName
+
+***
+
+### Get type's name
+
+***
 
 Example on how to use \`getName\` to get the name of a type
 

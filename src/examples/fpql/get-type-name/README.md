@@ -1,4 +1,9 @@
-fpql::getName | Get type's name
+# fpql
+---
+
+## getName
+---
+### Get type's name
 ---
 
 Example on how to use `getName` to get the name of a type

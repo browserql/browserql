@@ -23,7 +23,8 @@
     "watch": "yarn build -w",
     "test": "jest dist",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",
-    "add:module": "ts-node src/add-module.ts"
+    "add:module": "ts-node src/add-module.ts",
+    "add:example": "ts-node src/add-example.ts"
   },
   "dependencies": {
     "lodash": "^4.17.21",

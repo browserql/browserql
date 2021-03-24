@@ -1,13 +1,13 @@
-import React from "react";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import { RouteComponentProps, withRouter } from "react-router";
+import React from 'react';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 type Navigation = { name: string } & (
   | { nav: Navigation[] }
@@ -21,26 +21,26 @@ interface Props {
 function Nav({ navigation, history }: Props & RouteComponentProps) {
   return (
     <nav>
-      {navigation.map((nav) => {
+      {navigation.map(nav => {
         return (
           <Accordion
             key={nav.name}
             elevation={1}
-            style={{ backgroundColor: "rgba(255, 255, 255, 0.35)" }}
+            style={{ backgroundColor: 'rgba(255, 255, 255, 0.35)' }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
+              aria-controls='panel1a-content'
+              id='panel1a-header'
             >
               <Typography>{nav.name}</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <div style={{ flex: 1 }}>
-                {"nav" in nav && <Nav navigation={nav.nav} history={history} />}
-                {"examples" in nav && (
+                {'nav' in nav && <Nav navigation={nav.nav} history={history} />}
+                {'examples' in nav && (
                   <List>
-                    {nav.examples.map((ex) => (
+                    {nav.examples.map(ex => (
                       <ListItem
                         key={ex.name}
                         button
@@ -65,20 +65,33 @@ function Nav({ navigation, history }: Props & RouteComponentProps) {
 Nav.defaultProps = {
   navigation: [
     {
-      name: "GraphQL utilities",
+      name: 'GraphQL utilities',
       nav: [
         {
-          name: "fpql",
+          name: 'fpql',
           nav: [
             {
-              name: "Get",
+              name: 'Get',
               nav: [
                 {
-                  name: "Name",
+                  name: 'Name',
                   examples: [
                     {
                       name: "Get type's name",
-                      example: "fpql/get-type-name",
+                      example: 'fpql/get-type-name',
+                    },
+                  ],
+                },
+                {
+                  name: 'Type',
+                  examples: [
+                    {
+                      name: 'Get type',
+                      example: 'fpql/get-type',
+                    },
+                    {
+                      name: 'Get types',
+                      example: 'fpql/get-types',
                     },
                   ],
                 },
