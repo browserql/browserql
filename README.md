@@ -1,3 +1,3 @@
 # browserql
 
-[Docs](https://browserql-docs.web.app/){:target="_blank"}
+<a href="https://browserql-docs.web.app/" target="_blank">Docs</a>
