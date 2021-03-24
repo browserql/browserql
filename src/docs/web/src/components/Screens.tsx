@@ -1,13 +1,14 @@
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import Typography from '@material-ui/core/Typography';
-import React, { useState } from 'react';
-import Code from './Code';
+import Paper from "@material-ui/core/Paper";
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+import Typography from "@material-ui/core/Typography";
+import React, { useState } from "react";
+import Code from "./Code";
 
 enum ScreenLanguage {
-  grapqhl = 'graphql',
-  json = 'json',
-  typescript = 'typescript',
+  grapqhl = "graphql",
+  json = "json",
+  typescript = "typescript",
 }
 
 interface Screen {
@@ -23,25 +24,24 @@ interface Props {
 }
 
 export default function Screens({ screens }: Props) {
-  console.log({ screens });
   const [tab, setTab] = useState(0);
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setTab(newValue);
   };
   const selectedScreen = screens[tab];
   return (
-    <div>
+    <Paper style={{ marginTop: 12 }} elevation={5}>
       <Tabs
         value={tab}
-        indicatorColor='primary'
+        indicatorColor="primary"
         onChange={handleChange}
-        variant='fullWidth'
+        variant="fullWidth"
       >
-        {screens.map(screen => (
+        {screens.map((screen) => (
           <Tab
-            label={screen.eval ? 'Result' : screen.name}
-            key={`${screen.name}-${screen.eval ? 'eval' : ''}`}
-            color={screen.eval ? 'secondary' : 'default'}
+            label={screen.eval ? "Result" : screen.name}
+            key={`${screen.name}-${screen.eval ? "eval" : ""}`}
+            color={screen.eval ? "secondary" : "default"}
           />
         ))}
       </Tabs>
@@ -50,20 +50,22 @@ export default function Screens({ screens }: Props) {
           style={{
             padding: 12,
             paddingLeft: 24,
-            borderLeft: '5px solid #ccc',
+            borderLeft: "5px solid #ccc",
           }}
         >
           {selectedScreen.description}
         </Typography>
       )}
-      <Code
-        language={(selectedScreen.language as unknown) as string}
-        value={
-          selectedScreen.language === ScreenLanguage.json
-            ? JSON.stringify(selectedScreen.source, null, 2)
-            : selectedScreen.source
-        }
-      />
-    </div>
+      <div style={{ margin: 8, paddingBottom: 12 }}>
+        <Code
+          language={(selectedScreen.language as unknown) as string}
+          value={
+            selectedScreen.language === ScreenLanguage.json
+              ? JSON.stringify(selectedScreen.source, null, 2)
+              : selectedScreen.source
+          }
+        />
+      </div>
+    </Paper>
   );
 }

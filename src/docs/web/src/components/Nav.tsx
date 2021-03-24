@@ -23,7 +23,11 @@ function Nav({ navigation, history }: Props & RouteComponentProps) {
     <nav>
       {navigation.map((nav) => {
         return (
-          <Accordion key={nav.name}>
+          <Accordion
+            key={nav.name}
+            elevation={1}
+            style={{ backgroundColor: "rgba(255, 255, 255, 0.35)" }}
+          >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
