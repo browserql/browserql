@@ -1,0 +1,8 @@
+type User {
+  id: ID!
+  settings: UserSettings!
+}
+
+type UserSettings {
+  verified: Boolean!
+}

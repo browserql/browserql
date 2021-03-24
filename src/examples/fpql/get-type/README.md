@@ -4,7 +4,7 @@
 ## get-type
 ---
 
-Test test test
+Get a type from a schema by name.
 
 ```screens
 screens:
@@ -13,7 +13,7 @@ screens:
     description: "The schema graphql we'll use"
   - language: typescript
     source: index.ts
-    description: "File"
+    description: "Proof of Concept"
   - language: json
     eval: index.ts
     description: "File result"

@@ -9,7 +9,7 @@ export default {
 
 ***
 
-Test test test
+Get a type from a schema by name.
 
 \`\`\`screens
 screens:
@@ -27,7 +27,6 @@ screens:
     name: schema.graphql
   - language: typescript
     source: |
-      import getFields from '@browserql/fpql/get/fields'
       import getType from '@browserql/fpql/get/type'
       import gql from 'graphql-tag'
       import { join } from 'path'
@@ -45,7 +44,7 @@ screens:
         // Return the type by name
         return getType(typeName)(schema)
       }
-    description: File
+    description: Proof of Concept
     name: index.ts
   - language: json
     eval: index.ts

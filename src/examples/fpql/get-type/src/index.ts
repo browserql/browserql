@@ -1,4 +1,3 @@
-import getFields from '@browserql/fpql/get/fields'
 import getType from '@browserql/fpql/get/type'
 import gql from 'graphql-tag'
 import { join } from 'path'
