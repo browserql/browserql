@@ -1,9 +1,9 @@
 {
   "name": "@browserql/{{ package.name }}",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "source": "src/index.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "source": "index.ts",
   "license": "ISC",
   "keywords": [
     "browserql",
