@@ -91,7 +91,7 @@ screens:
         cache: InMemoryCache
       }
     description: Types
-    name: ../../../../modules/types/src/index.ts
+    name: ../../../../modules/types/index.ts
 
 \`\`\`
 `
