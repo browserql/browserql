@@ -77,7 +77,40 @@ Nav.defaultProps = {
       name: 'GraphQL utilities',
       nav: [
         {
-          name: 'fpql',
+          name: 'cache',
+          examples: [
+            {
+              name: 'Usage',
+              example: 'cache/usage',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'Integrations',
+      nav: [
+        {
+          name: 'React',
+          nav: [
+            {
+              name: 'Components',
+              examples: [
+                {
+                  name: 'Provider',
+                  example: 'react/provider-component',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'Misc',
+      nav: [
+        {
+          name: 'FPQL',
           nav: [
             {
               name: 'Get',
@@ -117,11 +150,6 @@ Nav.defaultProps = {
             },
           ],
         },
-      ],
-    },
-    {
-      name: 'Misc',
-      nav: [
         {
           name: 'Types',
           examples: [
