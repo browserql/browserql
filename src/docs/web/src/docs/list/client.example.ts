@@ -5,9 +5,9 @@ export default {
 
 ***
 
-## example
+![npm](https://img.shields.io/npm/v/@browserql/client)
 
-***
+## example
 
 Creates an in-memory GraphQL server that can be used in the browser.
 
@@ -18,22 +18,22 @@ screens:
   - language: graphql
     source: |
       type Query {
-        whatTimeIsIt: String !
+        sayHello: String !
       }
     description: The GraphQL schema we'll use. For the sake of example it has only
       one query.
     name: schema.graphql
   - language: graphql
-    source: |-
+    source: |
       query {
-        whatTimeIsIt
+        sayHello
       }
     description: The GraphQL executable query we'll use on the client
     name: operations.graphql
   - language: typescript
     source: |
-      export function whatTimeIsIt() {
-        return new Date().toUTCString()
+      export function sayHello() {
+        return 'hello'
       }
     description: Our resolvers. Note that it has our query resolver (view schema)
     name: resolvers.ts
@@ -43,12 +43,12 @@ screens:
       import { readFileSync } from 'fs'
       import { join } from 'path'
       import { parse } from 'graphql'
-      import { whatTimeIsIt } from './resolvers'
+      import { sayHello } from './resolvers'
 
       const schemaSource = readFileSync(join(__dirname, 'schema.graphql'))
       const schema = parse(schemaSource.toString())
 
-      export default connect(schema, { queries: { whatTimeIsIt }})
+      export default connect(schema, { queries: { sayHello }})
     description: The actual client.
     name: client.ts
   - language: typescript
@@ -71,7 +71,7 @@ screens:
     name: query.ts
     source:
       data:
-        whatTimeIsIt: Thu, 25 Mar 2021 10:16:29 GMT
+        sayHello: hello
       loading: false
       networkStatus: 7
 

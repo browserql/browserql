@@ -1,6 +1,7 @@
 # fpql
 ---
 
+![npm](https://img.shields.io/npm/v/@browserql/types)
 ## getName
 ---
 ### Get type's name

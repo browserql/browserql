@@ -1,8 +1,9 @@
 # client
 ---
 
+![npm](https://img.shields.io/npm/v/@browserql/client)
+
 ## example
----
 
 Creates an in-memory GraphQL server that can be used in the browser.
 

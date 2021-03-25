@@ -1,3 +1,3 @@
-export function whatTimeIsIt() {
-  return new Date().toUTCString()
+export function sayHello() {
+  return 'hello'
 }

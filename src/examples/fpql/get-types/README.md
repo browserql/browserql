@@ -1,6 +1,8 @@
 # fpql
 ---
 
+![npm](https://img.shields.io/npm/v/@browserql/types)
+
 ## get-types
 ---
 

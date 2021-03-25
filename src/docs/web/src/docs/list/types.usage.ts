@@ -5,6 +5,8 @@ export default {
 
 ***
 
+![npm](https://img.shields.io/npm/v/@browserql/client)
+
 ## usage
 
 ***
