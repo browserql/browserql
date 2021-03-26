@@ -11,6 +11,7 @@ import fpqlGetType from './list/fpql.get-type'
 import fpqlGetTypes from './list/fpql.get-types'
 import fpqlGetValue from './list/fpql.get-value'
 import fpqlParseKind from './list/fpql.parse-kind'
+import reactProviderComponent from './list/react.provider-component'
 import reactPrviderComponent from './list/react.prvider-component'
 import reactUsage from './list/react.usage'
 import typesUsage from './list/types.usage'
@@ -29,6 +30,7 @@ export const Examples = [
   fpqlGetTypes,
   fpqlGetValue,
   fpqlParseKind,
+  reactProviderComponent,
   reactPrviderComponent,
   reactUsage,
   typesUsage

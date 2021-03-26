@@ -1,16 +1,16 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
 import Paper from '@material-ui/core/Paper';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import React from 'react';
-import Aside from './Aside';
-import Nav from './Nav';
+import React, { ComponentType, useEffect, useState } from 'react';
+import Embed from './Embed';
 import Navigation from './Navigation';
 import Router from './Router';
-import Topbar from './Topbar';
 
 export default function Layout() {
+  if (/^\/embed/.test(location.pathname)) {
+    const [, , moduleName, exampleName] = location.pathname.split(/\//);
+    console.log({ moduleName, exampleName });
+    return <Embed module={moduleName} example={exampleName} />;
+  }
   return (
     <div>
       <CssBaseline />
@@ -20,9 +20,9 @@ export default function Layout() {
           background: 'white',
           padding: 12,
           flex: 1,
-          marginTop: 90,
           maxWidth: 1111,
           margin: 'auto',
+          marginTop: 90,
         }}
         elevation={3}
       >

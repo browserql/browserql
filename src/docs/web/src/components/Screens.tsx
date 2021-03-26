@@ -7,11 +7,13 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
 import Code from './Code';
+import Iframe from './Iframe';
 
 enum ScreenLanguage {
   grapqhl = 'graphql',
   json = 'json',
   typescript = 'typescript',
+  react = 'react',
 }
 
 interface Screen {
@@ -88,15 +90,18 @@ export default function Screens({ screens }: Props) {
           {selectedScreen.headsUp}
         </Typography>
       )}
-      <div style={{ margin: 8, paddingBottom: 12 }}>
-        <Code
-          language={(selectedScreen.language as unknown) as string}
-          value={
-            selectedScreen.language === ScreenLanguage.json
-              ? JSON.stringify(selectedScreen.source, null, 2)
-              : selectedScreen.source
-          }
-        />
+      <div style={{ paddingBottom: 12 }}>
+        {selectedScreen.language !== 'react' && (
+          <Code
+            language={(selectedScreen.language as unknown) as string}
+            value={
+              selectedScreen.language === ScreenLanguage.json
+                ? JSON.stringify(selectedScreen.source, null, 2)
+                : selectedScreen.source
+            }
+          />
+        )}
+        {selectedScreen.language === 'react' && <Iframe />}
       </div>
     </div>
   );

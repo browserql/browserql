@@ -1,0 +1,6 @@
+type Mutation {
+  buildEmbedded(
+    module: String!
+    example: String!
+  ): String!
+}

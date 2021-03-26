@@ -1,5 +1,5 @@
 {
-  "name": "@browserql/example-react.prvider-component",
+  "name": "@browserql/example-react.provider-component",
   "version": "1.0.0",
   "scripts": {
     "test": "echo NO TEST"

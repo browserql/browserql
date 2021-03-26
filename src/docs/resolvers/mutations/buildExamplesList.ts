@@ -3,6 +3,7 @@ import { readdir, writeFile } from 'fs/promises'
 import { camelCase } from 'lodash'
 import type { Mutation } from '@browserql/docs-graphql/src/generated/graphql';
 import { buildExample } from './buildExample';
+import { buildEmbedded } from './buildEmbedded';
 
 interface Example { module: string, name: string }
 
@@ -31,6 +32,7 @@ export async function buildExamplesList(): Promise<Mutation['buildExamplesList']
   await Promise.all(
     examplesByModule.map(async example => {
       await buildExample({ example: example.name, module: example.module })
+      await buildEmbedded({ example: example.name, module: example.module })
     })
   )
   const listItems = await readdir(webDocsPath)

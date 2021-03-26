@@ -47,7 +47,10 @@ function NavSection(
             }}
           >
             {item.nav.map(subItem => (
-              <NavSection {...{ ...subItem, history: item.history }} />
+              <NavSection
+                {...{ ...subItem, history: item.history }}
+                key={subItem.name}
+              />
             ))}
           </List>
         )}
@@ -80,7 +83,7 @@ function Nav({ navigation, history }: Props & RouteComponentProps) {
   return (
     <List style={{ margin: 6 }}>
       {navigation.map(nav => (
-        <NavSection history={history} {...nav} />
+        <NavSection history={history} {...nav} key={nav.name} />
       ))}
     </List>
   );

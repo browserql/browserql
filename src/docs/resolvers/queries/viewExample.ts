@@ -32,6 +32,13 @@ export async function viewExample({ module: mod, example }: QueryViewExampleArgs
               }
             }
             if (screen.eval) {
+              if (screen.language === 'react') {
+                return {
+                  ...screen,
+                  name: screen.eval,
+                  source: ''
+                }
+              }
               const { default: fn } = require(join(path, 'src', screen.eval))
               return {
                 ...screen,

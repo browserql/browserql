@@ -1,7 +1,9 @@
 # react
 ---
 
-## prvider-component
+![npm](https://img.shields.io/npm/v/@browserql/react)
+
+## Provider component
 ---
 
 Test test test
@@ -9,9 +11,9 @@ Test test test
 ```screens
 screens:
   - language: typescript
-    source: index.ts
+    source: view.tsx
     description: "File"
-  - language: json
-    eval: index.ts
+  - language: react
+    eval: view.tsx
     description: "File result"
 ```

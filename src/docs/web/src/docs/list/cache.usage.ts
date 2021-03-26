@@ -75,9 +75,9 @@ screens:
     name: index.ts
     source:
       initialValue:
-        &a1
+        ? getCounter
+      valueAfterChange:
         getCounter: 100
-      valueAfterChange: *a1
 
 \`\`\`
 `
