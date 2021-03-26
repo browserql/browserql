@@ -19,8 +19,8 @@
   "scripts": {
     "build": "rm -rf dist && yarn tsc",
     "watch": "yarn build -w",
-    "test": "echo jest dist",
-    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test"
+    "test": "echo NO TEST",
+    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
   },
   "peerDependencies": {
     "graphql": "^15.5.0"

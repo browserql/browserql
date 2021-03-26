@@ -1,6 +1,6 @@
 {
   "name": "@browserql/types",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "main": "index.js",
   "types": "index.d.ts",
   "source": "index.ts",
@@ -22,7 +22,7 @@
     "build": "rm -rf dist && yarn tsc",
     "watch": "yarn build -w",
     "test": "echo NO TEST",
-    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test"
+    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
   },
   "devDependencies": {
     "@apollo/client": "^3.3.12",
