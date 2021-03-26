@@ -31,7 +31,7 @@ export default function Navigation() {
           className={classes.root}
           PaperProps={{
             style: {
-              top: 64,
+              top: 66,
             },
           }}
           ModalProps={{

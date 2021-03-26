@@ -16,7 +16,14 @@ export default function Layout() {
       <CssBaseline />
       <Navigation />
       <Paper
-        style={{ background: 'white', padding: 12, flex: 1, marginTop: 60 }}
+        style={{
+          background: 'white',
+          padding: 12,
+          flex: 1,
+          marginTop: 90,
+          maxWidth: 1111,
+          margin: 'auto',
+        }}
         elevation={3}
       >
         <Router />

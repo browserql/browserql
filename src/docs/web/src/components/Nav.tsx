@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -8,6 +8,8 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { RouteComponentProps, withRouter } from 'react-router';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Collapse from '@material-ui/core/Collapse';
 
 type Navigation = { name: string } & (
   | { nav: Navigation[] }
@@ -18,47 +20,69 @@ interface Props {
   navigation: Navigation[];
 }
 
+function NavSection(
+  item: Navigation & { history: RouteComponentProps['history'] }
+) {
+  const [toggled, setToggled] = useState(false);
+  const toggle = useCallback(() => setToggled(!toggled), [toggled]);
+
+  return (
+    <div style={{ borderLeft: '2px solid #369' }}>
+      <ListItem button>
+        <ListItemText primary={item.name} onClick={toggle} />
+        <ExpandMore
+          onClick={toggle}
+          style={{
+            transition: 'all 0.25s ease-out',
+            transform: `rotate(${toggled ? 180 : 0}deg)`,
+          }}
+        />
+      </ListItem>
+      <Collapse in={toggled}>
+        {'nav' in item && (
+          <List
+            style={{
+              paddingLeft: 12,
+              paddingRight: 6,
+            }}
+          >
+            {item.nav.map(subItem => (
+              <NavSection {...{ ...subItem, history: item.history }} />
+            ))}
+          </List>
+        )}
+        {'examples' in item && (
+          <List
+            style={{
+              paddingLeft: 12,
+              paddingRight: 6,
+            }}
+          >
+            {item.examples.map(ex => (
+              <ListItem
+                key={ex.name}
+                button
+                onClick={() => {
+                  item.history.push(`/examples/${ex.example}`);
+                }}
+              >
+                <ListItemText primary={ex.name} />
+              </ListItem>
+            ))}
+          </List>
+        )}
+      </Collapse>
+    </div>
+  );
+}
+
 function Nav({ navigation, history }: Props & RouteComponentProps) {
   return (
-    <nav>
-      {navigation.map(nav => {
-        return (
-          <Accordion
-            key={nav.name}
-            elevation={1}
-            style={{ backgroundColor: 'rgba(255, 255, 255, 0.35)' }}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1a-content'
-              id='panel1a-header'
-            >
-              <Typography>{nav.name}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <div style={{ flex: 1 }}>
-                {'nav' in nav && <Nav navigation={nav.nav} history={history} />}
-                {'examples' in nav && (
-                  <List>
-                    {nav.examples.map(ex => (
-                      <ListItem
-                        key={ex.name}
-                        button
-                        onClick={() => {
-                          history.push(`/examples/${ex.example}`);
-                        }}
-                      >
-                        <ListItemText primary={ex.name} />
-                      </ListItem>
-                    ))}
-                  </List>
-                )}
-              </div>
-            </AccordionDetails>
-          </Accordion>
-        );
-      })}
-    </nav>
+    <List style={{ margin: 6 }}>
+      {navigation.map(nav => (
+        <NavSection history={history} {...nav} />
+      ))}
+    </List>
   );
 }
 
