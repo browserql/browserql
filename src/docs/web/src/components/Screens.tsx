@@ -1,16 +1,17 @@
-import Paper from "@material-ui/core/Paper";
-import Tab from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
-import Typography from "@material-ui/core/Typography";
-import React, { useState } from "react";
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import Paper from '@material-ui/core/Paper';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+import Typography from '@material-ui/core/Typography';
+import React, { useState } from 'react';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
-import Code from "./Code";
+import Code from './Code';
 
 enum ScreenLanguage {
-  grapqhl = "graphql",
-  json = "json",
-  typescript = "typescript",
+  grapqhl = 'graphql',
+  json = 'json',
+  typescript = 'typescript',
 }
 
 interface Screen {
@@ -19,6 +20,7 @@ interface Screen {
   source: string;
   eval?: string;
   description?: string;
+  headsUp?: string;
 }
 
 interface Props {
@@ -35,15 +37,17 @@ export default function Screens({ screens }: Props) {
     <div style={{ marginTop: 12 }}>
       <Tabs
         value={tab}
-        indicatorColor="primary"
+        indicatorColor='primary'
         onChange={handleChange}
-        variant="fullWidth"
+        variant='scrollable'
+        scrollButtons='auto'
       >
-        {screens.map((screen) => (
+        {screens.map(screen => (
           <Tab
-            label={screen.eval ? "Result" : screen.name}
-            key={`${screen.name}-${screen.eval ? "eval" : ""}`}
-            color={screen.eval ? "secondary" : "default"}
+            label={screen.eval ? 'Result' : screen.name}
+            key={`${screen.name}-${screen.eval ? 'eval' : ''}`}
+            color={screen.eval ? 'secondary' : 'default'}
+            wrapped
           />
         ))}
       </Tabs>
@@ -53,16 +57,35 @@ export default function Screens({ screens }: Props) {
             padding: 12,
             paddingLeft: 24,
             paddingRight: 24,
-            borderLeft: "5px solid #ccc",
-            borderRight: "5px solid #ccc",
-            backgroundColor: "#efefef",
-            display: "flex",
-            alignItems: "center",
+            borderLeft: '5px solid #ccc',
+            borderRight: '5px solid #ccc',
+            backgroundColor: '#efefef',
+            display: 'flex',
+            alignItems: 'center',
             gap: 24,
           }}
         >
           <HelpOutlineIcon />
           {selectedScreen.description}
+        </Typography>
+      )}
+      {selectedScreen.headsUp && (
+        <Typography
+          style={{
+            padding: 12,
+            paddingLeft: 24,
+            paddingRight: 24,
+            borderLeft: '5px solid #900',
+            borderRight: '5px solid #900',
+            backgroundColor: '#ffecea',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 24,
+            color: '#900',
+          }}
+        >
+          <ErrorOutlineIcon />
+          {selectedScreen.headsUp}
         </Typography>
       )}
       <div style={{ margin: 8, paddingBottom: 12 }}>

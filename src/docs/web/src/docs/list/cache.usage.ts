@@ -41,7 +41,8 @@ screens:
       const schema = parse(schemaSource.toString())
 
       export default connect(schema)
-    description: Generate client
+    description: Generate client with browserql
+    headsUp: You can also use Apollo's client -- or any GraphQL client you deem fit
     name: client.ts
   - language: typescript
     source: |
@@ -65,7 +66,8 @@ screens:
           valueAfterChange
         }
       }
-    description: File
+    description: "In this file we are showing basic cache usage: how to get and set
+      the cache"
     name: index.ts
   - language: json
     eval: index.ts
@@ -73,9 +75,9 @@ screens:
     name: index.ts
     source:
       initialValue:
-        ? getCounter
-      valueAfterChange:
+        &a1
         getCounter: 100
+      valueAfterChange: *a1
 
 \`\`\`
 `
