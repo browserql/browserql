@@ -1,4 +1,7 @@
 {
   "name": "@browserql/example-types.usage",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo NO TEST"
+  }
 }

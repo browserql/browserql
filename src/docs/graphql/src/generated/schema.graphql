@@ -5,6 +5,7 @@ schema {
 type Mutation {
   buildExample(example: String!, module: String!): String!
   buildExamplesList: String!
+  runTests: Boolean!
 }
 type Package {
   name: String!

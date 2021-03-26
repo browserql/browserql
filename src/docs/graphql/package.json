@@ -15,7 +15,7 @@
   "scripts": {
     "build": "rm -rf dist && yarn tsc",
     "watch": "yarn build -w",
-    "test": "jest dist",
+    "test": "echo Skipping test for docs-graphql",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",
     "codegen": "graphql-codegen --config codegen.yml"
   },

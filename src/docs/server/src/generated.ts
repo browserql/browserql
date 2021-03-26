@@ -11,20 +11,22 @@ export type Scalars = {
   Float: number;
 };
 
-export type GetPackageInput = {
-  name?: Maybe<Scalars['String']>;
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   buildExample: Scalars['String'];
   buildExamplesList: Scalars['String'];
+  runTests: Scalars['Boolean'];
 };
 
 
 export type MutationBuildExampleArgs = {
   example: Scalars['String'];
   module: Scalars['String'];
+};
+
+export type Package = {
+  __typename?: 'Package';
+  name: Scalars['String'];
 };
 
 export type Query = {
@@ -45,7 +47,6 @@ export type QueryViewExampleArgs = {
   example: Scalars['String'];
 };
 
-export type Package = {
-  __typename?: 'Package';
-  name: Scalars['String'];
+export type GetPackageInput = {
+  name?: Maybe<Scalars['String']>;
 };

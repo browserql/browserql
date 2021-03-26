@@ -1,4 +1,7 @@
 {
   "name": "@browserql/example-react.prvider-component",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo NO TEST"
+  }
 }
