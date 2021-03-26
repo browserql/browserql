@@ -88,9 +88,10 @@ screens:
        * <br>&nbsp;&nbsp;require('graphql').parse('type Query { hello: String! }')
        * <br>)
        */
-      export interface BrowserqlClient extends BrowserqlClientProperty {
+      export interface BrowserqlClient extends Omit<BrowserqlClientProperty, 'schema'> {
         apollo: ApolloClient<any>
         cache: InMemoryCache
+        schema: DocumentNode
       }
     description: Types
     name: ../../../../modules/types/index.ts

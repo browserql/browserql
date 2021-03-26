@@ -45,10 +45,25 @@ screens:
     name: client.ts
   - language: typescript
     source: |
-      import cache from '@browserql/cache'
+      import connectCache from '@browserql/cache'
+      import gql from 'graphql-tag'
+      import client from './client'
 
       export default async function() {
-        return 'Hello world!'
+        // Create the cache wrapper
+        const cached = connectCache(client.cache, client.schema)
+        // Our query
+        const query = gql\`{ getCounter }\`
+        // Initial value
+        const initialValue = cached.get(query)
+        // Set cache
+        cached.set(query, { getCounter: 100 })
+        // Cache new value
+        const valueAfterChange = cached.get(query)
+        return {
+          initialValue,
+          valueAfterChange
+        }
       }
     description: File
     name: index.ts
@@ -56,7 +71,11 @@ screens:
     eval: index.ts
     description: File result
     name: index.ts
-    source: Hello world!
+    source:
+      initialValue:
+        ? getCounter
+      valueAfterChange:
+        getCounter: 100
 
 \`\`\`
 `
