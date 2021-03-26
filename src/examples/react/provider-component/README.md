@@ -10,6 +10,18 @@ Test test test
 
 ```screens
 screens:
+  - language: graphql
+    source: schema.graphql
+    description: "The GraphQL schema we'll use"
+  - language: graphql
+    source: query.gql
+    description: "The GraphQL client query"
+  - language: typescript
+    source: resolvers.ts
+    description: "The resolvers"
+  - language: typescript
+    source: Users.tsx
+    description: "File"
   - language: typescript
     source: view.tsx
     description: "File"

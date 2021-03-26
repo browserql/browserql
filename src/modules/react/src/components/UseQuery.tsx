@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import type { DocumentNode } from 'graphql';
 import {
   LazyQueryResult,
@@ -46,27 +46,36 @@ type UseLazyQueryProps<Data = any, Variables = any> = {
   ): ReactElement;
 };
 
-export default function UseQuery<Data = any, Variables = any>(
-  props: UseQueryProps<Data> &
-    (UseNonLazyQueryProps<Data> | UseLazyQueryProps<Data, Variables>)
-) {
+// export default function UseQuery<Data = unknown, Variables = any>(
+//   props: UseQueryProps<Data> & UseLazyQueryProps<Data, Variables>
+// ): ReactElement;
+
+// export default function UseQuery<Data = unknown, Variables = any>(
+//   props: UseQueryProps<Data> & UseNonLazyQueryProps<Data>
+// ): ReactElement;
+
+export default function UseQuery<
+  Data extends Record<string, any> = Record<string, any>,
+  Variables = any
+>(props: UseQueryProps<Data> & UseNonLazyQueryProps<Data>) {
   try {
     if (!props.query) {
     }
 
-    if (props.lazy === true) {
-      const [get, tuple] = useLazyQuery<Data, Variables>(props.query);
+    // if (props.lazy === true) {
+    //   const [get, tuple] = useLazyQuery<Data, Variables>(props.query);
 
-      if (tuple.error) {
-        throw tuple.error;
-      }
+    //   if (tuple.error) {
+    //     throw tuple.error;
+    //   }
 
-      if (tuple.loading && props.renderLoading) {
-        return props.renderLoading;
-      }
+    //   if (tuple.loading && props.renderLoading) {
+    //     return props.renderLoading;
+    //   }
 
-      return props.children(get, tuple);
-    }
+    //   return props.children(get, tuple);
+    // }
+
     const tuple = useQuery<Data, Variables>(props.query, {
       variables: props.variables,
     });
@@ -87,7 +96,7 @@ export default function UseQuery<Data = any, Variables = any>(
     if (props.renderError) {
       return props.renderError;
     }
-    return <span />;
+    return <Fragment />;
   }
 }
 
