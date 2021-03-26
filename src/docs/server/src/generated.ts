@@ -15,7 +15,6 @@ export type Mutation = {
   __typename?: 'Mutation';
   buildExample: Scalars['String'];
   buildExamplesList: Scalars['String'];
-  runTests: Scalars['Boolean'];
 };
 
 
