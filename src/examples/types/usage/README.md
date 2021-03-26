@@ -12,5 +12,6 @@ Types used by the client
 screens:
   - language: typescript
     source: ../../../../modules/types/index.ts
-    description: "Types"
+    title: "types.ts"
+    description: "Types for browserql client"
 ```

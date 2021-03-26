@@ -7,6 +7,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
+import HideOnScroll from './HideOnScroll';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,13 +28,15 @@ export default function Topbar({ onClickMenu }: Props) {
   const classes = useStyles();
 
   return (
-    <AppBar position='fixed' className={classes.appBar}>
-      <Toolbar>
-        <IconButton edge='start' color='inherit' onClick={onClickMenu}>
-          <MenuIcon />
-        </IconButton>
-        <Typography variant='h6'>browserql</Typography>
-      </Toolbar>
-    </AppBar>
+    <HideOnScroll>
+      <AppBar position='fixed' className={classes.appBar}>
+        <Toolbar>
+          <IconButton edge='start' color='inherit' onClick={onClickMenu}>
+            <MenuIcon />
+          </IconButton>
+          <Typography variant='h6'>browserql</Typography>
+        </Toolbar>
+      </AppBar>
+    </HideOnScroll>
   );
 }

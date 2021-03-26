@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["jest", "node"],
+    "types": ["jest"],
     "lib": ["ES2015"]
   }
 }

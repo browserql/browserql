@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import React, { useState } from 'react';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+import { print } from 'graphql';
 
 import Code from './Code';
 import Iframe from './Iframe';
@@ -23,6 +24,7 @@ interface Screen {
   eval?: string;
   description?: string;
   headsUp?: string;
+  title?: string;
 }
 
 interface Props {
@@ -46,7 +48,7 @@ export default function Screens({ screens }: Props) {
       >
         {screens.map(screen => (
           <Tab
-            label={screen.eval ? 'Result' : screen.name}
+            label={screen.eval ? 'Result' : screen.title || screen.name}
             key={`${screen.name}-${screen.eval ? 'eval' : ''}`}
             color={screen.eval ? 'secondary' : 'default'}
             wrapped
@@ -91,7 +93,7 @@ export default function Screens({ screens }: Props) {
         </Typography>
       )}
       <div style={{ paddingBottom: 12 }}>
-        {selectedScreen.language !== 'react' && (
+        {['json', 'typescript'].includes(selectedScreen.language) && (
           <Code
             language={(selectedScreen.language as unknown) as string}
             value={
@@ -101,6 +103,26 @@ export default function Screens({ screens }: Props) {
             }
           />
         )}
+        {selectedScreen.language === 'graphql' &&
+          typeof selectedScreen.source === 'string' && (
+            <Code language='graphql' value={selectedScreen.source} />
+          )}
+        {selectedScreen.language === 'graphql' &&
+          typeof selectedScreen.source !== 'string' && (
+            <>
+              <Code
+                language='graphql'
+                value={print(
+                  // @ts-ignore
+                  selectedScreen.source
+                )}
+              />
+              <Code
+                language='json'
+                value={JSON.stringify(selectedScreen.source, null, 2)}
+              />
+            </>
+          )}
         {selectedScreen.language === 'react' && <Iframe />}
       </div>
     </div>

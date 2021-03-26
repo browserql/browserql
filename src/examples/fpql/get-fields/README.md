@@ -16,7 +16,7 @@ screens:
   - language: typescript
     source: index.ts
     description: "File"
-  - language: json
+  - language: graphql
     eval: index.ts
     description: "File result"
 ```

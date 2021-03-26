@@ -93,7 +93,8 @@ screens:
         cache: InMemoryCache
         schema: DocumentNode
       }
-    description: Types
+    title: types.ts
+    description: Types for browserql client
     name: ../../../../modules/types/index.ts
 
 \`\`\`

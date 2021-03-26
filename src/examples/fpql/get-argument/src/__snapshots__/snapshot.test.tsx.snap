@@ -1,3 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `"Hello world!"`;
+exports[`renders correctly 1`] = `
+Object {
+  "defaultValue": undefined,
+  "description": undefined,
+  "directives": Array [],
+  "kind": "InputValueDefinition",
+  "name": Object {
+    "kind": "Name",
+    "value": "email",
+  },
+  "type": Object {
+    "kind": "NonNullType",
+    "type": Object {
+      "kind": "NamedType",
+      "name": Object {
+        "kind": "Name",
+        "value": "String",
+      },
+    },
+  },
+}
+`;

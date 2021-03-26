@@ -55,7 +55,7 @@ screens:
       }
     description: File
     name: index.ts
-  - language: json
+  - language: graphql
     eval: index.ts
     description: File result
     name: index.ts

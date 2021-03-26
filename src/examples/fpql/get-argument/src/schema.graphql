@@ -1,0 +1,9 @@
+directive @model(collection: String!) on FIELD_DEFINITION
+
+type User @model(collection: "user63728") {
+  email: String !
+}
+
+type Query {
+  getUserByEmail(email: String !): User
+}
