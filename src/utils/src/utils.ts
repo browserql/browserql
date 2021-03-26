@@ -24,7 +24,7 @@ export async function copyOver(source: string, destination: string, options: Rec
       if (stats.isFile()) {
         await copyAndTransformFile(
           join(source, file),
-          join(destination, 'package.json'),
+          join(destination, file),
           async source => parseTemplate(source, options)
         )
       } else if (stats.isDirectory()) {

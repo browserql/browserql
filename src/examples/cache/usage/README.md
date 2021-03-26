@@ -21,6 +21,9 @@ screens:
     source: schema.graphql
     description: "The GraphQL schema we'll use"
   - language: typescript
+    source: client.ts
+    description: "Generate client"
+  - language: typescript
     source: index.ts
     description: "File"
   - language: json
