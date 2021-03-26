@@ -27,6 +27,26 @@ export default {
       name: 'Integrations',
       nav: [
         {
+          name: 'HTTP',
+          examples: [
+            {
+              name: 'Example',
+              example: ''
+            }
+          ]
+        },
+        {
+          name: 'Firestore',
+          nav: [
+            {
+              name: 'Usage'
+            },
+            {
+              name: 'React'
+            },
+          ]
+        },
+        {
           name: 'React',
           nav: [
             {
@@ -46,6 +66,15 @@ export default {
                 },
               ],
             },
+            {
+              name: 'State',
+              examples: [
+                {
+                  name: 'Example',
+                  example: ''
+                }
+              ]
+            }
           ],
         },
       ],

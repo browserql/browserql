@@ -1,10 +1,10 @@
-import Drawer from '@material-ui/core/Drawer';
-import { makeStyles } from '@material-ui/core/styles';
-import { Theme } from '@material-ui/core/styles/createMuiTheme';
-import createStyles from '@material-ui/core/styles/createStyles';
-import React, { useCallback, useState } from 'react';
-import Nav from './Nav';
-import Topbar from './Topbar';
+import Drawer from "@material-ui/core/Drawer";
+import { makeStyles } from "@material-ui/core/styles";
+import { Theme } from "@material-ui/core/styles/createMuiTheme";
+import createStyles from "@material-ui/core/styles/createStyles";
+import React, { useCallback, useState } from "react";
+import Nav from "./Nav";
+import Topbar from "./Topbar";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -45,7 +45,7 @@ export default function Navigation() {
             },
           }}
         >
-          <Nav />
+          <Nav toggle={toggle} />
         </Drawer>
       </aside>
     </>
