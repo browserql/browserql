@@ -9,9 +9,15 @@ export default function Counter() {
   const State = makeState(ctx.cache, ctx.schema)
   return (
     <State query={query}>
-      {() => (
+      {({ getCounter: counter = 0 }, set) => (
         <div>
-          <div>Counter: 0</div>
+          <span>Counter: {counter}</span>
+          <button
+            onClick={() => set({ getCounter: counter + 1 })}
+            style={{ marginLeft: 12 }}
+          >
+            +
+          </button>
         </div>
       )}
     </State>
