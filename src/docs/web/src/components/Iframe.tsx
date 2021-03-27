@@ -6,7 +6,7 @@ export default withRouter(function Iframe(
 ) {
   return (
     <iframe
-      style={{ border: 'none', width: '100%' }}
+      style={{ border: 'none', width: '100%', height: 335 }}
       src={`/embed/${props.match.params.module}/${props.match.params.example}`}
     ></iframe>
   );

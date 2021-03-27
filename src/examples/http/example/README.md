@@ -9,13 +9,15 @@ Test test test
 ```screens
 screens:
   - language: graphql
-    source: schema.graphql
+    title: "schema.graphql"
+    source: schema.gql
     description: "GraphQL schema"
   - language: graphql
+    title: "query.graphql"
     source: query.gql
     description: "GraphQL query"
   - language: typescript
-    source: Todos.tsx
+    source: Todo.tsx
     description: "File"
   - language: typescript
     source: view.tsx

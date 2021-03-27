@@ -26,7 +26,7 @@ screens:
         login: String!
       }
     description: The GraphQL schema we'll use
-    name: schema.graphql
+    name: schema.gql
   - language: graphql
     source: |-
       query {
@@ -54,7 +54,7 @@ screens:
       import React from 'react';
       import { UseQuery } from '@browserql/react';
 
-      import query from './query.gql';
+      import query from './query.graphql';
 
       interface User {
         id: string;

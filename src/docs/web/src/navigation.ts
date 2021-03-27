@@ -25,6 +25,15 @@ export default {
             },
           ],
         },
+        {
+          name: 'GraphiQL',
+          examples: [
+            {
+              name: 'Example',
+              example: 'graphiql/example'
+            }
+          ]
+        },
       ],
     },
     {

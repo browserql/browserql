@@ -2,13 +2,20 @@
   "name": "@browserql/example-react.provider-component",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "types": "graphql-typescript-definitions --schema-types-path ."
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",
     "@types/react-test-renderer": "^17.0.1",
+    "graphql-config": "^3.2.0",
+    "graphql-typescript-definitions": "^0.23.2",
     "jest": "^26.6.3",
+    "jest-transform-graphql": "^2.1.0",
     "react-test-renderer": "^17.0.2",
     "ts-jest": "^26.5.4"
+  },
+  "resolutions": {
+    "graphql": "15.5.0"
   }
 }

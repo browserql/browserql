@@ -1,9 +1,9 @@
 {
-  "name": "@browserql/fpql",
-  "version": "2.4.0",
+  "name": "@browserql/graphiql",
+  "version": "1.0.0",
   "main": "index.js",
   "types": "index.d.ts",
-  "source": true,
+  "source": "index.ts",
   "license": "ISC",
   "keywords": [
     "browserql",
@@ -24,7 +24,14 @@
     "test": "echo NO TEST",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
   },
-  "peerDependencies": {
+  "dependencies": {
+    "@browserql/fpql": "^2.3.0",
+    "graphiql": "^1.4.0",
     "graphql": "^15.5.0"
+  },
+  "peerDependencies": {
+    "@apollo/client": "^3.3.13",
+    "graphql-tag": "^2.11.0",
+    "react": "^17.0.2"
   }
 }

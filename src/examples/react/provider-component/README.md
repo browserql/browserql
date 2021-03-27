@@ -11,7 +11,7 @@ Test test test
 ```screens
 screens:
   - language: graphql
-    source: schema.graphql
+    source: schema.gql
     description: "The GraphQL schema we'll use"
   - language: graphql
     source: query.gql

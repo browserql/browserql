@@ -12,6 +12,7 @@ import fpqlGetType from './list/fpql.get-type'
 import fpqlGetTypes from './list/fpql.get-types'
 import fpqlGetValue from './list/fpql.get-value'
 import fpqlParseKind from './list/fpql.parse-kind'
+import graphiqlExample from './list/graphiql.example'
 import httpExample from './list/http.example'
 import reactProviderComponent from './list/react.provider-component'
 import reactPrviderComponent from './list/react.prvider-component'
@@ -33,6 +34,7 @@ export const Examples = [
   fpqlGetTypes,
   fpqlGetValue,
   fpqlParseKind,
+  graphiqlExample,
   httpExample,
   reactProviderComponent,
   reactPrviderComponent,

@@ -1,0 +1,17 @@
+import gql from 'graphql-tag'
+
+export default gql`
+type Query {
+  getTodo(id: ID!): Todo
+    @http(url: "https://jsonplaceholder.typicode.com/todos/:id")
+}
+
+type Todo {
+  completed: Boolean!
+  id: ID!
+  title: String!
+  userId: ID!
+}
+
+
+`

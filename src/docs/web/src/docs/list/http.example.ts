@@ -14,6 +14,7 @@ Test test test
 \`\`\`screens
 screens:
   - language: graphql
+    title: schema.graphql
     source: |
       type Query {
         getTodo(id: ID!): Todo
@@ -27,8 +28,9 @@ screens:
         userId: ID!
       }
     description: GraphQL schema
-    name: schema.graphql
+    name: schema.gql
   - language: graphql
+    title: query.graphql
     source: |
       query {
         getTodo(id: 2) {
@@ -41,61 +43,68 @@ screens:
     description: GraphQL query
     name: query.gql
   - language: typescript
-    source: |
+    source: >
       import { UseQuery } from '@browserql/react';
+
       import React from 'react';
-      import { parse } from 'graphql';
-      import query from './query.gql';
+
+
+      import query from './query.graphql';
+
 
       interface Todo {
         completed: boolean;
-        id: string | number;
+        id: number;
         title: string;
-        userId: string | number;
+        userId: number;
       }
 
+
       interface GetTodoData {
-        getTodos: Todo[];
+        getTodo: Todo | null;
       }
+
+
+      function GetTodoError(error: Error) {
+        return (
+          <div style={{ color: '#900', fontWeight: 'bold' }}>
+            Error: {error.message}
+          </div>
+        );
+      }
+
+
+      function GetTodoLoading() {
+        return <div style={{ color: '#666', fontStyle: 'italic' }}>Loading</div>;
+      }
+
 
       export default function Todos() {
         return (
-          <UseQuery<GetTodoData> query={parse(query)}>
-            {({ getTodos: todos }) => (
-              <ul>
-                {todos.map(todo => (
-                  <li key={todo.id}>
-                    <input type='checkbox' checked={todo.completed} />
-                    {todo.title}
-                  </li>
-                ))}
-              </ul>
-            )}
+          <UseQuery<GetTodoData>
+            query={query}
+            renderError={GetTodoError}
+            renderLoading={<GetTodoLoading />}
+          >
+            {({ getTodo: todo }) => <pre>{JSON.stringify(todo, null, 2)}</pre>}
           </UseQuery>
         );
       }
     description: File
-    name: Todos.tsx
+    name: Todo.tsx
   - language: typescript
-    source: >
+    source: |
       import React from 'react';
-
       import { BrowserqlProvider } from '@browserql/react';
-
       import { connectHttp } from '@browserql/http';
 
-      import { parse } from 'graphql';
-
-
       import schema from './schema.graphql';
+      import Todo from './Todo';
 
-      import Todos from './Todos';
-
-
-      export default async function () {
+      export default function () {
         return (
-          <BrowserqlProvider schema={parse(schema)} extensions={[connectHttp()]}>
-            <Todos />
+          <BrowserqlProvider schema={schema} extensions={[connectHttp()]}>
+            <Todo />
           </BrowserqlProvider>
         );
       }
