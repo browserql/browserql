@@ -1,14 +1,14 @@
-import Paper from '@material-ui/core/Paper';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import Typography from '@material-ui/core/Typography';
-import React, { useState } from 'react';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
-import { print } from 'graphql';
+import Paper from '@material-ui/core/Paper'
+import Tab from '@material-ui/core/Tab'
+import Tabs from '@material-ui/core/Tabs'
+import Typography from '@material-ui/core/Typography'
+import React, { useState } from 'react'
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
+import { print } from 'graphql'
 
-import Code from './Code';
-import Iframe from './Iframe';
+import Code from './Code'
+import Iframe from './Iframe'
 
 enum ScreenLanguage {
   grapqhl = 'graphql',
@@ -18,35 +18,35 @@ enum ScreenLanguage {
 }
 
 interface Screen {
-  language: ScreenLanguage;
-  name: string;
-  source: string;
-  eval?: string;
-  description?: string;
-  headsUp?: string;
-  title?: string;
+  language: ScreenLanguage
+  name: string
+  source: string
+  eval?: string
+  description?: string
+  headsUp?: string
+  title?: string
 }
 
 interface Props {
-  screens: Screen[];
+  screens: Screen[]
 }
 
 export default function Screens({ screens }: Props) {
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(screens.length - 1)
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setTab(newValue);
-  };
-  const selectedScreen = screens[tab];
+    setTab(newValue)
+  }
+  const selectedScreen = screens[tab]
   return (
     <div style={{ marginTop: 12 }}>
       <Tabs
         value={tab}
-        indicatorColor='primary'
+        indicatorColor="primary"
         onChange={handleChange}
-        variant='scrollable'
-        scrollButtons='auto'
+        variant="scrollable"
+        scrollButtons="auto"
       >
-        {screens.map(screen => (
+        {screens.map((screen) => (
           <Tab
             label={screen.eval ? 'Result' : screen.title || screen.name}
             key={`${screen.name}-${screen.eval ? 'eval' : ''}`}
@@ -105,20 +105,20 @@ export default function Screens({ screens }: Props) {
         )}
         {selectedScreen.language === 'graphql' &&
           typeof selectedScreen.source === 'string' && (
-            <Code language='graphql' value={selectedScreen.source} />
+            <Code language="graphql" value={selectedScreen.source} />
           )}
         {selectedScreen.language === 'graphql' &&
           typeof selectedScreen.source !== 'string' && (
             <>
               <Code
-                language='graphql'
+                language="graphql"
                 value={print(
                   // @ts-ignore
                   selectedScreen.source
                 )}
               />
               <Code
-                language='json'
+                language="json"
                 value={JSON.stringify(selectedScreen.source, null, 2)}
               />
             </>
@@ -126,5 +126,5 @@ export default function Screens({ screens }: Props) {
         {selectedScreen.language === 'react' && <Iframe />}
       </div>
     </div>
-  );
+  )
 }

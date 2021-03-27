@@ -10,33 +10,6 @@ export default {
       ],
     },
     {
-      name: 'GraphQL utilities',
-      nav: [
-        {
-          name: 'cache',
-          examples: [
-            {
-              name: 'Usage',
-              example: 'cache/usage',
-            },
-            {
-              name: 'Get',
-              example: 'cache/get',
-            },
-          ],
-        },
-        {
-          name: 'GraphiQL',
-          examples: [
-            {
-              name: 'Example',
-              example: 'graphiql/example'
-            }
-          ]
-        },
-      ],
-    },
-    {
       name: 'Integrations',
       nav: [
         {
@@ -52,7 +25,13 @@ export default {
           name: 'Firestore',
           nav: [
             {
-              name: 'Usage'
+              name: 'Usage',
+              examples: [
+                {
+                  name: 'Example',
+                  example: 'firestore/usage'
+                }
+              ]
             },
             {
               name: 'React'
@@ -89,6 +68,33 @@ export default {
               ]
             }
           ],
+        },
+      ],
+    },
+    {
+      name: 'GraphQL utilities',
+      nav: [
+        {
+          name: 'cache',
+          examples: [
+            {
+              name: 'Usage',
+              example: 'cache/usage',
+            },
+            {
+              name: 'Get',
+              example: 'cache/get',
+            },
+          ],
+        },
+        {
+          name: 'GraphiQL',
+          examples: [
+            {
+              name: 'Example',
+              example: 'graphiql/example'
+            }
+          ]
         },
       ],
     },

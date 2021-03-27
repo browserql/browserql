@@ -1,0 +1,9 @@
+query {
+  firestoreGetTodo(
+    where: { field: "done" equals: true }
+    range: 10
+    sortBy: "title"
+  ) {
+    title
+  }
+}
