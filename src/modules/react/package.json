@@ -1,6 +1,6 @@
 {
   "name": "@browserql/react",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.12",
-    "@browserql/client": "^4.0.0",
+    "@browserql/client": "^4.2.0",
     "graphql": "^15.5.0",
     "react": "^17.0.2"
   },
