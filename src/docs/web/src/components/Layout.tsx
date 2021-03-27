@@ -15,19 +15,21 @@ export default function Layout() {
     <div>
       <CssBaseline />
       <Navigation />
-      <Paper
-        style={{
-          background: 'white',
-          padding: 12,
-          flex: 1,
-          maxWidth: 1111,
-          margin: 'auto',
-          marginTop: 90,
-        }}
-        elevation={3}
-      >
-        <Router />
-      </Paper>
+      <main>
+        <Paper
+          style={{
+            background: 'white',
+            padding: 12,
+            flex: 1,
+            maxWidth: 1111,
+            margin: 'auto',
+            marginTop: 90,
+          }}
+          elevation={3}
+        >
+          <Router />
+        </Paper>
+      </main>
     </div>
   );
 }

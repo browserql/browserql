@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Object {
+  "initialValue": Object {
+    "getCounter": null,
+  },
+  "valueAfterChange": Object {
+    "getCounter": 100,
+  },
+}
+`;

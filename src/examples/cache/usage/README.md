@@ -6,15 +6,6 @@
 
 Helper around [apollo-cache](https://www.apollographql.com/docs/react/caching/cache-configuration/)
 
-```javascript
-import connectCache from '@browserql/cache'
-
-const cached = connectCache(cache, schema)
-
-cached.get(QUERY, {})
-cached.set(QUEY, {}, {})
-```
-
 ```screens
 screens:
   - language: graphql
