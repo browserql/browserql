@@ -33,7 +33,6 @@ export async function buildExamplesList(): Promise<Mutation['buildExamplesList']
     await Promise.all(
       examplesByModule.map(async example => {
         await buildExample({ example: example.name, module: example.module })
-        await buildEmbedded({ example: example.name, module: example.module })
       })
     )
     const listItems = await readdir(webDocsPath)
@@ -48,6 +47,7 @@ export async function buildExamplesList(): Promise<Mutation['buildExamplesList']
       .join(',\n  ')
     const listSource = `${listImports}\n\nexport const Examples = [\n  ${list}\n]\n`
     await writeFile(`${webDocsPath}.ts`, listSource)
+    await buildEmbedded()
     return examplesPath
   } catch (error) {
     console.log(error)

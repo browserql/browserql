@@ -35,7 +35,7 @@ export default {
           examples: [
             {
               name: 'Example',
-              example: ''
+              example: 'http/example'
             }
           ]
         },
