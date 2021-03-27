@@ -1,3 +1,4 @@
+import cacheGet from './list/cache.get'
 import cacheUsage from './list/cache.usage'
 import clientExample from './list/client.example'
 import fpqlGetArgument from './list/fpql.get-argument'
@@ -17,6 +18,7 @@ import reactUsage from './list/react.usage'
 import typesUsage from './list/types.usage'
 
 export const Examples = [
+  cacheGet,
   cacheUsage,
   clientExample,
   fpqlGetArgument,

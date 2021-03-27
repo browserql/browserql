@@ -19,6 +19,10 @@ export default {
               name: 'Usage',
               example: 'cache/usage',
             },
+            {
+              name: 'Get',
+              example: 'cache/get',
+            },
           ],
         },
       ],
