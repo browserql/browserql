@@ -17,6 +17,15 @@ export default [
       );
       return View;
     }
+  },{
+    module: 'state',
+    example: 'example',
+    async load() {
+      const { default: View } = await import(
+        '@browserql/example-state.example/src/view'
+      );
+      return View;
+    }
   }
 ]
   

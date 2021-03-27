@@ -17,6 +17,7 @@ import httpExample from './list/http.example'
 import reactProviderComponent from './list/react.provider-component'
 import reactPrviderComponent from './list/react.prvider-component'
 import reactUsage from './list/react.usage'
+import stateExample from './list/state.example'
 import typesUsage from './list/types.usage'
 
 export const Examples = [
@@ -39,5 +40,6 @@ export const Examples = [
   reactProviderComponent,
   reactPrviderComponent,
   reactUsage,
+  stateExample,
   typesUsage
 ]

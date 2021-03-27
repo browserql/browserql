@@ -1,9 +1,9 @@
 {
   "name": "@browserql/state",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "source": "src/index.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "source": "index.ts",
   "license": "ISC",
   "keywords": [
     "browserql",
@@ -23,5 +23,13 @@
     "watch": "yarn build -w",
     "test": "echo NO TEST",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
+  },
+  "dependencies": {
+    "@browserql/cache": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@apollo/client": "^3.3.13",
+    "graphql": "^15.5.0",
+    "react": "^17.0.2"
   }
 }

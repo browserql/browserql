@@ -84,7 +84,7 @@ export default {
               examples: [
                 {
                   name: 'Example',
-                  example: ''
+                  example: 'state/example'
                 }
               ]
             }
