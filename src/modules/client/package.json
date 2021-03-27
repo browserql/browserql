@@ -1,6 +1,6 @@
 {
   "name": "@browserql/client",
-  "version": "4.0.0",
+  "version": "4.2.0",
   "main": "index.js",
   "types": "index.d.ts",
   "source": "index.ts",
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.12",
+    "@browserql/fpql": "^2.3.0",
     "@graphql-tools/schema": "^7.1.3",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-link": "^1.2.14",
