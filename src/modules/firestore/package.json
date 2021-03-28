@@ -25,11 +25,11 @@
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
   },
   "peerDependencies": {
-    "firebase": "^8.3.1",
     "graphql": "^15.5.0",
     "graphql-tag": "^2.11.0"
   },
   "dependencies": {
-    "@browserql/fpql": "^2.3.0"
+    "@browserql/fpql": "^2.3.0",
+    "firebase": "^8.3.1"
   }
 }
