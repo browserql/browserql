@@ -8,6 +8,8 @@ query {
     sortBy: "title"
   ) {
     title
+    done
+    id
   }
 }
 

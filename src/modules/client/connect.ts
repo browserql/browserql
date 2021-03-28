@@ -90,7 +90,8 @@ export default function connect(
     } else if (typeof arg == 'object') {
       applyArg(arg)
     } else if (typeof arg === 'function') {
-      const props: Partial<BrowserqlClientProperty> = {
+      const props: Partial<BrowserqlClientProperty> & { cache: BrowserqlClient['cache'] } = {
+        cache,
         queries,
         mutations,
         scalars,

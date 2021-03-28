@@ -36,13 +36,11 @@ function mockDb(fixture: Fixture[]): firestore.firestore.Firestore {
 
 export default mockDb([
   {
-    collection: 'User',
+    collection: 'Todo',
     id: '1',
-    data: [
-      {
-        title: 'Buy milk',
-        done: false
-      }
-    ]
+    data: {
+      title: 'Buy milk',
+      done: true
+    }
   }
 ])

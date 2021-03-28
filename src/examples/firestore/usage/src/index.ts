@@ -6,6 +6,6 @@ import query from './query.graphql'
 import db from './db'
 
 export default async function() {
-  const client = connect(schema, connectFirestore(db, schema))
+  const client = connect(schema, connectFirestore(db))
   return client.apollo.query({ query })
 }

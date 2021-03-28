@@ -1,12 +1,13 @@
 import firestore from 'firebase'
 import gql from 'graphql-tag'
-import { print, DocumentNode } from 'graphql'
+import { print, DocumentNode, DirectiveNode } from 'graphql'
 import { JSONResolver } from 'graphql-scalars'
 
 import { transformTypeToInput } from '@browserql/inputs'
-import { BrowserqlClientPropertyFactory } from '@browserql/types'
+import type { BrowserqlClientPropertyFactory, BrowserqlClient } from '@browserql/types'
 
-import { getDirective, getName, getTypes } from '../fpql'
+import { getArgument, getDirective, getFields, getName, getTypes, getValue } from '../fpql'
+import { getDocuments, makeFirestoreQuery } from './utils'
 
 const scalars = gql`
 scalar FirestoreJSON
@@ -57,25 +58,52 @@ type Mutation {
 
 export default function connect(
   db: firestore.firestore.Firestore,
-  schema: DocumentNode
 ): BrowserqlClientPropertyFactory {
-  return () => {
-    const types = getTypes(schema)
+  return ({ cache, schema }) => {
+    const types = getTypes(schema as DocumentNode)
     const models = types.filter(getDirective('firestore'))
     const defs: string[] = []
     const queries: Record<string, any> = {}
     models.forEach(model => {
       const modelName = getName(model)
+      const collectionDirective = getDirective('firestore')(model)
+      const collectionArgument = getArgument('collection')(collectionDirective as DirectiveNode)
+      const collection = collectionArgument ? getValue(collectionArgument) : modelName
       defs.push(
         Query.replace(/TYPE/g, modelName),
         Mutation.replace(/TYPE/g, modelName),
-        print(transformTypeToInput(model, schema))
+        print(transformTypeToInput(model, schema as DocumentNode))
           .replace(`input ${modelName}Input `, `input ${modelName}FirestoreInput `),
       )
+      const fields = getFields(model)
+      if (!fields.find(field => getName(field) === 'id')) {
+        defs.push(`extend type ${modelName} { id: ID! }`)
+      }
       Object.assign(queries, {
         async [`firestoreGet${modelName}`]() {
-          console.log('hello')
-          return []
+          return new Promise((resolve) => {
+            const query = makeFirestoreQuery(collection)(db)
+            let resolved = false
+            query.onSnapshot(async (snapshot) => {
+              const documents = await getDocuments<any>(snapshot)
+              if (!resolved) {
+                resolved = true
+                resolve(documents)
+              } else {
+                console.log('HANDLE')
+                // cache.writeQuery({
+                //   ...resolved.Query[fullName](variables),
+                //   data: {
+                //     [fullName]: documents.map((doc) => ({
+                //       ...doc,
+                //       __typename: name,
+                //     })),
+                //   },
+                // })
+                // query(resolved.Query[fullName](variables))
+              }
+            })
+          })
         }
       })
     })

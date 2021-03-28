@@ -32,6 +32,8 @@ screens:
           sortBy: "title"
         ) {
           title
+          done
+          id
         }
       }
     description: File
@@ -46,7 +48,7 @@ screens:
       import db from './db'
 
       export default async function() {
-        const client = connect(schema, connectFirestore(db, schema))
+        const client = connect(schema, connectFirestore(db))
         return client.apollo.query({ query })
       }
     description: File
@@ -57,7 +59,11 @@ screens:
     name: index.ts
     source:
       data:
-        firestoreGetTodo: []
+        firestoreGetTodo:
+          - title: Buy milk
+            done: true
+            id: "1"
+            __typename: Todo
       loading: false
       networkStatus: 7
 

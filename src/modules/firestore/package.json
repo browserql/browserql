@@ -31,7 +31,11 @@
   "dependencies": {
     "@browserql/fpql": "^2.3.0",
     "@browserql/inputs": "^1.0.0",
+    "@browserql/types": "^5.0.0",
     "firebase": "^8.3.1",
     "graphql-scalars": "^1.9.0"
+  },
+  "devDependencies": {
+    "@browserql/types": "^5.14.0"
   }
 }

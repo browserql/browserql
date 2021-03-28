@@ -33,6 +33,7 @@ export type Subscriptions = Record<
  * Connectors for browserql client as an object
  */
 export interface BrowserqlClientProperty {
+  cache?: InMemoryCache
   context?: Context
   directives?: Directives
   mutations?: Operations
