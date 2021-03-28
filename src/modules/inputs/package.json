@@ -1,5 +1,5 @@
 {
-  "name": "@browserql/firestore",
+  "name": "@browserql/inputs",
   "version": "1.0.0",
   "main": "index.js",
   "types": "index.d.ts",
@@ -24,14 +24,8 @@
     "test": "echo NO TEST",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
   },
-  "peerDependencies": {
-    "graphql": "^15.5.0",
-    "graphql-tag": "^2.11.0"
-  },
   "dependencies": {
-    "@browserql/fpql": "^2.3.0",
-    "@browserql/inputs": "^1.0.0",
-    "firebase": "^8.3.1",
-    "graphql-scalars": "^1.9.0"
+    "@browserql/fpql": "^2.5.0",
+    "graphql": "^15.5.0"
   }
 }

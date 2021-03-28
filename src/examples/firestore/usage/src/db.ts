@@ -1,4 +1,5 @@
 import MockFirebase from 'mock-cloud-firestore'
+import firestore from 'firebase'
 
 interface Fixture {
   collection: string
@@ -14,7 +15,7 @@ interface Fixed {
   }
 }
 
-export default function mockDb(fixture: Fixture[]) {
+function mockDb(fixture: Fixture[]): firestore.firestore.Firestore {
   const fixtureData = {
     __collection__: fixture.reduce((acc, entry) => {
       if (!(entry.collection in acc)) {
@@ -31,3 +32,16 @@ export default function mockDb(fixture: Fixture[]) {
 
   return firebase.firestore()
 }
+
+export default mockDb([
+  {
+    collection: 'User',
+    id: '1',
+    data: [
+      {
+        title: 'Buy milk',
+        done: false
+      }
+    ]
+  }
+])

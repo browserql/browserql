@@ -37,9 +37,18 @@ screens:
     description: File
     name: query.gql
   - language: typescript
-    source: |-
+    source: |
+      import connect from '@browserql/client'
+      import connectFirestore from '@browserql/firestore/connect'
+      import { print } from 'graphql'
+
+      import schema from './schema.graphql'
+      import query from './query.graphql'
+      import db from './db'
+
       export default async function() {
-        return 'Hello world!'
+        const client = connect(schema, connectFirestore(db as any, schema))
+        return client.apollo.query({ query })
       }
     description: File
     name: index.ts
@@ -47,7 +56,11 @@ screens:
     eval: index.ts
     description: File result
     name: index.ts
-    source: Hello world!
+    source:
+      data:
+        firestoreGetTodo: []
+      loading: false
+      networkStatus: 7
 
 \`\`\`
 `
