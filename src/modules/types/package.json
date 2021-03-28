@@ -1,6 +1,6 @@
 {
   "name": "@browserql/types",
-  "version": "5.12.0",
+  "version": "5.13.0",
   "main": "index.js",
   "types": "index.d.ts",
   "source": "index.ts",
