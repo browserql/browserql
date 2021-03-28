@@ -1,3 +1,4 @@
+// @ts-ignore
 import MockFirebase from 'mock-cloud-firestore'
 import firestore from 'firebase'
 

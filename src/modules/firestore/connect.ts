@@ -85,7 +85,6 @@ export default function connect(
       print(directives),
       ...defs,
     ].join('\n'))
-    console.log(print(finalSchema))
     return {
       schema: finalSchema,
       scalars: { FirestoreJSON: JSONResolver },
