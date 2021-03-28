@@ -1,6 +1,6 @@
 {
   "name": "@browserql/firestore",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "main": "index.js",
   "types": "index.d.ts",
   "source": "index.ts",
