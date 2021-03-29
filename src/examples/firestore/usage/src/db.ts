@@ -23,8 +23,8 @@ function mockDb(fixture: Fixture[]): firestore.firestore.Firestore {
         acc[entry.collection] = {
           __doc__: {},
         }
-        acc[entry.collection].__doc__[entry.id] = entry.data
       }
+      acc[entry.collection].__doc__[entry.id] = entry.data
       return acc
     }, {} as Fixed),
   }
@@ -40,6 +40,22 @@ export default mockDb([
     id: '1',
     data: {
       title: 'Buy milk',
+      done: true
+    }
+  },
+  {
+    collection: 'Todo',
+    id: '2',
+    data: {
+      title: 'Wash dishes',
+      done: true
+    }
+  },
+  {
+    collection: 'Todo',
+    id: '3',
+    data: {
+      title: 'Pay rent',
       done: true
     }
   }

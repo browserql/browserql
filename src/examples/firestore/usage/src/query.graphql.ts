@@ -4,7 +4,7 @@ export default gql`
 query {
   firestoreGetTodo(
     where: { field: "done" equals: true }
-    range: 10
+    limit: 2
     sortBy: "title"
   ) {
     title

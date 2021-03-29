@@ -28,7 +28,7 @@ screens:
       query {
         firestoreGetTodo(
           where: { field: "done" equals: true }
-          range: 10
+          limit: 2
           sortBy: "title"
         ) {
           title
@@ -81,6 +81,10 @@ screens:
           - title: Buy milk
             done: true
             id: "1"
+            __typename: Todo
+          - title: Wash dishes
+            done: true
+            id: "2"
             __typename: Todo
       loading: false
       networkStatus: 7

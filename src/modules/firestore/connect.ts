@@ -8,10 +8,10 @@ import type { BrowserqlClientPropertyFactory, BrowserqlClient } from '@browserql
 
 import { getArgument, getDirective, getFields, getName, getTypes, getValue } from '../fpql'
 import { getDocuments, makeFirestoreQuery } from './utils'
+import { FirestoreGetQueryVariables } from './types'
 
 const scalars = gql`
 scalar FirestoreJSON
-scalar FirestoreRange
 `
 
 const WhereInput = gql`
@@ -29,8 +29,8 @@ const Query = `
 type Query {
   firestoreGetTYPE(
     where: FirestoreWhereInput
-    range: FirestoreRange
-    sortBy: String!
+    limit: Int
+    sortBy: String
   ): [ TYPE ! ] !
 }
 `
@@ -43,14 +43,14 @@ type Mutation {
 
   firestoreUpdateTYPE(
     where: FirestoreWhereInput
-    range: FirestoreRange
-    sortBy: String!
+    limit: Int
+    sortBy: String
     TYPE: TYPEFirestoreInput
   ): TYPE
 
   firestoreDeleteTYPE(
     where: FirestoreWhereInput
-    range: FirestoreRange
+    limit: Int
     sortBy: String!
   ): TYPE
 }
@@ -80,9 +80,9 @@ export default function connect(
         defs.push(`extend type ${modelName} { id: ID! }`)
       }
       Object.assign(queries, {
-        async [`firestoreGet${modelName}`]() {
+        async [`firestoreGet${modelName}`]({ limit }: FirestoreGetQueryVariables) {
           return new Promise((resolve) => {
-            const query = makeFirestoreQuery(collection)(db)
+            const query = makeFirestoreQuery(collection, { limit })(db)
             let resolved = false
             query.onSnapshot(async (snapshot) => {
               const documents = await getDocuments<any>(snapshot)
@@ -90,7 +90,6 @@ export default function connect(
                 resolved = true
                 resolve(documents)
               } else {
-                console.log('HANDLE')
                 // cache.writeQuery({
                 //   ...resolved.Query[fullName](variables),
                 //   data: {

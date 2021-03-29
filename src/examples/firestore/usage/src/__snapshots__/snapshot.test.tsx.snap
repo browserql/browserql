@@ -10,6 +10,12 @@ Object {
         "id": "1",
         "title": "Buy milk",
       },
+      Object {
+        "__typename": "Todo",
+        "done": true,
+        "id": "2",
+        "title": "Wash dishes",
+      },
     ],
   },
   "loading": false,

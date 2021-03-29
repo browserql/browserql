@@ -1,10 +1,20 @@
 import firestore from 'firebase'
 
+interface MakeFirestoreQueryOptions {
+  limit?: number
+}
+
 export function makeFirestoreQuery(
-  collection: string
+  collection: string,
+  options: MakeFirestoreQueryOptions = {}
 ) {
   return (db: firestore.firestore.Firestore) => {
+    console.log({options})
     let query = db.collection(collection)
+    if (options.limit) {
+      // @ts-ignore
+      query = query.limit(options.limit)
+    }
     return query
   }
 }
@@ -36,6 +46,7 @@ export async function getDocuments<A = unknown>(
 ) {
   const docs: A[] = []
   snapshot.forEach(async (doc) => {
+    console.log({doc})
     docs.push(await getDocument(doc))
   })
   return docs
