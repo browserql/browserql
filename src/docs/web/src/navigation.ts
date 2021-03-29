@@ -33,15 +33,6 @@ export default {
                 }
               ]
             },
-            {
-              name: 'React',
-              examples: [
-                {
-                  name: 'Usage',
-                  example: 'firestore-react/usage'
-                }
-              ]
-            },
           ]
         },
         {

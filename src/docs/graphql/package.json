@@ -13,7 +13,7 @@
     "url": "https://github.com/browserql/browserql/issues"
   },
   "scripts": {
-    "build": "rm -rf dist && yarn tsc",
+    "build": "echo BUILD",
     "watch": "yarn build -w",
     "test": "echo Skipping test for docs-graphql",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",

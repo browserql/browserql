@@ -2,7 +2,8 @@
   "name": "@browserql/example-fpql.get-type-name",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo NO TEST"
+    "test": "echo NO TEST",
+    "build": "echo BUILD"
   },
   "dependencies": {
     "graphql-tag": "^2.11.0"

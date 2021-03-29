@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "test": "jest",
-    "types": "graphql-typescript-definitions --schema-types-path ."
+    "types": "graphql-typescript-definitions --schema-types-path .",
+    "build": "echo BUILD"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",

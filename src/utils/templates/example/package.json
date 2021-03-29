@@ -2,7 +2,8 @@
   "name": "@browserql/example-{{ example.module }}.{{ example.name }}",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "echo BUILD"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",

@@ -2,6 +2,7 @@
   "name": "@browserql/example-react.usage",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo NO TEST"
+    "test": "echo NO TEST",
+    "build": "echo BUILD"
   }
 }

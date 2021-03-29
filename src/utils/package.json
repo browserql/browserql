@@ -19,7 +19,7 @@
     "url": "https://github.com/browserql/browserql/issues"
   },
   "scripts": {
-    "build": "rm -rf dist && yarn tsc",
+    "build": "echo BUILD",
     "watch": "yarn build -w",
     "test": "echo NO TEST",
     "add:module": "ts-node src/add-module.ts",

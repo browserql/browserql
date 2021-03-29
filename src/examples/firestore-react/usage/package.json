@@ -2,7 +2,8 @@
   "name": "@browserql/example-firestore-react.usage",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "echo BUILD"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",

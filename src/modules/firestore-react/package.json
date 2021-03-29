@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "types": "index.d.ts",
-  "source": "index.ts",
+  "source": "index.tsx",
   "license": "ISC",
   "keywords": [
     "browserql",
@@ -23,5 +23,9 @@
     "watch": "yarn build -w",
     "test": "echo NO TEST",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
+  },
+  "dependencies": {
+    "@browserql/react": "^5.2.0",
+    "graphql": "^15.5.0"
   }
 }

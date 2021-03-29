@@ -32,7 +32,12 @@ export async function buildExamplesList(): Promise<Mutation['buildExamplesList']
     })
     await Promise.all(
       examplesByModule.map(async example => {
-        await buildExample({ example: example.name, module: example.module })
+        try {
+          await buildExample({ example: example.name, module: example.module })
+        } catch (error) {
+          console.log(error)
+          throw new Error(`Failed to build ${JSON.stringify(example)}`)
+        }
       })
     )
     const listItems = await readdir(webDocsPath)
