@@ -40,6 +40,24 @@ screens:
     name: query.gql
   - language: typescript
     source: |
+      import firebase from 'firebase/app'
+      import 'firebase/firestore'
+
+      const firestoreConfig = {
+        apiKey: process.env.FIRESTORE_API_KEY,
+        projectId: process.env.FIRESTORE_PROJECT_ID,
+        appId: process.env.FIRESTORE_AP_ID,
+        authDomain: process.env.FIRESTORE_AUTH_DOMAIN
+      }
+
+      firebase.initializeApp(firestoreConfig)
+
+      export default firebase.firestore()
+    title: db.ts
+    description: File
+    name: db-demo.ts
+  - language: typescript
+    source: |
       import connect from '@browserql/client'
       import connectFirestore from '@browserql/firestore/connect'
 

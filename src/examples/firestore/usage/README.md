@@ -17,6 +17,10 @@ screens:
     source: query.gql
     description: "File"
   - language: typescript
+    source: db-demo.ts
+    title: db.ts
+    description: "File"
+  - language: typescript
     source: index.ts
     description: "File"
   - language: json
