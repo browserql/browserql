@@ -25,11 +25,15 @@ export default {
           name: 'Firestore',
           nav: [
             {
-              name: 'Usage',
+              name: 'API',
               examples: [
                 {
-                  name: 'Example',
+                  name: 'Get',
                   example: 'firestore/usage'
+                },
+                {
+                  name: 'Count',
+                  example: 'firestore/count'
                 }
               ]
             },
