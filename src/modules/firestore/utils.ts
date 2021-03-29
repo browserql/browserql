@@ -46,7 +46,6 @@ export async function getDocuments<A = unknown>(
 ) {
   const docs: A[] = []
   snapshot.forEach(async (doc) => {
-    console.log({doc})
     docs.push(await getDocument(doc))
   })
   return docs
