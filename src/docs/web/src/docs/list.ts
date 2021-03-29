@@ -1,6 +1,7 @@
 import cacheGet from './list/cache.get'
 import cacheUsage from './list/cache.usage'
 import clientExample from './list/client.example'
+import firestoreReactUsage from './list/firestore-react.usage'
 import firestoreUsage from './list/firestore.usage'
 import fpqlGetArgument from './list/fpql.get-argument'
 import fpqlGetDirective from './list/fpql.get-directive'
@@ -25,6 +26,7 @@ export const Examples = [
   cacheGet,
   cacheUsage,
   clientExample,
+  firestoreReactUsage,
   firestoreUsage,
   fpqlGetArgument,
   fpqlGetDirective,

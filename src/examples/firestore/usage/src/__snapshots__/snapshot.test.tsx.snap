@@ -3,7 +3,14 @@
 exports[`renders correctly 1`] = `
 Object {
   "data": Object {
-    "firestoreGetTodo": Array [],
+    "firestoreGetTodo": Array [
+      Object {
+        "__typename": "Todo",
+        "done": true,
+        "id": "1",
+        "title": "Buy milk",
+      },
+    ],
   },
   "loading": false,
   "networkStatus": 7,
