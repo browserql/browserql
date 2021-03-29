@@ -113,7 +113,6 @@ export default function connect(
         async[`firestoreCount${modelName}`]() {
           const query = makeFirestoreQuery(collection)(db)
           const snapshot = await query.get()
-          // const documents = await getDocuments<any>(snapshot)
           return snapshot.size
         }
       })
