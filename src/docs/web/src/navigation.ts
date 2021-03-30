@@ -32,6 +32,10 @@ export default {
                   example: 'firestore/usage'
                 },
                 {
+                  name: 'Get Options',
+                  example: 'firestore/get-options'
+                },
+                {
                   name: 'Count',
                   example: 'firestore/count'
                 }
