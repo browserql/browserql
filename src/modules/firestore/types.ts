@@ -4,6 +4,8 @@ export interface FirestoreWhereInput {
 }
 
 export interface FirestoreGetQueryVariables {
+  startAt?: number
+  endAt?: number
   limit?: number
 }
 
