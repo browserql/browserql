@@ -3,7 +3,7 @@ import type { DocumentNode, GraphQLScalarType } from 'graphql'
 import cacheql from '@browserql/cache'
 import type { ApolloClient } from '@apollo/client'
 
-interface Props<Variables, Data extends Record<string, any>> {
+export interface StateProps<Variables, Data extends Record<string, any>> {
   query: DocumentNode
   variables?: Variables
   children: (
@@ -27,7 +27,7 @@ export default function makeState(
     query,
     hydrate,
     variables,
-  }: Props<Variables, Data>) {
+  }: StateProps<Variables, Data>) {
     const cached = cacheql(cache, schema)
     const [op, setOp] = useState(0)
     const refresh = useCallback(() => setOp(op + 1), [op])

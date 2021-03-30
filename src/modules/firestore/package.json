@@ -1,8 +1,6 @@
 {
   "name": "@browserql/firestore",
   "version": "3.9.0",
-  "main": "index.js",
-  "types": "index.d.ts",
   "source": true,
   "license": "ISC",
   "keywords": [
