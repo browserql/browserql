@@ -14,29 +14,36 @@ const scalars = gql`
 scalar FirestoreJSON
 `
 
-const WhereInput = gql`
+const inputs = gql`
 input FirestoreWhereInput {
   field: String!
   equals: FirestoreJSON
 }
+
+input FirestoreOrderBy {
+  field: String!
+  desc: Boolean = false
+}
 `
 
 const directives = gql`
-directive @firestore(collecvtion: String) on OBJECT
+directive @firestore(collection: String) on OBJECT
 `
 
 const Query = `
 type Query {
   firestoreGetTYPE(
     where: FirestoreWhereInput
-    limit: Int
-    sortBy: String
+    startAt: Int = 0
+    endAt: Int = 64
+    sortBy: [FirestoreOrderBy!] = []
   ): [ TYPE ! ] !
 
   firestoreCountTYPE(
     where: FirestoreWhereInput
-    limit: Int
-    sortBy: String
+    startAt: Int = 0
+    endAt: Int = 64
+    sortBy: [FirestoreOrderBy!]
   ): Int !
 }
 `
@@ -49,15 +56,17 @@ type Mutation {
 
   firestoreUpdateTYPE(
     where: FirestoreWhereInput
-    limit: Int
-    sortBy: String
+    startAt: Int = 0
+    endAt: Int = 64
+    sortBy: [FirestoreOrderBy!]
     TYPE: TYPEFirestoreInput
   ): TYPE
 
   firestoreDeleteTYPE(
     where: FirestoreWhereInput
-    limit: Int
-    sortBy: String!
+    startAt: Int = 0
+    endAt: Int = 64
+    sortBy: [FirestoreOrderBy!]
   ): TYPE
 }
 `
@@ -86,9 +95,9 @@ export default function connect(
         defs.push(`extend type ${modelName} { id: ID! }`)
       }
       Object.assign(queries, {
-        async [`firestoreGet${modelName}`]({ limit }: FirestoreGetQueryVariables) {
+        async [`firestoreGet${modelName}`]({ startAt, endAt, limit }: FirestoreGetQueryVariables) {
           return new Promise((resolve) => {
-            const query = makeFirestoreQuery(collection, { limit })(db)
+            const query = makeFirestoreQuery(collection, { startAt, endAt, limit })(db)
             let resolved = false
             query.onSnapshot(async (snapshot) => {
               const documents = await getDocuments<any>(snapshot)
@@ -113,17 +122,17 @@ export default function connect(
         async[`firestoreCount${modelName}`]() {
           const query = makeFirestoreQuery(collection)(db)
           const snapshot = await query.get()
-          // const documents = await getDocuments<any>(snapshot)
           return snapshot.size
         }
       })
     })
     const finalSchema = gql([
-      print(WhereInput),
+      print(inputs),
       print(scalars),
       print(directives),
       ...defs,
     ].join('\n'))
+    console.log(print(finalSchema))
     return {
       schema: finalSchema,
       scalars: { FirestoreJSON: JSONResolver },

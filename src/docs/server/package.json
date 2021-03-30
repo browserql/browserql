@@ -23,7 +23,8 @@
     "watch": "yarn build -w",
     "test": "echo NO TEST",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",
-    "start": "ts-node-dev src/index"
+    "start": "ts-node-dev src/index",
+    "inspect": "node --inspect -r ts-node/register src/index"
   },
   "dependencies": {
     "express": "^4.17.1",

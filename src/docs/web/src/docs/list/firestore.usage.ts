@@ -27,7 +27,7 @@ screens:
     source: |
       query {
         firestoreGetTodo(
-          where: { field: "done" equals: true }
+          where: { field: "done", equals: true }
           limit: 2
           sortBy: "title"
         ) {
