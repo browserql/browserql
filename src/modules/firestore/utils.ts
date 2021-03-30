@@ -1,14 +1,9 @@
 import firestore from 'firebase'
-
-interface MakeFirestoreQueryOptions {
-  startAt?: number
-  endAt?: number
-  limit?: number
-}
+import { FirestoreGetQueryVariables } from './types'
 
 export function makeFirestoreQuery(
   collection: string,
-  options: MakeFirestoreQueryOptions = {}
+  options: FirestoreGetQueryVariables = {}
 ) {
   return (db: firestore.firestore.Firestore) => {
     let query = db.collection(collection)
@@ -16,9 +11,17 @@ export function makeFirestoreQuery(
       // @ts-ignore
       query = query.startAt(options.startAt)
     }
+    if (options.startAfter) {
+      // @ts-ignore
+      query = query.startAt(options.startAfter)
+    }
     if (options.endAt) {
       // @ts-ignore
       query = query.endAt(options.endAt)
+    }
+    if (options.endAfter) {
+      // @ts-ignore
+      query = query.endAt(options.endAfter)
     }
     if (options.limit) {
       // @ts-ignore

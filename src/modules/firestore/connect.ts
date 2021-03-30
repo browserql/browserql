@@ -9,67 +9,8 @@ import type { BrowserqlClientPropertyFactory, BrowserqlClient } from '@browserql
 import { getArgument, getDirective, getFields, getName, getTypes, getValue } from '../fpql'
 import { getDocuments, makeFirestoreQuery } from './utils'
 import { FirestoreGetQueryVariables } from './types'
-
-const scalars = gql`
-scalar FirestoreJSON
-`
-
-const inputs = gql`
-input FirestoreWhereInput {
-  field: String!
-  equals: FirestoreJSON
-}
-
-input FirestoreOrderBy {
-  field: String!
-  desc: Boolean = false
-}
-`
-
-const directives = gql`
-directive @firestore(collection: String) on OBJECT
-`
-
-const Query = `
-type Query {
-  firestoreGetTYPE(
-    where: FirestoreWhereInput
-    startAt: Int = 0
-    endAt: Int = 64
-    sortBy: [FirestoreOrderBy!] = []
-  ): [ TYPE ! ] !
-
-  firestoreCountTYPE(
-    where: FirestoreWhereInput
-    startAt: Int = 0
-    endAt: Int = 64
-    sortBy: [FirestoreOrderBy!]
-  ): Int !
-}
-`
-
-const Mutation = `
-type Mutation {
-  firestoreAddTYPE(
-    TYPE: TYPEFirestoreInput
-  ): TYPE!
-
-  firestoreUpdateTYPE(
-    where: FirestoreWhereInput
-    startAt: Int = 0
-    endAt: Int = 64
-    sortBy: [FirestoreOrderBy!]
-    TYPE: TYPEFirestoreInput
-  ): TYPE
-
-  firestoreDeleteTYPE(
-    where: FirestoreWhereInput
-    startAt: Int = 0
-    endAt: Int = 64
-    sortBy: [FirestoreOrderBy!]
-  ): TYPE
-}
-`
+import staticSchema from './static-schema'
+import dynamicSchema from './dynamic-schema'
 
 export default function connect(
   db: firestore.firestore.Firestore,
@@ -77,7 +18,9 @@ export default function connect(
   return ({ cache, schema }) => {
     const types = getTypes(schema as DocumentNode)
     const models = types.filter(getDirective('firestore'))
-    const defs: string[] = []
+    const defs: string[] = [
+      print(staticSchema)
+    ]
     const queries: Record<string, any> = {}
     models.forEach(model => {
       const modelName = getName(model)
@@ -85,8 +28,7 @@ export default function connect(
       const collectionArgument = getArgument('collection')(collectionDirective as DirectiveNode)
       const collection = collectionArgument ? getValue(collectionArgument) : modelName
       defs.push(
-        Query.replace(/TYPE/g, modelName),
-        Mutation.replace(/TYPE/g, modelName),
+        print(dynamicSchema).replace(/TYPE/g, modelName),
         print(transformTypeToInput(model, schema as DocumentNode))
           .replace(`input ${modelName}Input `, `input ${modelName}FirestoreInput `),
       )
@@ -95,9 +37,9 @@ export default function connect(
         defs.push(`extend type ${modelName} { id: ID! }`)
       }
       Object.assign(queries, {
-        async [`firestoreGet${modelName}`]({ startAt, endAt, limit }: FirestoreGetQueryVariables) {
+        async [`firestoreGet${modelName}`]({ startAt, startAfter, endAt, endAfter, limit }: FirestoreGetQueryVariables) {
           return new Promise((resolve) => {
-            const query = makeFirestoreQuery(collection, { startAt, endAt, limit })(db)
+            const query = makeFirestoreQuery(collection, { startAt, startAfter, endAt, endAfter, limit })(db)
             let resolved = false
             query.onSnapshot(async (snapshot) => {
               const documents = await getDocuments<any>(snapshot)
@@ -126,13 +68,7 @@ export default function connect(
         }
       })
     })
-    const finalSchema = gql([
-      print(inputs),
-      print(scalars),
-      print(directives),
-      ...defs,
-    ].join('\n'))
-    console.log(print(finalSchema))
+    const finalSchema = gql([...defs].join('\n'))
     return {
       schema: finalSchema,
       scalars: { FirestoreJSON: JSONResolver },

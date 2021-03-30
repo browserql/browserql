@@ -68,8 +68,7 @@ screens:
     description: File result
     name: index.ts
     source:
-      data:
-        firestoreCountTodo: 3
+      data: {}
       loading: false
       networkStatus: 7
 

@@ -4,9 +4,11 @@ export interface FirestoreWhereInput {
 }
 
 export interface FirestoreGetQueryVariables {
-  startAt?: number
-  endAt?: number
-  limit?: number
+  startAt?: number | string
+  startAfter?: number | string
+  endAt?: number | string
+  endAfter?: number | string
+  limit?: number | string
 }
 
 export interface FirestoreQuery {
