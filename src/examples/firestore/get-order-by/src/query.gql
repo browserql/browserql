@@ -1,0 +1,7 @@
+query {
+  firestoreGetTodo(orderBy: [{ field: "title" }]) {
+    title
+    done
+    id
+  }
+}

@@ -9,6 +9,12 @@ export interface FirestoreGetQueryVariables {
   endAt?: number | string
   endAfter?: number | string
   limit?: number | string
+  orderBy?: FirestoreOrderBy[]
+}
+
+export interface FirestoreOrderBy {
+  field: string
+  desc?: boolean
 }
 
 export interface FirestoreQuery {

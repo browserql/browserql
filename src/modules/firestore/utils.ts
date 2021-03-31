@@ -1,12 +1,18 @@
 import firestore from 'firebase'
 import { FirestoreGetQueryVariables } from './types'
 
-export function makeFirestoreQuery(
+export function makeFirestoreRef(
   collection: string,
   options: FirestoreGetQueryVariables = {}
 ) {
   return (db: firestore.firestore.Firestore) => {
     let query = db.collection(collection)
+    if (options.orderBy) {
+      options.orderBy.map(({ field, desc }) => {
+        // @ts-ignore
+        query = query.orderBy(field, desc ? 'desc' : undefined)
+      })
+    }
     if (options.startAt) {
       // @ts-ignore
       query = query.startAt(options.startAt)

@@ -1,15 +1,13 @@
 export default {
   module: "firestore",
-  name: "usage",
+  name: "get-limit",
   source: `# firestore
 
+## Get limit
+
+Limit your cursor result by using \`limit\` in your query,
+
 ***
-
-## usage
-
-***
-
-Connect Firestore to your front-end and manage your queries
 
 \`\`\`screens
 screens:
@@ -26,7 +24,7 @@ screens:
     title: query.graphql
     source: |
       query {
-        firestoreGetTodo {
+        firestoreGetTodo(limit: 2) {
           title
           done
           id
@@ -81,10 +79,6 @@ screens:
           - title: Wash dishes
             done: true
             id: "2"
-            __typename: Todo
-          - title: Pay rent
-            done: true
-            id: "3"
             __typename: Todo
       loading: false
       networkStatus: 7

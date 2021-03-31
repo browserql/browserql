@@ -1,6 +1,6 @@
 export default {
   module: "firestore",
-  name: "usage",
+  name: "get",
   source: `# firestore
 
 ***
@@ -82,7 +82,7 @@ screens:
             done: true
             id: "2"
             __typename: Todo
-          - title: Pay rent
+          - title: Meditate
             done: true
             id: "3"
             __typename: Todo

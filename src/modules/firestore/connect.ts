@@ -7,7 +7,7 @@ import { transformTypeToInput } from '@browserql/inputs'
 import type { BrowserqlClientPropertyFactory, BrowserqlClient } from '@browserql/types'
 
 import { getArgument, getDirective, getFields, getName, getTypes, getValue } from '../fpql'
-import { getDocuments, makeFirestoreQuery } from './utils'
+import { getDocuments, makeFirestoreRef } from './utils'
 import { FirestoreGetQueryVariables } from './types'
 import staticSchema from './static-schema'
 import dynamicSchema from './dynamic-schema'
@@ -37,9 +37,9 @@ export default function connect(
         defs.push(`extend type ${modelName} { id: ID! }`)
       }
       Object.assign(queries, {
-        async [`firestoreGet${modelName}`]({ startAt, startAfter, endAt, endAfter, limit }: FirestoreGetQueryVariables) {
+        async [`firestoreGet${modelName}`](variables: FirestoreGetQueryVariables) {
           return new Promise((resolve) => {
-            const query = makeFirestoreQuery(collection, { startAt, startAfter, endAt, endAfter, limit })(db)
+            const query = makeFirestoreRef(collection, variables)(db)
             let resolved = false
             query.onSnapshot(async (snapshot) => {
               const documents = await getDocuments<any>(snapshot)
@@ -62,7 +62,7 @@ export default function connect(
           })
         },
         async[`firestoreCount${modelName}`]() {
-          const query = makeFirestoreQuery(collection)(db)
+          const query = makeFirestoreRef(collection)(db)
           const snapshot = await query.get()
           return snapshot.size
         }

@@ -28,16 +28,20 @@ export default {
               name: 'API',
               examples: [
                 {
-                  name: 'Get',
-                  example: 'firestore/usage'
-                },
-                {
-                  name: 'Get Options',
-                  example: 'firestore/get-options'
-                },
-                {
                   name: 'Count',
                   example: 'firestore/count'
+                },
+                {
+                  name: 'Get',
+                  example: 'firestore/get'
+                },
+                {
+                  name: 'Get Limit',
+                  example: 'firestore/get-limit'
+                },
+                {
+                  name: 'Get Order By',
+                  example: 'firestore/get-order-by'
                 }
               ]
             },

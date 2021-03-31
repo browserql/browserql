@@ -33,7 +33,11 @@ type Query {
     Doc: https://firebase.google.com/docs/firestore/query-data/order-limit-data
     """
     limit: Int
-    sortBy: [FirestoreOrderBy!] = []
+    """
+    Order By
+    Doc: https://firebase.google.com/docs/firestore/query-data/order-limit-data
+    """
+    orderBy: [FirestoreOrderBy!]
   ): [ TYPE ! ] !
 
   firestoreCountTYPE(
@@ -42,7 +46,7 @@ type Query {
     startAfter: ID
     endAt: ID
     endAfter: ID
-    sortBy: [FirestoreOrderBy!]
+    orderBy: [FirestoreOrderBy!]
   ): Int !
 }
 
@@ -57,7 +61,7 @@ type Mutation {
     startAfter: ID
     endAt: ID
     endAfter: ID
-    sortBy: [FirestoreOrderBy!]
+    orderBy: [FirestoreOrderBy!]
     TYPE: TYPEFirestoreInput
   ): TYPE
 
@@ -67,7 +71,7 @@ type Mutation {
     startAfter: ID
     endAt: ID
     endAfter: ID
-    sortBy: [FirestoreOrderBy!]
+    orderBy: [FirestoreOrderBy!]
   ): TYPE
 }
 `
