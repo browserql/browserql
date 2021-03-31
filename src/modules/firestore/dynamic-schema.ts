@@ -3,7 +3,11 @@ import gql from 'graphql-tag'
 export default gql`
 type Query {
   firestoreGetTYPE(
-    where: FirestoreWhereInput
+    """
+    Where
+    Doc: https://firebase.google.com/docs/firestore/query-data/queries
+    """
+    where: [FirestoreWhereInput!]
     """
     Start At Cursor
 
@@ -41,7 +45,7 @@ type Query {
   ): [ TYPE ! ] !
 
   firestoreCountTYPE(
-    where: FirestoreWhereInput
+    where: [FirestoreWhereInput!]
     startAt: ID
     startAfter: ID
     endAt: ID

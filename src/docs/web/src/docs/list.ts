@@ -6,6 +6,7 @@ import firestoreCount from './list/firestore.count'
 import firestoreGetLimit from './list/firestore.get-limit'
 import firestoreGetOptions from './list/firestore.get-options'
 import firestoreGetOrderBy from './list/firestore.get-order-by'
+import firestoreGetWhere from './list/firestore.get-where'
 import firestoreGet from './list/firestore.get'
 import firestoreUsage from './list/firestore.usage'
 import fpqlGetArgument from './list/fpql.get-argument'
@@ -36,6 +37,7 @@ export const Examples = [
   firestoreGetLimit,
   firestoreGetOptions,
   firestoreGetOrderBy,
+  firestoreGetWhere,
   firestoreGet,
   firestoreUsage,
   fpqlGetArgument,

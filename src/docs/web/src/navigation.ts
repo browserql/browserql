@@ -42,6 +42,10 @@ export default {
                 {
                   name: 'Get Order By',
                   example: 'firestore/get-order-by'
+                },
+                {
+                  name: 'Get Where',
+                  example: 'firestore/get-where'
                 }
               ]
             },

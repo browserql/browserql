@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Object {
+  "data": Object {
+    "firestoreGetTodo": Array [
+      Object {
+        "__typename": "Todo",
+        "done": true,
+        "id": "1",
+        "title": "Buy milk",
+      },
+      Object {
+        "__typename": "Todo",
+        "done": true,
+        "id": "2",
+        "title": "Wash dishes",
+      },
+    ],
+  },
+  "loading": false,
+  "networkStatus": 7,
+}
+`;

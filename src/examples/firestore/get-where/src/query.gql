@@ -1,0 +1,7 @@
+query {
+  firestoreGetTodo(where: [{ field: "done" equals: true }]) {
+    title
+    done
+    id
+  }
+}

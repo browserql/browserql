@@ -1,39 +1,45 @@
 import firestore from 'firebase'
-import { FirestoreGetQueryVariables } from './types'
+import { FirestoreGetQueryVariables, FirestoreWhereInput } from './types'
+
+export function makeFirestoreWhere(ref: firestore.firestore.Query, where: FirestoreWhereInput) {
+  if ('equals' in where) {
+    return ref.where(where.field, '==', where.equals)
+  }
+  return ref
+}
 
 export function makeFirestoreRef(
   collection: string,
   options: FirestoreGetQueryVariables = {}
 ) {
   return (db: firestore.firestore.Firestore) => {
-    let query = db.collection(collection)
+    let ref = db.collection(collection) as firestore.firestore.Query
+    if (options.where) {
+      options.where.forEach(where => {
+        ref = makeFirestoreWhere(ref, where)
+      })
+    }
     if (options.orderBy) {
       options.orderBy.map(({ field, desc }) => {
-        // @ts-ignore
-        query = query.orderBy(field, desc ? 'desc' : undefined)
+        ref = ref.orderBy(field, desc ? 'desc' : undefined)
       })
     }
     if (options.startAt) {
-      // @ts-ignore
-      query = query.startAt(options.startAt)
+      ref = ref.startAt(options.startAt)
     }
     if (options.startAfter) {
-      // @ts-ignore
-      query = query.startAt(options.startAfter)
+      ref = ref.startAt(options.startAfter)
     }
     if (options.endAt) {
-      // @ts-ignore
-      query = query.endAt(options.endAt)
+      ref = ref.endAt(options.endAt)
     }
     if (options.endAfter) {
-      // @ts-ignore
-      query = query.endAt(options.endAfter)
+      ref = ref.endAt(options.endAfter)
     }
     if (options.limit) {
-      // @ts-ignore
-      query = query.limit(options.limit)
+      ref = ref.limit(options.limit)
     }
-    return query
+    return ref
   }
 }
 

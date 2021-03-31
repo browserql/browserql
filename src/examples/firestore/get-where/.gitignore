@@ -1,0 +1,2 @@
+!jest.config.js
+!src/mock-cloud-firestore.d.ts

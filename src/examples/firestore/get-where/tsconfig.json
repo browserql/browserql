@@ -1,0 +1,10 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["jest"],
+    "lib": ["ES2015"]
+  },
+  "include": [
+    "src/mock-cloud-firestore.d.ts"
+  ]
+}
