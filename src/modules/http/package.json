@@ -1,6 +1,6 @@
 {
   "name": "@browserql/http",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "main": "index.js",
   "types": "index.d.ts",
   "source": "index.ts",
@@ -30,6 +30,6 @@
     "graphql": "^15.5.0"
   },
   "peerDependencies": {
-    "graphql-tag": "^2.11.0"
+    "@apollo/client": "3.3.6"
   }
 }
