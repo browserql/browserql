@@ -7,7 +7,7 @@ import {
   getQueries,
   getValue,
 } from '@browserql/fpql'
-import gql from 'graphql-tag'
+import { gql } from '@apollo/client'
 import { ArgumentNode, DirectiveNode, DocumentNode, ValueNode } from 'graphql'
 import { HeadersJSONObject, QueryJSONObject } from './scalars'
 
