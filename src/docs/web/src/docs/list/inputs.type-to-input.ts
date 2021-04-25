@@ -1,11 +1,11 @@
 export default {
-  module: "fpql",
-  name: "get-query",
-  source: `# fpql
+  module: "inputs",
+  name: "type-to-input",
+  source: `# inputs
 
 ***
 
-## get-query
+## type-to-input
 
 ***
 

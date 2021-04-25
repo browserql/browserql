@@ -4,6 +4,7 @@ schema {
 }
 type Mutation {
   addExample(example: String!, module: String!): Boolean!
+  addModule(module: String!): Boolean!
   buildEmbedded(example: String!, module: String!): String!
   buildExample(example: String!, module: String!): String!
   buildExamplesList: String!

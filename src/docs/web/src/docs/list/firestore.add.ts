@@ -18,13 +18,14 @@ screens:
         title: String!
         done: Boolean!
       }
-    description: The GraphQL schema we'll use. Note how we use the @firestore directive.
+    description: The GraphQL schema we'll use. Note how we use the @firestore
+      directive. It means this GraphQL type represents a firestore collection.
     name: schema.gql
   - language: graphql
     title: mutation.graphql
     source: |
       mutation {
-        firestoreAddTodo(input: {
+        firestoreAddTodo(Todo: {
           title: "Buy milk"
           done: false
         }) {
@@ -72,7 +73,13 @@ screens:
     eval: index.ts
     description: File result
     name: index.ts
-    source: Hello world!
+    source:
+      data:
+        firestoreAddTodo:
+          title: Buy milk
+          done: false
+          id: hj9jb
+          __typename: Todo
 
 \`\`\`
 `

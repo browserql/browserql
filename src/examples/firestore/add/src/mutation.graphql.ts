@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 
 export default gql`
 mutation {
-  firestoreAddTodo(input: {
+  firestoreAddTodo(Todo: {
     title: "Buy milk"
     done: false
   }) {

@@ -14,6 +14,7 @@ export type Scalars = {
 export type Mutation = {
   __typename?: 'Mutation';
   addExample: Scalars['Boolean'];
+  addModule: Scalars['Boolean'];
   buildEmbedded: Scalars['String'];
   buildExample: Scalars['String'];
   buildExamplesList: Scalars['String'];
@@ -23,6 +24,11 @@ export type Mutation = {
 export type MutationAddExampleArgs = {
   module: Scalars['String'];
   example: Scalars['String'];
+};
+
+
+export type MutationAddModuleArgs = {
+  module: Scalars['String'];
 };
 
 

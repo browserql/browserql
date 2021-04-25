@@ -1,5 +1,5 @@
 mutation {
-  firestoreAddTodo(input: {
+  firestoreAddTodo(Todo: {
     title: "Buy milk"
     done: false
   }) {

@@ -7,7 +7,7 @@ import { transformTypeToInput } from '@browserql/inputs'
 import type { BrowserqlClientPropertyFactory, BrowserqlClient } from '@browserql/types'
 
 import { getArgument, getDirective, getFields, getName, getTypes, getValue } from '../fpql'
-import { getDocuments, makeFirestoreRef } from './utils'
+import { getDocument, getDocuments, makeFirestoreRef } from './utils'
 import { FirestoreGetQueryVariables } from './types'
 import staticSchema from './static-schema'
 import dynamicSchema from './dynamic-schema'
@@ -27,15 +27,18 @@ export default function connect(
       const collectionDirective = getDirective('firestore')(model)
       const collectionArgument = getArgument('collection')(collectionDirective as DirectiveNode)
       const collection = collectionArgument ? getValue(collectionArgument) : modelName
+      
       defs.push(
         print(dynamicSchema).replace(/TYPE/g, modelName),
         print(transformTypeToInput(model, schema as DocumentNode))
           .replace(`input ${modelName}Input `, `input ${modelName}FirestoreInput `),
       )
+      
       const fields = getFields(model)
       if (!fields.find(field => getName(field) === 'id')) {
         defs.push(`extend type ${modelName} { id: ID! }`)
       }
+      
       Object.assign(queries, {
         async [`firestoreGet${modelName}`](variables: FirestoreGetQueryVariables) {
           return new Promise((resolve) => {
@@ -68,8 +71,10 @@ export default function connect(
           return snapshot.size
         },
         
-        async[`firestoreAdd${modelName}`]() {
-          // const docRef =
+        async[`firestoreAdd${modelName}`](input: any) {
+          const candidate = input[modelName]
+          const docRef = await db.collection(collection).add(candidate)
+          return await getDocument(docRef)
         }
       })
     })

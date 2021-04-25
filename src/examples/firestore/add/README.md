@@ -11,7 +11,7 @@ screens:
   - language: graphql
     title: schema.graphql
     source: schema.gql
-    description: "The GraphQL schema we'll use. Note how we use the @firestore directive."
+    description: "The GraphQL schema we'll use. Note how we use the @firestore directive. It means this GraphQL type represents a firestore collection."
   - language: graphql
     title: mutation.graphql
     source: mutation.gql

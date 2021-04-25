@@ -44,11 +44,17 @@ export function makeFirestoreRef(
 }
 
 export async function getDocument<A = any>(
-  doc: firestore.firestore.QueryDocumentSnapshot<A>
-) {
+  doc: firestore.firestore.QueryDocumentSnapshot<A> | firestore.firestore.DocumentReference<A>
+): Promise<A> {
+  if (!('data' in doc)) {
+    const ref = await doc.get({ source: 'cache' })
+    return await getDocument(ref) as A
+  }
+
+  const data = doc.data()
   const pretty: any = {
     id: doc.id,
-    ...doc.data(),
+    ...data,
   }
   for (const a in pretty) {
     if (
@@ -70,7 +76,7 @@ export async function getDocuments<A = unknown>(
 ) {
   const docs: A[] = []
   snapshot.forEach(async (doc) => {
-    docs.push(await getDocument(doc))
+    docs.push(await getDocument<A>(doc as firestore.firestore.QueryDocumentSnapshot<A>))
   })
   return docs
 }

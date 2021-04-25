@@ -1,6 +1,8 @@
 import { mkdir, readdir, readFile, stat, writeFile } from 'fs/promises'
 import {template, templateSettings } from 'lodash'
 import { join } from 'path'
+import colors from 'colors'
+import { merge } from 'lodash'
 
 export async function copyAndTransformFile(src: string, destination: string, transformer: (source: string) => Promise<string>) {
   const source = (await readFile(src)).toString()
@@ -33,4 +35,32 @@ export async function copyOver(source: string, destination: string, options: Rec
       }
     })
   )
+}
+interface StepOptions {
+  ignoreError?: boolean
+}
+
+type Step<T extends Record<string, any>> = [name: string, step: (ctx: Partial<T>) => Promise<any>, options?: StepOptions]
+
+export function stepper<T extends Record<string, any>>(ctx: Partial<T> = {}) {
+  return async (...steps: Step<T>[]) => {
+    let [first] = steps
+    if (first) {
+      const [name, step, options = {}] = first
+  
+      try {
+        console.log(colors.blue(name))
+        const next = await step(ctx)
+        merge(ctx, { [name]: next })
+        console.log(colors.green(name))
+      } catch (error) {
+        if (!options.ignoreError) {
+          console.log(colors.red(name))
+          throw error
+        }
+      } finally {
+        await stepper<T>(ctx)(...steps.slice(1))
+      }
+    }
+  }
 }
