@@ -34,7 +34,13 @@ export default function Layout() {
         </Paper>
       </header>
 
-      <aside style={{ marginBottom: 36, maxHeight: 'calc(100vh - 96px)' }}>
+      <aside
+        style={{
+          marginBottom: 36,
+          maxHeight: 'calc(100vh - 96px)',
+          overflow: 'auto',
+        }}
+      >
         <Nav toggle={() => {}} />
       </aside>
 

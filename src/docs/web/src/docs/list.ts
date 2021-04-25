@@ -8,7 +8,10 @@ import firestoreGetOrderBy from './list/firestore.get-order-by'
 import firestoreGetWhere from './list/firestore.get-where'
 import firestoreGet from './list/firestore.get'
 import fpqlGetArgument from './list/fpql.get-argument'
+import fpqlGetField from './list/fpql.get-field'
 import fpqlGetFields from './list/fpql.get-fields'
+import fpqlGetMutation from './list/fpql.get-mutation'
+import fpqlGetMutations from './list/fpql.get-mutations'
 import fpqlGetTypeName from './list/fpql.get-type-name'
 import fpqlGetType from './list/fpql.get-type'
 import fpqlGetTypes from './list/fpql.get-types'
@@ -31,7 +34,10 @@ export const Examples = [
   firestoreGetWhere,
   firestoreGet,
   fpqlGetArgument,
+  fpqlGetField,
   fpqlGetFields,
+  fpqlGetMutation,
+  fpqlGetMutations,
   fpqlGetTypeName,
   fpqlGetType,
   fpqlGetTypes,

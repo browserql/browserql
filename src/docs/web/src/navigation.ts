@@ -105,6 +105,15 @@ export default {
           ],
         },
         {
+          name: 'executable',
+          examples: [
+            {
+              name: 'Print executable query',
+              example: 'executable/print-executable-query',
+            },
+          ],
+        },
+        {
           name: 'GraphiQL',
           examples: [
             {
@@ -134,11 +143,38 @@ export default {
                   ],
                 },
                 {
+                  name: 'Field',
+                  examples: [
+                    {
+                      name: 'Get field',
+                      example: 'fpql/get-field',
+                    },
+                  ],
+                },
+                {
                   name: 'Fields',
                   examples: [
                     {
                       name: 'Get fields',
                       example: 'fpql/get-fields',
+                    },
+                  ],
+                },
+                {
+                  name: 'Mutation',
+                  examples: [
+                    {
+                      name: 'Get mutation',
+                      example: 'fpql/get-mutation',
+                    },
+                  ],
+                },
+                {
+                  name: 'Mutations',
+                  examples: [
+                    {
+                      name: 'Get mutations',
+                      example: 'fpql/get-mutations',
                     },
                   ],
                 },

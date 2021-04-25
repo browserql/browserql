@@ -1,10 +1,9 @@
 import firestore from 'firebase'
-import gql from 'graphql-tag'
-import { print, DocumentNode, DirectiveNode } from 'graphql'
+import { print, DocumentNode, DirectiveNode, parse } from 'graphql'
 import { JSONResolver } from 'graphql-scalars'
 
 import { transformTypeToInput } from '@browserql/inputs'
-import type { BrowserqlClientPropertyFactory, BrowserqlClient } from '@browserql/types'
+import type { BrowserqlClientPropertyFactory, BrowserqlClient, BrowserqlClientContext } from '@browserql/types'
 
 import { getArgument, getDirective, getFields, getName, getTypes, getValue } from '../fpql'
 import { getDocument, getDocuments, makeFirestoreRef } from './utils'
@@ -40,7 +39,7 @@ export default function connect(
       }
       
       Object.assign(queries, {
-        async [`firestoreGet${modelName}`](variables: FirestoreGetQueryVariables) {
+        async [`firestoreGet${modelName}`](variables: FirestoreGetQueryVariables, ctx: BrowserqlClientContext, o: any) {
           return new Promise((resolve) => {
             const query = makeFirestoreRef(collection, variables)(db)
             let resolved = false
@@ -50,16 +49,23 @@ export default function connect(
                 resolved = true
                 resolve(documents)
               } else {
-                // cache.writeQuery({
-                //   ...resolved.Query[fullName](variables),
-                //   data: {
-                //     [fullName]: documents.map((doc) => ({
-                //       ...doc,
-                //       __typename: name,
-                //     })),
-                //   },
-                // })
-                // query(resolved.Query[fullName](variables))
+                const q = {
+                  query: parse(print(o.operation)),
+                  variables: o.variableValues,
+                }
+
+                console.log(q)
+
+                ctx.browserqlClient.cache.writeQuery({
+                  ...q,
+                  data: {
+                    [`firestoreGet${modelName}`]: documents.map((doc) => ({
+                      ...doc,
+                      __typename: name,
+                    })),
+                  },
+                })
+                ctx.browserqlClient.apollo.query(q)
               }
             })
           })
@@ -78,7 +84,7 @@ export default function connect(
         }
       })
     })
-    const finalSchema = gql([...defs].join('\n'))
+    const finalSchema = parse([...defs].join('\n'))
     return {
       schema: finalSchema,
       scalars: { FirestoreJSON: JSONResolver },
