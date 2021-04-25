@@ -1,0 +1,20 @@
+{
+  "name": "@browserql/example-firestore.add",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest",
+    "build": "echo BUILD"
+  },
+  "devDependencies": {
+    "@browserql/types": "^5.7.0",
+    "@types/jest": "^26.0.22",
+    "@types/react-test-renderer": "^17.0.1",
+    "jest": "^26.6.3",
+    "react-test-renderer": "^17.0.2",
+    "ts-jest": "^26.5.4"
+  },
+  "dependencies": {
+    "firebase": "^8.3.1",
+    "mock-cloud-firestore": "^0.12.0"
+  }
+}

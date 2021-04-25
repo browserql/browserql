@@ -2,6 +2,7 @@ import cacheGet from './list/cache.get'
 import cacheUsage from './list/cache.usage'
 import clientExample from './list/client.example'
 import firestoreReactUsage from './list/firestore-react.usage'
+import firestoreAdd from './list/firestore.add'
 import firestoreCount from './list/firestore.count'
 import firestoreGetLimit from './list/firestore.get-limit'
 import firestoreGetOptions from './list/firestore.get-options'
@@ -33,6 +34,7 @@ export const Examples = [
   cacheUsage,
   clientExample,
   firestoreReactUsage,
+  firestoreAdd,
   firestoreCount,
   firestoreGetLimit,
   firestoreGetOptions,

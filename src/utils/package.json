@@ -24,6 +24,7 @@
     "test": "echo NO TEST",
     "add:module": "ts-node src/add-module.ts",
     "add:example": "ts-node src/add-example.ts",
+    "gen": "ts-node src/generator.ts",
     "reinstall": "cd ../.. && rm -rf node_modules yarn.lock src/**/*/node_modules src/examples/*/*/node_modules && yarn"
   },
   "dependencies": {

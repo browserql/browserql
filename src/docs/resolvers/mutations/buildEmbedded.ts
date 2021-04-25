@@ -79,4 +79,5 @@ export async function buildEmbedded() {
 ]
   `
   await writeFile(resolve(process.cwd(), '../..', 'docs/web/src/embedded.ts'), squashed)
+  return 'ok'
 }

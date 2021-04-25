@@ -1,0 +1,6 @@
+type Mutation {
+  addExample(
+    module: String!
+    example: String!
+  ): Boolean!
+}

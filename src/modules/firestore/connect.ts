@@ -61,10 +61,15 @@ export default function connect(
             })
           })
         },
+        
         async[`firestoreCount${modelName}`]() {
           const query = makeFirestoreRef(collection)(db)
           const snapshot = await query.get()
           return snapshot.size
+        },
+        
+        async[`firestoreAdd${modelName}`]() {
+          // const docRef =
         }
       })
     })

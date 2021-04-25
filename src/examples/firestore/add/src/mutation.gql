@@ -1,0 +1,10 @@
+mutation {
+  firestoreAddTodo(input: {
+    title: "Buy milk"
+    done: false
+  }) {
+    title
+    done
+    id
+  }
+}

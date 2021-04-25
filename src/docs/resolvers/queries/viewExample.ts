@@ -12,6 +12,7 @@ export async function viewExample({ module: mod, example }: QueryViewExampleArgs
     mod,
     example
   )
+  console.log(path)
   const README = (await readFile(join(path, 'README.md'))).toString()
   const tree = fromMarkdown(README)
   const nextChildren = await Promise.all(

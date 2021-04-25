@@ -28,6 +28,10 @@ export default {
               name: 'API',
               examples: [
                 {
+                  name: 'Add',
+                  example: 'firestore/add'
+                },
+                {
                   name: 'Count',
                   example: 'firestore/count'
                 },
