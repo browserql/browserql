@@ -1,6 +1,6 @@
 {
   "name": "@browserql/firestore",
-  "version": "3.20.0",
+  "version": "3.21.0",
   "source": true,
   "license": "ISC",
   "keywords": [
