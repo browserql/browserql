@@ -6,7 +6,7 @@ import { copyOver } from '../utils'
 
 export async function addModule({ module: mod }: { module: string }) {
   const path = resolve(process.cwd(), '../../../src')
-  const source = join(path, 'utils/templates/module')
+  const source = join(path, '../templates/module')
   const destination = join(path, 'modules', mod)
   await mkdir(destination)
   await copyOver(source, destination, { package: { name: mod } })

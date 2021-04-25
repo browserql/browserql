@@ -1,17 +1,17 @@
-import { UseQuery } from '@browserql/react';
-import React from 'react';
+import UseQuery from '@browserql/render-props/UseQuery'
+import React from 'react'
 
-import query from './query.graphql';
+import query from './query.graphql'
 
 interface Todo {
-  completed: boolean;
-  id: number;
-  title: string;
-  userId: number;
+  completed: boolean
+  id: number
+  title: string
+  userId: number
 }
 
 interface GetTodoData {
-  getTodo: Todo | null;
+  getTodo: Todo | null
 }
 
 function GetTodoError(error: Error) {
@@ -19,11 +19,11 @@ function GetTodoError(error: Error) {
     <div style={{ color: '#900', fontWeight: 'bold' }}>
       Error: {error.message}
     </div>
-  );
+  )
 }
 
 function GetTodoLoading() {
-  return <div style={{ color: '#666', fontStyle: 'italic' }}>Loading</div>;
+  return <div style={{ color: '#666', fontStyle: 'italic' }}>Loading</div>
 }
 
 export default function Todos() {
@@ -35,5 +35,5 @@ export default function Todos() {
     >
       {({ getTodo: todo }) => <pre>{JSON.stringify(todo, null, 2)}</pre>}
     </UseQuery>
-  );
+  )
 }

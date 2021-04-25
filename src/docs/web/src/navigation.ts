@@ -10,86 +10,86 @@ export default {
       ],
     },
     {
-      name: 'Integrations',
+      name: 'HTTP',
+      examples: [
+        {
+          name: 'Example',
+          example: 'http/example'
+        }
+      ]
+    },
+    {
+      name: 'Firestore',
       nav: [
         {
-          name: 'HTTP',
+          name: 'API',
+          examples: [
+            {
+              name: 'Add',
+              example: 'firestore/add'
+            },
+            {
+              name: 'Count',
+              example: 'firestore/count'
+            },
+            {
+              name: 'Get',
+              example: 'firestore/get'
+            },
+            {
+              name: 'Get Limit',
+              example: 'firestore/get-limit'
+            },
+            {
+              name: 'Get Order By',
+              example: 'firestore/get-order-by'
+            },
+            {
+              name: 'Get Where',
+              example: 'firestore/get-where'
+            }
+          ]
+        },
+      ]
+    },
+    {
+      name: 'React',
+      nav: [
+        {
+          name: 'Client',
+          examples: [
+            {
+              name: 'Provider',
+              example: 'react/provider-component',
+            },
+          ],
+        },
+        {
+          name: 'Render-props',
+          examples: [
+            {
+              name: 'UseQuery',
+              example: 'react/provider-component',
+            },
+            {
+              name: 'UseMutation',
+              example: 'react/provider-component',
+            },
+          ],
+        },
+        {
+          name: 'State',
           examples: [
             {
               name: 'Example',
-              example: 'http/example'
+              example: 'state/example'
             }
           ]
-        },
-        {
-          name: 'Firestore',
-          nav: [
-            {
-              name: 'API',
-              examples: [
-                {
-                  name: 'Add',
-                  example: 'firestore/add'
-                },
-                {
-                  name: 'Count',
-                  example: 'firestore/count'
-                },
-                {
-                  name: 'Get',
-                  example: 'firestore/get'
-                },
-                {
-                  name: 'Get Limit',
-                  example: 'firestore/get-limit'
-                },
-                {
-                  name: 'Get Order By',
-                  example: 'firestore/get-order-by'
-                },
-                {
-                  name: 'Get Where',
-                  example: 'firestore/get-where'
-                }
-              ]
-            },
-          ]
-        },
-        {
-          name: 'React',
-          nav: [
-            {
-              name: 'Components',
-              examples: [
-                {
-                  name: 'Provider',
-                  example: 'react/provider-component',
-                },
-                {
-                  name: 'UseQuery',
-                  example: 'react/provider-component',
-                },
-                {
-                  name: 'UseMutation',
-                  example: 'react/provider-component',
-                },
-              ],
-            },
-            {
-              name: 'State',
-              examples: [
-                {
-                  name: 'Example',
-                  example: 'state/example'
-                }
-              ]
-            }
-          ],
-        },
+        }
       ],
     },
     {
-      name: 'GraphQL utilities',
+      name: 'GraphQL',
       nav: [
         {
           name: 'cache',

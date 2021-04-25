@@ -16,6 +16,7 @@ import httpExample from './list/http.example'
 import inputsTypeToInput from './list/inputs.type-to-input'
 import reactProviderComponent from './list/react.provider-component'
 import reactUsage from './list/react.usage'
+import renderPropsUseQuery from './list/render-props.use-query'
 import stateExample from './list/state.example'
 import typesUsage from './list/types.usage'
 
@@ -38,6 +39,7 @@ export const Examples = [
   inputsTypeToInput,
   reactProviderComponent,
   reactUsage,
+  renderPropsUseQuery,
   stateExample,
   typesUsage
 ]

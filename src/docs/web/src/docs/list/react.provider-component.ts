@@ -51,18 +51,18 @@ screens:
     name: resolvers.ts
   - language: typescript
     source: |
-      import React from 'react';
-      import { UseQuery } from '@browserql/react';
+      import React from 'react'
+      import UseQuery from '@browserql/render-props/UseQuery'
 
-      import query from './query.graphql';
+      import query from './query.graphql'
 
       interface User {
-        id: string;
-        login: string;
+        id: string
+        login: string
       }
 
       interface QueryData {
-        getUsers: User[];
+        getUsers: User[]
       }
 
       export default function Users() {
@@ -70,13 +70,13 @@ screens:
           <UseQuery<QueryData> query={query} renderLoading={<div>Loading</div>}>
             {({ getUsers: users }) => (
               <ul>
-                {users.map(user => (
+                {users.map((user) => (
                   <li key={user.id}>{user.login}</li>
                 ))}
               </ul>
             )}
           </UseQuery>
-        );
+        )
       }
     description: File
     name: Users.tsx

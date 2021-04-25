@@ -1,20 +1,20 @@
-import React from 'react';
-import gql from 'graphql-tag';
-import { RouteComponentProps } from 'react-router';
+import React from 'react'
+import gql from 'graphql-tag'
+import { RouteComponentProps } from 'react-router'
 
-import { UseQuery } from '@browserql/react';
-import { Query } from '@browserql/docs-graphql/src/generated/graphql';
+import UseQuery from '@browserql/render-props/UseQuery'
+import { Query } from '@browserql/docs-graphql/src/generated/graphql'
 
-import MD from './MD';
+import MD from './MD'
 
 const QUERY = gql`
   query ViewExample($example: String!, $module: String!) {
     viewExample(example: $example, module: $module)
   }
-`;
+`
 
 function ExampleError(error: Error) {
-  return <div>Error getting example: {error.message}</div>;
+  return <div>Error getting example: {error.message}</div>
 }
 
 export default function Example({
@@ -30,5 +30,5 @@ export default function Example({
     >
       {({ viewExample }) => <MD doc={viewExample} />}
     </UseQuery>
-  );
+  )
 }

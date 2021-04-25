@@ -7,7 +7,7 @@ import { buildExamplesList } from './buildExamplesList'
 
 export async function addExample({ module: mod, example }: any) {
   const path = join(process.cwd(), '../../../src')
-  const source = join(path, 'utils/templates/example')
+  const source = join(path, '../templates/example')
   const destination = join(path, 'examples', mod, example)
 
   await stepper({})(

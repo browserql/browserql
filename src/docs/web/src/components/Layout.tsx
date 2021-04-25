@@ -1,12 +1,10 @@
 import { Typography } from '@material-ui/core'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import Paper from '@material-ui/core/Paper'
-import React, { ComponentType, useEffect, useState } from 'react'
+import React from 'react'
 import Embed from './Embed'
+import Footer from './Footer'
 import Nav from './Nav'
-import Navigation from './Navigation'
 import Router from './Router'
-import Topbar from './Topbar'
 
 export default function Layout() {
   if (/^\/embed/.test(location.pathname)) {
@@ -21,8 +19,7 @@ export default function Layout() {
         flexWrap: 'wrap',
       }}
     >
-      <CssBaseline />
-      <header style={{ width: '100vw' }}>
+      <header style={{ width: '100vw', minWidth: '100vw' }}>
         <Paper
           elevation={3}
           style={{
@@ -36,10 +33,12 @@ export default function Layout() {
           <Typography style={{ color: 'white' }}></Typography>
         </Paper>
       </header>
-      <aside style={{ marginBottom: 36 }}>
+
+      <aside style={{ marginBottom: 36, maxHeight: 'calc(100vh - 96px)' }}>
         <Nav toggle={() => {}} />
       </aside>
-      <main style={{ flex: 1 }}>
+
+      <main style={{ flex: 1, maxWidth: '100vw', marginBottom: 36 }}>
         <Paper
           style={{
             background: 'white',
@@ -54,6 +53,10 @@ export default function Layout() {
           <Router />
         </Paper>
       </main>
+
+      <footer>
+        <Footer />
+      </footer>
     </div>
   )
 }

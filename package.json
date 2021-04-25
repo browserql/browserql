@@ -5,12 +5,12 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "w": "bash scripts/worskpace.sh"
+    "w": "bash scripts/worskpace.sh",
+    "reset": "rm -rf node_modules yarn.lock src/**/*/node_modules src/examples/*/*/node_modules && yarn"
   },
   "workspaces": [
     "src/docs/*",
     "src/modules/*",
-    "src/utils",
     "src/examples/**/*"
   ],
   "devDependencies": {
