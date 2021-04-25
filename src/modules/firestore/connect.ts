@@ -81,6 +81,13 @@ export default function connect(
           const candidate = input[modelName]
           const docRef = await db.collection(collection).add(candidate)
           return await getDocument(docRef)
+        },
+
+        async[`firestoreDelete${modelName}`](variables: FirestoreGetQueryVariables) {
+          const query = makeFirestoreRef(collection, variables)(db)
+          // @ts-ignore
+          await query.delete()
+          return true
         }
       })
     })

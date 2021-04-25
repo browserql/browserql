@@ -76,6 +76,6 @@ type Mutation {
     endAt: ID
     endAfter: ID
     orderBy: [FirestoreOrderBy!]
-  ): TYPE
+  ): Boolean!
 }
 `
