@@ -1,0 +1,29 @@
+{
+  "name": "@browserql/render-props",
+  "version": "1.1.0",
+  "source": true,
+  "license": "ISC",
+  "keywords": [
+    "browserql",
+    "graphql",
+    "apollo",
+    "browser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/browserql/browserql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/browserql/browserql/issues"
+  },
+  "scripts": {
+    "build": "rm -f *.d.ts *.d.ts.map *.js *.jsx && yarn tsc",
+    "watch": "yarn build -w",
+    "test": "echo NO TEST",
+    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
+  },
+  "peerDependencies": {
+    "@apollo/client": "^3.3.15",
+    "react": "^17.0.2"
+  }
+}
