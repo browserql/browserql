@@ -70,8 +70,18 @@ type Mutation {
   ): TYPE
 
   firestoreDeleteTYPE(
+<<<<<<< HEAD
     id: ID!
   ): ID!
+=======
+    where: FirestoreWhereInput
+    startAt: ID
+    startAfter: ID
+    endAt: ID
+    endAfter: ID
+    orderBy: [FirestoreOrderBy!]
+  ): Boolean!
+>>>>>>> abf364ae224dca22359f7868fa98a090fd9af617
 }
 
 `

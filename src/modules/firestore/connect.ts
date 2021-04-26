@@ -82,9 +82,17 @@ export default function connect(
           return await getDocument(docRef)
         },
 
+<<<<<<< HEAD
         async[`firestoreDelete${modelName}`]({ id }: any) {
           await db.collection(collection).doc(id).delete()
           return id
+=======
+        async[`firestoreDelete${modelName}`](variables: FirestoreGetQueryVariables) {
+          const query = makeFirestoreRef(collection, variables)(db)
+          // @ts-ignore
+          await query.delete()
+          return true
+>>>>>>> abf364ae224dca22359f7868fa98a090fd9af617
         }
       })
     })

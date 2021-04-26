@@ -3,6 +3,7 @@ export default {
   name: "delete",
   source: `# firestore
 
+<<<<<<< HEAD
 ## delete
 
 Delete one or more documents from Firestore.
@@ -39,6 +40,22 @@ screens:
       export default async function() {
         const client = connect(schema, connectFirestore(db))
         return client.apollo.mutate({ mutation, variables: { id: 'todo-1' } })
+=======
+***
+
+## delete
+
+***
+
+Test test test
+
+\`\`\`screens
+screens:
+  - language: typescript
+    source: |-
+      export default async function() {
+        return 'Hello world!'
+>>>>>>> abf364ae224dca22359f7868fa98a090fd9af617
       }
     description: File
     name: index.ts
@@ -46,9 +63,13 @@ screens:
     eval: index.ts
     description: File result
     name: index.ts
+<<<<<<< HEAD
     source:
       data:
         firestoreDeleteTodo: todo-1
+=======
+    source: Hello world!
+>>>>>>> abf364ae224dca22359f7868fa98a090fd9af617
 
 \`\`\`
 `
