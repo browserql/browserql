@@ -54,17 +54,25 @@ export default function connect(
                   variables: o.variableValues,
                 }
 
-                ctx.browserqlClient.cache.writeQuery({
-                  ...q,
-                  data: {
-                    [`firestoreGet${modelName}`]: documents.map((doc) => ({
-                      ...doc,
-                      __typename: modelName,
-                    })),
-                  },
-                })
+                try {
+                  ctx.browserqlClient.cache.writeQuery({
+                    ...q,
+                    data: {
+                      [`firestoreGet${modelName}`]: documents.map((doc) => ({
+                        ...doc,
+                        __typename: modelName,
+                      })),
+                    },
+                  })
+                } catch (error) {
+                  console.warn(`Failed to refresh cache`)
+                }
                 
-                ctx.browserqlClient.apollo.query(q)
+                try {
+                  await ctx.browserqlClient.apollo.query(q)
+                } catch (error) {
+                  console.warn('Fail to refire query')
+                }
               }
             })
           })
@@ -79,20 +87,20 @@ export default function connect(
         async[`firestoreAdd${modelName}`](input: any) {
           const candidate = input[modelName]
           const docRef = await db.collection(collection).add(candidate)
-          return await getDocument(docRef)
+          try {
+            return await getDocument(docRef)
+          } catch (error) {
+            try {
+              return await getDocument(docRef)
+            } catch (error) {
+              return await getDocument(docRef, {})
+            }
+          }
         },
 
-<<<<<<< HEAD
         async[`firestoreDelete${modelName}`]({ id }: any) {
           await db.collection(collection).doc(id).delete()
           return id
-=======
-        async[`firestoreDelete${modelName}`](variables: FirestoreGetQueryVariables) {
-          const query = makeFirestoreRef(collection, variables)(db)
-          // @ts-ignore
-          await query.delete()
-          return true
->>>>>>> abf364ae224dca22359f7868fa98a090fd9af617
         }
       })
     })

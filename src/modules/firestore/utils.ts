@@ -48,10 +48,11 @@ export function makeFirestoreRef(
 }
 
 export async function getDocument<A = any>(
-  doc: firestore.firestore.QueryDocumentSnapshot<A> | firestore.firestore.DocumentReference<A>
+  doc: firestore.firestore.QueryDocumentSnapshot<A> | firestore.firestore.DocumentReference<A>,
+  options: firestore.firestore.GetOptions = { source: 'cache' }
 ): Promise<A> {
   if (!('data' in doc)) {
-    const ref = await doc.get({ source: 'cache' })
+    const ref = await doc.get(options)
     return await getDocument(ref) as A
   }
 

@@ -1,5 +1,4 @@
 # firestore
-<<<<<<< HEAD
 
 ## delete
 
@@ -15,25 +14,11 @@ screens:
     source: mutation.gql
     title: mutation.graphql
     description: "GraphQL mutation"
-=======
----
-
-## delete
----
-
-Test test test
-
-```screens
-screens:
->>>>>>> abf364ae224dca22359f7868fa98a090fd9af617
   - language: typescript
     source: index.ts
     description: "File"
   - language: json
     eval: index.ts
     description: "File result"
-<<<<<<< HEAD
 selected: 1
-=======
->>>>>>> abf364ae224dca22359f7868fa98a090fd9af617
 ```
