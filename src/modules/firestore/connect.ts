@@ -14,7 +14,7 @@ import dynamicSchema from './dynamic-schema'
 export default function connect(
   db: firestore.firestore.Firestore,
 ): BrowserqlClientPropertyFactory {
-  return ({ cache, schema }) => {
+  return ({ schema }) => {
     const types = getTypes(schema as DocumentNode)
     const models = types.filter(getDirective('firestore'))
     const defs: string[] = [
@@ -54,17 +54,16 @@ export default function connect(
                   variables: o.variableValues,
                 }
 
-                console.log(q)
-
                 ctx.browserqlClient.cache.writeQuery({
                   ...q,
                   data: {
                     [`firestoreGet${modelName}`]: documents.map((doc) => ({
                       ...doc,
-                      __typename: name,
+                      __typename: modelName,
                     })),
                   },
                 })
+                
                 ctx.browserqlClient.apollo.query(q)
               }
             })
@@ -81,6 +80,11 @@ export default function connect(
           const candidate = input[modelName]
           const docRef = await db.collection(collection).add(candidate)
           return await getDocument(docRef)
+        },
+
+        async[`firestoreDelete${modelName}`]({ id }: any) {
+          await db.collection(collection).doc(id).delete()
+          return id
         }
       })
     })

@@ -1,0 +1,3 @@
+mutation deleteTodo($id: ID!) {
+  firestoreDeleteTodo(id: $id)
+}

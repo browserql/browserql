@@ -1,6 +1,7 @@
 export interface FirestoreWhereInput {
   field: string
   equals?: any
+  in?: any[]
 }
 
 export interface FirestoreGetQueryVariables {

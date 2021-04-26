@@ -3,6 +3,7 @@ import cacheUsage from './list/cache.usage'
 import clientExample from './list/client.example'
 import firestoreAdd from './list/firestore.add'
 import firestoreCount from './list/firestore.count'
+import firestoreDelete from './list/firestore.delete'
 import firestoreGetLimit from './list/firestore.get-limit'
 import firestoreGetOrderBy from './list/firestore.get-order-by'
 import firestoreGetWhere from './list/firestore.get-where'
@@ -29,6 +30,7 @@ export const Examples = [
   clientExample,
   firestoreAdd,
   firestoreCount,
+  firestoreDelete,
   firestoreGetLimit,
   firestoreGetOrderBy,
   firestoreGetWhere,

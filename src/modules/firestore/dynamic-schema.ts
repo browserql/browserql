@@ -60,7 +60,7 @@ type Mutation {
   ): TYPE!
 
   firestoreUpdateTYPE(
-    where: FirestoreWhereInput
+    where: [FirestoreWhereInput!]
     startAt: ID
     startAfter: ID
     endAt: ID
@@ -70,12 +70,8 @@ type Mutation {
   ): TYPE
 
   firestoreDeleteTYPE(
-    where: FirestoreWhereInput
-    startAt: ID
-    startAfter: ID
-    endAt: ID
-    endAfter: ID
-    orderBy: [FirestoreOrderBy!]
-  ): TYPE
+    id: ID!
+  ): ID!
 }
+
 `

@@ -11,10 +11,12 @@ scalar FirestoreJSON
 input FirestoreWhereInput {
   field: String!
   equals: FirestoreJSON
+  in: [FirestoreJSON]
 }
 
 input FirestoreOrderBy {
   field: String!
   desc: Boolean = false
 }
+
 `

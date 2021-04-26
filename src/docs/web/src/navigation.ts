@@ -33,6 +33,10 @@ export default {
               example: 'firestore/count'
             },
             {
+              name: 'Delete',
+              example: 'firestore/delete'
+            },
+            {
               name: 'Get',
               example: 'firestore/get'
             },

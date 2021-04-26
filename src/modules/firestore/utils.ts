@@ -2,8 +2,12 @@ import firestore from 'firebase'
 import { FirestoreGetQueryVariables, FirestoreWhereInput } from './types'
 
 export function makeFirestoreWhere(ref: firestore.firestore.Query, where: FirestoreWhereInput) {
+  const field = where.field === 'id' ? firestore.firestore.FieldPath.documentId() : where.field
   if ('equals' in where) {
-    return ref.where(where.field, '==', where.equals)
+    return ref.where(field, '==', where.equals)
+  }
+  if ('in' in where) {
+    return ref.where(field, 'in', where.in)
   }
   return ref
 }
