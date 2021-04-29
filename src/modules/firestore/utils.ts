@@ -24,16 +24,6 @@ export function makeFirestoreWhere(ref: firestore.firestore.Query, where: Firest
       return ref.where(field, whereOperators[key as keyof typeof whereOperators] as firestore.firestore.WhereFilterOp, where[key as keyof typeof where])
     }
   }
-
-  if ('equals' in where) {
-    return ref.where(field, '==', where.equals)
-  }
-  if ('in' in where) {
-    return ref.where(field, 'in', where.in)
-  }
-  if ('in' in where) {
-    return ref.where(field, 'in', where.in)
-  }
   return ref
 }
 
