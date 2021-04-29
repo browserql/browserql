@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import cacheGet from './list/cache.get'
 import cacheUsage from './list/cache.usage'
 import clientExample from './list/client.example'
@@ -51,10 +50,4 @@ export const Examples = [
   renderPropsUseQuery,
   stateExample,
   typesUsage
-=======
-
-
-export const Examples = [
-  
->>>>>>> abf364ae224dca22359f7868fa98a090fd9af617
 ]

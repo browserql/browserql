@@ -2,6 +2,14 @@ export interface FirestoreWhereInput {
   field: string
   equals?: any
   in?: any[]
+  equalsNot?: any
+  notIn?: any[]
+  lessThan?: number
+  lessThanOrEqual?: number
+  greaterThan?: number
+  greaterThanOrEqual?: number
+  arrayContains?: any
+  arrayContainsAny?: any[]
 }
 
 export interface FirestoreGetQueryVariables {

@@ -1,11 +1,11 @@
 export default {
   module: "firestore",
-  name: "add",
+  name: "get-limit",
   source: `# firestore
 
-## Add
+## Get limit
 
-Add document
+Limit your cursor result by using \`limit\` in your query,
 
 ***
 
@@ -18,24 +18,20 @@ screens:
         title: String!
         done: Boolean!
       }
-    description: The GraphQL schema we'll use. Note how we use the @firestore
-      directive. It means this GraphQL type represents a firestore collection.
+    description: The GraphQL schema we'll use. Note how we use the @firestore directive.
     name: schema.gql
   - language: graphql
-    title: mutation.graphql
+    title: query.graphql
     source: |
-      mutation {
-        firestoreAddTodo(Todo: {
-          title: "Buy milk"
-          done: false
-        }) {
+      query {
+        firestoreGetTodo(limit: 2) {
           title
           done
           id
         }
       }
     description: File
-    name: mutation.gql
+    name: query.gql
   - language: typescript
     source: |
       import firebase from 'firebase/app'
@@ -60,12 +56,12 @@ screens:
       import connectFirestore from '@browserql/firestore/connect'
 
       import schema from './schema.graphql'
-      import mutation from './mutation.graphql'
+      import query from './query.graphql'
       import db from './db'
 
       export default async function() {
         const client = connect(schema, connectFirestore(db))
-        return client.apollo.mutate({ mutation })
+        return client.apollo.query({ query })
       }
     description: File
     name: index.ts
@@ -75,11 +71,17 @@ screens:
     name: index.ts
     source:
       data:
-        firestoreAddTodo:
-          title: Buy milk
-          done: false
-          id: d0eec
-          __typename: Todo
+        firestoreGetTodo:
+          - title: Buy milk
+            done: true
+            id: "1"
+            __typename: Todo
+          - title: Wash dishes
+            done: true
+            id: "2"
+            __typename: Todo
+      loading: false
+      networkStatus: 7
 
 \`\`\`
 `

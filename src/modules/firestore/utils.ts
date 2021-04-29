@@ -1,10 +1,35 @@
 import firestore from 'firebase'
 import { FirestoreGetQueryVariables, FirestoreWhereInput } from './types'
 
+const whereOperators = {
+  equals: '==',
+  equalsNot: '!=',
+  lessThan: '<',
+  lessThanOrEqual: '<=',
+  greaterThan: '>',
+  greaterThanOrEqual: '>=',
+  arrayContains: 'array-contains',
+  arrayContainsAny: 'array-contains-any',
+  in: 'in',
+  notIn: 'not-in'
+}
+
 export function makeFirestoreWhere(ref: firestore.firestore.Query, where: FirestoreWhereInput) {
   const field = where.field === 'id' ? firestore.firestore.FieldPath.documentId() : where.field
+
+  const keys = Object.keys(whereOperators)
+
+  for (const key of keys) {
+    if (key in where) {
+      return ref.where(field, whereOperators[key as keyof typeof whereOperators] as firestore.firestore.WhereFilterOp, where[key as keyof typeof where])
+    }
+  }
+
   if ('equals' in where) {
     return ref.where(field, '==', where.equals)
+  }
+  if ('in' in where) {
+    return ref.where(field, 'in', where.in)
   }
   if ('in' in where) {
     return ref.where(field, 'in', where.in)
