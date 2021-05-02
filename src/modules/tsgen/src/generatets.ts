@@ -5,6 +5,7 @@ import {
   getQueries,
   getTypes,
   getEnumerations,
+  getExecutableOperations
 } from '@browserql/fpql'
 
 import { TSGeneratorOptions } from './types'
@@ -12,6 +13,7 @@ import generateType from './generateType'
 import generateTSDeclaration from './generateTSDeclaration'
 import generateField from './generateField'
 import generateEnumeration from './generateEnumeration'
+import generateOperation from './generateOperation'
 
 export default function generatets(
   schema: DocumentNode,
@@ -21,6 +23,7 @@ export default function generatets(
     .map((type) => generateType(type, schema, options))
     .join('\n')
   const queries = getQueries(schema)
+  const executableOperations = getExecutableOperations(schema).map(operation => generateOperation(operation, schema, options)).join('\n')
   const mutations = getMutations(schema)
   const inputs = getInputs(schema)
     .map((type) => generateType(type, schema, options))
@@ -32,16 +35,17 @@ export default function generatets(
     types,
     inputs,
     enums,
+    executableOperations,
     queries.length > 0 &&
       `
 ${generateTSDeclaration('Query', 'interface', options)} {
-${queries.map(generateField(schema, options)).join('\n')}
+${queries.map(generateField(schema, options)).join('\n\n')}
 }
 `,
     mutations.length > 0 &&
       `
 ${generateTSDeclaration('Mutation', 'interface', options)} {
-${mutations.map(generateField(schema, options)).join('\n')}
+${mutations.map(generateField(schema, options)).join('\n\n')}
 }
 `,
   ]
