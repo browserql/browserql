@@ -34,7 +34,7 @@ export default function generateOperations(
     return `${selectionName}${acceptsMissing ? '?' : ''}: ${generateKind(parseKind(getKind(query)), schema, options)}`
   })
 
-  return `interface ${operation.operation}Operation {
+  return `${options.useExport ? 'export ' : ''}${options.useDeclare ? 'declare ' : ''}interface ${operation.operation}Operation {
     ${operationName}(
       variables: {
         ${variables.join(',\n        ')}

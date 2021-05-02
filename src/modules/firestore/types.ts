@@ -1,5 +1,4 @@
 export interface FirestoreWhereInput {
-  field: string
   equals?: any
   in?: any[]
   equalsNot?: any

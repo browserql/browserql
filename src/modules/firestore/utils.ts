@@ -14,8 +14,8 @@ const whereOperators = {
   notIn: 'not-in'
 }
 
-export function makeFirestoreWhere(ref: firestore.firestore.Query, where: FirestoreWhereInput) {
-  const field = where.field === 'id' ? firestore.firestore.FieldPath.documentId() : where.field
+export function makeFirestoreWhere(ref: firestore.firestore.Query, fieldName: string, where: FirestoreWhereInput) {
+  const field = fieldName === 'id' ? firestore.firestore.FieldPath.documentId() : fieldName
 
   const keys = Object.keys(whereOperators)
 
@@ -36,7 +36,8 @@ export function makeFirestoreRef(
 
     options.forEach(option => {
       if (option.where) {
-        ref = makeFirestoreWhere(ref, option.where)
+        const [fieldName] = Object.keys(option.where)
+        ref = makeFirestoreWhere(ref, fieldName, option.where[fieldName as keyof typeof option.where])
       }
       
       if (option.orderBy) {
