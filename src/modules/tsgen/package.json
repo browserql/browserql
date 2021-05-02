@@ -1,6 +1,6 @@
 {
   "name": "@browserql/tsgen",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "source": "src/index.ts",
