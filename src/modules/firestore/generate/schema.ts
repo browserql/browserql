@@ -1,7 +1,7 @@
 import { print, DocumentNode, parse } from 'graphql'
 
 import { transformTypeToInput } from '@browserql/inputs'
-import { getDirective, getFields, getName, getTypes } from '@browserql/fpql'
+import { getDirective, getFields, getKind, getName, getTypes, parseKind } from '@browserql/fpql'
 
 import staticSchema from '../static-schema'
 import dynamicSchema from '../dynamic-schema'
@@ -23,9 +23,44 @@ export default function generateSchema(schema: DocumentNode) {
       )
       
       const fields = getFields(model)
+      
       if (!fields.find(field => getName(field) === 'id')) {
         defs.push(`extend type ${modelName} { id: ID! }`)
       }
+
+      defs.push(`
+        input FirestoreRef {
+          endAfter: ID
+          endAt: ID
+          limit: Int
+          orderBy: [FirestoreOrderBy!]
+          startAfter: ID
+          startAt: ID
+          where: FirestoreWhere_${modelName}
+        }
+
+        input FirestoreWhere_${modelName} {
+          ${fields.map(field => `${getName(field)}: FirestoreWhere_${modelName}_${getName(field)}`)}
+        }
+      `)
+
+      defs.push(...fields.map(field => {
+        const { type: kind } = parseKind(getKind(field))
+        return `
+          input FirestoreWhere_${modelName}_${getName(field)} {
+            arrayContains: ${kind}
+            arrayContainsAny: [${kind}]
+            equals: ${kind}
+            equalsNot: ${kind}
+            greaterThan: Float
+            greaterThanOrEqual: Float
+            in: [${kind}]
+            lessThan: Float
+            lessThanOrEqual: Float
+            notIn: [${kind}]
+          }
+        `
+      }))
     })
     const finalSchema = parse([...defs].join('\n'))
     return finalSchema
