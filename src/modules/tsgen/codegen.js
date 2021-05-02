@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 var graphql_1 = require("graphql");
-var schema_1 = __importDefault(require("./src"));
+var tsgen = __importDefault(require("./src"));
 function printSchemaWithDirectives(schema) {
     var str = Object
         .keys(schema.getTypeMap())
@@ -25,7 +25,8 @@ function printSchemaWithDirectives(schema) {
 module.exports = {
     plugin: function (schema, documents, config) {
         var doc = graphql_1.parse(printSchemaWithDirectives(schema));
-        var x = schema_1.default(doc, config);
-        return x;
+        var x = tsgen.default(doc, config);
+        var docs = documents.map(({ document }) => tsgen.default(document, config))
+        return x.concat(docs.join('\n'));
     },
 };
