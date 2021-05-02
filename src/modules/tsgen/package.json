@@ -1,0 +1,37 @@
+{
+  "name": "@browserql/tsgen",
+  "version": "1.1.0",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "source": "src/index.ts",
+  "license": "ISC",
+  "keywords": [
+    "browserql",
+    "graphql",
+    "apollo",
+    "browser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/browserql/browserql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/browserql/browserql/issues"
+  },
+  "scripts": {
+    "build": "rm -rf dist && yarn tsc",
+    "watch": "yarn build -w",
+    "test": "echo NO TEST",
+    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
+  },
+  "dependencies": {
+    "@browserql/fpql": "^2.5.0"
+  },
+  "peerDependencies": {
+    "graphql": "^15.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^26.6.3"
+  }
+}
