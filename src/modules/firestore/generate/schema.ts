@@ -29,7 +29,7 @@ export default function generateSchema(schema: DocumentNode) {
       }
 
       defs.push(`
-        input FirestoreRef {
+        input FirestoreRef_${modelName} {
           endAfter: ID
           endAt: ID
           limit: Int
