@@ -19,7 +19,7 @@ export interface FirestoreGetQueryVariables {
   endAfter?: number | string
   limit?: number
   orderBy?: FirestoreOrderBy[]
-  where?: FirestoreWhereInput[]
+  where?: FirestoreWhereInput
 }
 
 export interface FirestoreOrderBy {

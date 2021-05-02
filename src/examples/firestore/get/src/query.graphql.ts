@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 
 export default gql`
 query {
-  firestoreGetTodo {
+  firestoreGet_Todo {
     title
     done
     id

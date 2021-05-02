@@ -24,7 +24,11 @@ screens:
     title: query.graphql
     source: |
       query {
-        firestoreGetTodo(orderBy: [{ field: "title" }]) {
+        firestoreGet_Todo(
+          ref: [
+            { orderBy: [{ field: "title" }] }
+          ]
+        ) {
           title
           done
           id
@@ -71,7 +75,7 @@ screens:
     name: index.ts
     source:
       data:
-        firestoreGetTodo:
+        firestoreGet_Todo:
           - title: Buy milk
             done: true
             id: "1"

@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 Object {
   "data": Object {
-    "firestoreCountTodo": 3,
+    "firestoreCount_Todo": 3,
   },
   "loading": false,
   "networkStatus": 7,

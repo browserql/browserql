@@ -29,35 +29,43 @@ export function makeFirestoreWhere(ref: firestore.firestore.Query, where: Firest
 
 export function makeFirestoreRef(
   collection: string,
-  options: FirestoreGetQueryVariables = {}
+  options: FirestoreGetQueryVariables[] = []
 ) {
   return (db: firestore.firestore.Firestore) => {
     let ref = db.collection(collection) as firestore.firestore.Query
-    if (options.where) {
-      options.where.forEach(where => {
-        ref = makeFirestoreWhere(ref, where)
-      })
-    }
-    if (options.orderBy) {
-      options.orderBy.map(({ field, desc }) => {
-        ref = ref.orderBy(field, desc ? 'desc' : undefined)
-      })
-    }
-    if (options.startAt) {
-      ref = ref.startAt(options.startAt)
-    }
-    if (options.startAfter) {
-      ref = ref.startAt(options.startAfter)
-    }
-    if (options.endAt) {
-      ref = ref.endAt(options.endAt)
-    }
-    if (options.endAfter) {
-      ref = ref.endAt(options.endAfter)
-    }
-    if (options.limit) {
-      ref = ref.limit(options.limit)
-    }
+
+    options.forEach(option => {
+      if (option.where) {
+        ref = makeFirestoreWhere(ref, option.where)
+      }
+      
+      if (option.orderBy) {
+        option.orderBy.map(({ field, desc }) => {
+          ref = ref.orderBy(field, desc ? 'desc' : undefined)
+        })
+      }
+      
+      if (option.startAt) {
+        ref = ref.startAt(option.startAt)
+      }
+      
+      if (option.startAfter) {
+        ref = ref.startAt(option.startAfter)
+      }
+      
+      if (option.endAt) {
+        ref = ref.endAt(option.endAt)
+      }
+      
+      if (option.endAfter) {
+        ref = ref.endAt(option.endAfter)
+      }
+      
+      if (option.limit) {
+        ref = ref.limit(option.limit)
+      }      
+    })
+
     return ref
   }
 }

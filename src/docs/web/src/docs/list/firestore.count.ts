@@ -26,7 +26,7 @@ screens:
     title: query.graphql
     source: |
       query {
-        firestoreCountTodo
+        firestoreCount_Todo
       }
     description: File
     name: query.gql
@@ -69,7 +69,7 @@ screens:
     name: index.ts
     source:
       data:
-        firestoreCountTodo: 3
+        firestoreCount_Todo: 3
       loading: false
       networkStatus: 7
 

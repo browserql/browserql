@@ -21,7 +21,7 @@ screens:
   - language: graphql
     source: |-
       mutation deleteTodo($id: ID!) {
-        firestoreDeleteTodo(id: $id)
+        firestoreDelete_Todo(id: $id)
       }
     title: mutation.graphql
     description: GraphQL mutation
@@ -48,7 +48,7 @@ screens:
     name: index.ts
     source:
       data:
-        firestoreDeleteTodo: todo-1
+        firestoreDelete_Todo: todo-1
 
 \`\`\`
 `

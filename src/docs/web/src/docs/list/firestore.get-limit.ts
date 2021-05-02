@@ -24,7 +24,7 @@ screens:
     title: query.graphql
     source: |
       query {
-        firestoreGetTodo(limit: 2) {
+        firestoreGet_Todo(ref: [{ limit: 2 }]) {
           title
           done
           id
@@ -71,7 +71,7 @@ screens:
     name: index.ts
     source:
       data:
-        firestoreGetTodo:
+        firestoreGet_Todo:
           - title: Buy milk
             done: true
             id: "1"

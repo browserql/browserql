@@ -8,6 +8,16 @@ directive @firestore(collection: String) on OBJECT
 
 scalar FirestoreJSON
 
+input FirestoreRef {
+  where: FirestoreWhereInput
+  limit: Int
+  startAt: ID
+  startAfter: ID
+  endAt: ID
+  endAfter: ID
+  orderBy: [FirestoreOrderBy!]
+}
+
 input FirestoreWhereInput {
   field: String!
   equals: FirestoreJSON

@@ -1,5 +1,5 @@
 query {
-  firestoreGetTodo(where: [{ field: "done" equals: true }]) {
+  firestoreGet_Todo(ref: [{ where: { field: "done" equals: true } }]) {
     title
     done
     id

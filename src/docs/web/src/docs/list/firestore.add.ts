@@ -25,7 +25,7 @@ screens:
     title: mutation.graphql
     source: |
       mutation {
-        firestoreAddTodo(Todo: {
+        firestoreAdd_Todo(Todo: {
           title: "Buy milk"
           done: false
         }) {
@@ -75,10 +75,10 @@ screens:
     name: index.ts
     source:
       data:
-        firestoreAddTodo:
+        firestoreAdd_Todo:
           title: Buy milk
           done: false
-          id: d0eec
+          id: 572df
           __typename: Todo
 
 \`\`\`

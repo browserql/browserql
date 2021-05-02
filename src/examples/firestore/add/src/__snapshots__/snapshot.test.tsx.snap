@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 Object {
   "data": Object {
-    "firestoreAddTodo": Object {
+    "firestoreAdd_Todo": Object {
       "__typename": "Todo",
       "done": false,
       "title": "Buy milk",

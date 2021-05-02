@@ -24,7 +24,7 @@ screens:
     title: query.graphql
     source: |
       query {
-        firestoreGetTodo(where: [{ field: "done" equals: true }]) {
+        firestoreGet_Todo(ref: [{ where: { field: "done" equals: true } }]) {
           title
           done
           id
@@ -71,7 +71,7 @@ screens:
     name: index.ts
     source:
       data:
-        firestoreGetTodo:
+        firestoreGet_Todo:
           - title: Buy milk
             done: true
             id: "1"

@@ -1,5 +1,9 @@
 query {
-  firestoreGetTodo(orderBy: [{ field: "title" }]) {
+  firestoreGet_Todo(
+    ref: [
+      { orderBy: [{ field: "title" }] }
+    ]
+  ) {
     title
     done
     id

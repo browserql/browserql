@@ -22,6 +22,7 @@ import reactProviderComponent from './list/react.provider-component'
 import reactUsage from './list/react.usage'
 import renderPropsUseQuery from './list/render-props.use-query'
 import stateExample from './list/state.example'
+import tsgenAbout from './list/tsgen.about'
 import typesUsage from './list/types.usage'
 
 export const Examples = [
@@ -49,5 +50,6 @@ export const Examples = [
   reactUsage,
   renderPropsUseQuery,
   stateExample,
+  tsgenAbout,
   typesUsage
 ]

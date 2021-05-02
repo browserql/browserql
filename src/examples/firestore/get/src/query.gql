@@ -1,5 +1,5 @@
 query {
-  firestoreGetTodo {
+  firestoreGet_Todo {
     title
     done
     id

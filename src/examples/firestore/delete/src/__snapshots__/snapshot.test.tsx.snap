@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 Object {
   "data": Object {
-    "firestoreDeleteTodo": "todo-1",
+    "firestoreDelete_Todo": "todo-1",
   },
 }
 `;

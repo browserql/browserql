@@ -1,10 +1,9 @@
 # firestore
+
+## Get
 ---
 
-## usage
----
-
-Connect Firestore to your front-end and manage your queries
+Get one or more documents from a firestore collection.
 
 ```screens
 screens:

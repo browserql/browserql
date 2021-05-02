@@ -3,13 +3,11 @@ export default {
   name: "get",
   source: `# firestore
 
-***
-
-## usage
+## Get
 
 ***
 
-Connect Firestore to your front-end and manage your queries
+Get one or more documents from a firestore collection.
 
 \`\`\`screens
 screens:
@@ -26,7 +24,7 @@ screens:
     title: query.graphql
     source: |
       query {
-        firestoreGetTodo {
+        firestoreGet_Todo {
           title
           done
           id
@@ -73,7 +71,7 @@ screens:
     name: index.ts
     source:
       data:
-        firestoreGetTodo:
+        firestoreGet_Todo:
           - title: Buy milk
             done: true
             id: "1"
