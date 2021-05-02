@@ -26,7 +26,7 @@ module.exports = {
     plugin: function (schema, documents, config) {
         var doc = graphql_1.parse(printSchemaWithDirectives(schema));
         var x = tsgen.default(doc, config);
-        var docs = documents.map(({ document }) => tsgen.default(document, config))
+        var docs = documents.map(({ document }) => tsgen.default(document, {...config, schema: doc}))
         return x.concat(docs.join('\n'));
     },
 };
