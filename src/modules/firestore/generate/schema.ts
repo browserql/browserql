@@ -40,7 +40,21 @@ export default function generateSchema(schema: DocumentNode) {
         }
 
         input FirestoreWhere_${modelName} {
+          id: FirestoreWhere_${modelName}_id
           ${fields.map(field => `${getName(field)}: FirestoreWhere_${modelName}_${getName(field)}`)}
+        }
+
+        input FirestoreWhere_${modelName}_id {
+          arrayContains: ID
+          arrayContainsAny: [ID]
+          equals: ID
+          equalsNot: ID
+          greaterThan: Float
+          greaterThanOrEqual: Float
+          in: [ID]
+          lessThan: Float
+          lessThanOrEqual: Float
+          notIn: [ID]
         }
       `)
 

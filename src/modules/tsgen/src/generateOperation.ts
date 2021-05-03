@@ -30,11 +30,11 @@ export default function generateOperations(
     if (options.schema) {
       const query = getQuery(selectionName)(options.schema)
       if (!query) {
-        return `${selectionName}${acceptsMissing ? '?' : ''}: any`
+        return `${selectionName}: any`
       }
-      return `${selectionName}${acceptsMissing ? '?' : ''}: ${generateKind(parseKind(getKind(query)), schema, options)}`
+      return `${selectionName}: ${generateKind(parseKind(getKind(query)), schema, options)}`
     }
-    return `${selectionName}${acceptsMissing ? '?' : ''}: any`
+    return `${selectionName}: any`
   })
 
   return `${options.useExport ? 'export ' : ''}${options.useDeclare ? 'declare ' : ''}interface ${operation.operation}Operation {
