@@ -29,3 +29,10 @@ export interface FirestoreOrderBy {
 export interface FirestoreQuery {
   get<A>(variables: FirestoreGetQueryVariables): Promise<A>
 }
+
+export interface FirestoreDoc {
+  equals?: string
+  equalsNot?: string
+  isIn?: string[]
+  isNotIn?: string[]
+}

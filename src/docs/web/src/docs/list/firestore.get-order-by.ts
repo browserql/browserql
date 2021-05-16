@@ -25,7 +25,7 @@ screens:
     source: |
       query {
         firestoreGet_Todo(
-          ref: [
+          query: [
             { orderBy: [{ field: "title" }] }
           ]
         ) {

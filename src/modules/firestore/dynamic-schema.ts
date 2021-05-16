@@ -3,11 +3,12 @@ import gql from 'graphql-tag'
 export default gql`
 type Query {
   firestoreGet_TYPE(
-    ref: [FirestoreRef_TYPE!]
+    query: [FirestoreRef_TYPE!]
+    doc: ID
   ): [ TYPE ! ] !
 
   firestoreCount_TYPE(
-    ref: [FirestoreRef_TYPE!]
+    query: [FirestoreRef_TYPE!]
   ): Int !
 }
 
@@ -17,13 +18,14 @@ type Mutation {
   ): TYPE!
 
   firestoreUpdate_TYPE(
-    ref: [FirestoreRef_TYPE!]
+    query: [FirestoreRef_TYPE!]
     TYPE: TYPEFirestoreInput
   ): TYPE
 
   firestoreDelete_TYPE(
-    id: ID!
-  ): ID!
+    query: [FirestoreRef_TYPE!]
+    doc: ID
+  ): [ID!]!
 }
 
 `

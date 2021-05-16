@@ -2,14 +2,11 @@ import { print, DocumentNode, DirectiveNode, parse } from 'graphql'
 import { JSONResolver } from 'graphql-scalars'
 import firestore from 'firebase'
 
-import { transformTypeToInput } from '@browserql/inputs'
 import type { BrowserqlClientContext } from '@browserql/types'
-import { getArgument, getDirective, getFields, getName, getTypes, getValue } from '@browserql/fpql'
+import { getArgument, getDirective, getName, getTypes, getValue } from '@browserql/fpql'
 
 import { getDocument, getDocuments, makeFirestoreRef } from '../utils'
 import { FirestoreGetQueryVariables } from '../types'
-import staticSchema from '../static-schema'
-import dynamicSchema from '../dynamic-schema'
 
 
 export default function generateResolvers(schema: DocumentNode, db: firestore.firestore.Firestore) {
@@ -23,10 +20,20 @@ export default function generateResolvers(schema: DocumentNode, db: firestore.fi
       const collection = collectionArgument ? getValue(collectionArgument) : modelName
       
       Object.assign(queries, {
-        async [`firestoreGet_${modelName}`](variables: { ref?: FirestoreGetQueryVariables[] }, ctx: BrowserqlClientContext, o: any) {
+        async [`firestoreGet_${modelName}`](
+          variables: {
+            query?: FirestoreGetQueryVariables[]
+            doc?: string
+          },
+          ctx: BrowserqlClientContext,
+          o: any
+        ) {
           return new Promise((resolve) => {
-            const query = makeFirestoreRef(collection, variables.ref)(db)
+            const query = variables.doc
+              ? db.collection(collection).doc(variables.doc)
+              : makeFirestoreRef(collection, variables.query)(db)
             let resolved = false
+            // @ts-ignore
             query.onSnapshot(async (snapshot) => {
               const documents = await getDocuments<any>(snapshot)
               if (!resolved) {
@@ -42,7 +49,7 @@ export default function generateResolvers(schema: DocumentNode, db: firestore.fi
                   ctx.browserqlClient.cache.writeQuery({
                     ...q,
                     data: {
-                      [`firestoreGet${modelName}`]: documents.map((doc) => ({
+                      [`firestoreGet_${modelName}`]: documents.map((doc) => ({
                         ...doc,
                         __typename: modelName,
                       })),
@@ -82,9 +89,21 @@ export default function generateResolvers(schema: DocumentNode, db: firestore.fi
           }
         },
 
-        async[`firestoreDelete_${modelName}`]({ id }: any) {
-          await db.collection(collection).doc(id).delete()
-          return id
+        async[`firestoreDelete_${modelName}`]({ doc, query }: any) {
+          if (doc) {
+            await db.collection(collection).doc(doc).delete()
+            return [doc]
+          }
+          const ref = makeFirestoreRef(collection, query)(db)
+          const documents = await ref.get()
+          const removals: string[] = []
+          documents.forEach(snapshot => {
+            removals.push(snapshot.id)
+          })
+          await Promise.all(
+            removals.map(removal => db.collection(collection).doc(removal).delete())
+          )
+          return removals
         }
       })
     })

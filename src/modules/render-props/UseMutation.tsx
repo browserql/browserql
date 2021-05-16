@@ -4,23 +4,26 @@ import type { ReactNode } from 'react'
 import { FetchResult, useMutation } from '@apollo/client'
 import { useState } from 'react'
 
-interface UseMutationProps<D = any> {
+interface UseMutationProps<Variables = Record<string, any>, Data = any> {
   mutation: DocumentNode
   renderLoading?: ReactNode
   renderError?: ReactNode | ((e: Error) => ReactNode)
   children: (
-    mutation: (options: D) => Promise<FetchResult<D>>,
+    mutation: (variables: Variables) => Promise<FetchResult<Data>>,
     args: {
       loading: boolean
       error?: Error
-      data?: D
+      data?: Data
       called: number
     }
   ) => ReactNode
   mutationProps?: Parameters<typeof useMutation>[1]
 }
 
-export default function UseMutation<D = any>(props: UseMutationProps<D>) {
+export default function UseMutation<
+  Variables = Record<string, any>,
+  Data = any
+>(props: UseMutationProps<Variables, Data>) {
   const [mutation, { loading, error, data }] = useMutation(
     props.mutation,
     props.mutationProps
@@ -45,6 +48,6 @@ export default function UseMutation<D = any>(props: UseMutationProps<D>) {
       }
       return data
     },
-    { loading, error, data: data as D, called }
+    { loading, error, data: data as Data, called }
   )
 }

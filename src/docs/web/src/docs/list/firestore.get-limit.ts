@@ -24,7 +24,7 @@ screens:
     title: query.graphql
     source: |
       query {
-        firestoreGet_Todo(ref: [{ limit: 2 }]) {
+        firestoreGet_Todo(query: [{ limit: 2 }]) {
           title
           done
           id

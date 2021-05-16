@@ -1,5 +1,5 @@
 import firestore from 'firebase'
-import { FirestoreGetQueryVariables, FirestoreWhereInput } from './types'
+import { FirestoreDoc, FirestoreGetQueryVariables, FirestoreWhereInput } from './types'
 
 const whereOperators = {
   equals: '==',
@@ -14,8 +14,8 @@ const whereOperators = {
   notIn: 'not-in'
 }
 
-export function makeFirestoreWhere(ref: firestore.firestore.Query, fieldName: string, where: FirestoreWhereInput) {
-  const field = fieldName === 'id' ? firestore.firestore.FieldPath.documentId() : fieldName
+export function makeFirestoreWhere(ref: firestore.firestore.CollectionReference, field: string, where: FirestoreWhereInput) {
+  // const field = fieldName === 'id' ? firestore.firestore.FieldPath.documentId() : fieldName
 
   const keys = Object.keys(whereOperators)
 
@@ -24,6 +24,7 @@ export function makeFirestoreWhere(ref: firestore.firestore.Query, fieldName: st
       return ref.where(field, whereOperators[key as keyof typeof whereOperators] as firestore.firestore.WhereFilterOp, where[key as keyof typeof where])
     }
   }
+  
   return ref
 }
 
@@ -32,12 +33,18 @@ export function makeFirestoreRef(
   options: FirestoreGetQueryVariables[] = []
 ) {
   return (db: firestore.firestore.Firestore) => {
-    let ref = db.collection(collection) as firestore.firestore.Query
+    let ref:
+      | firestore.firestore.CollectionReference
+      | firestore.firestore.Query = db.collection(collection)
 
     options.forEach(option => {
       if (option.where) {
         const [fieldName] = Object.keys(option.where)
-        ref = makeFirestoreWhere(ref, fieldName, option.where[fieldName as keyof typeof option.where])
+        ref = makeFirestoreWhere(
+          ref as firestore.firestore.CollectionReference,
+          fieldName,
+          option.where[fieldName as keyof typeof option.where]
+        )
       }
       
       if (option.orderBy) {
