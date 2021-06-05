@@ -1,16 +1,11 @@
-import React, { Fragment, ReactElement } from 'react';
-import type { DocumentNode } from 'graphql';
-import {
-  LazyQueryResult,
-  QueryResult,
-  useLazyQuery,
-  useQuery,
-} from '@apollo/client';
+import React, { Fragment, ReactElement } from 'react'
+import type { DocumentNode } from 'graphql'
+import { QueryHookOptions, QueryResult, useQuery } from '@apollo/client'
 
-type UseQueryRenderer<Data = any, Variables = any> = (
-  data: Data,
-  result: QueryResult<Data, Variables>
-) => React.ReactElement;
+type UseQueryRenderer<
+  Data extends Record<string, any> = Record<string, any>,
+  Variables extends Record<string, any> = Record<string, any>
+> = (data: Data, result: QueryResult<Data, Variables>) => React.ReactElement
 
 type UseQueryEachRenderer<D = any> = (
   item: D,
@@ -18,88 +13,53 @@ type UseQueryEachRenderer<D = any> = (
   data: D[],
   loading: boolean,
   error: Error | undefined
-) => ReactElement;
+) => ReactElement
 
-type UseQueryProps<D = any, V = any> = {
-  dontRenderError?: boolean;
-  dontRenderLoading?: boolean;
-  query: DocumentNode;
-  queryProps?: Parameters<typeof useQuery>[1];
-  renderEach?: UseQueryEachRenderer<D>;
-  renderEmpty?: ReactElement;
-  renderError?: ReactElement | ((e: Error) => ReactElement);
-  renderLoading?: ReactElement;
-  renderNull?: ReactElement;
-  variables?: V;
-};
-
-type UseNonLazyQueryProps<Data = any> = {
-  lazy?: false;
-  children: UseQueryRenderer<Data>;
-};
-
-type UseLazyQueryProps<Data = any, Variables = any> = {
-  lazy: true;
-  children(
-    get: (v: Variables) => void,
-    result: LazyQueryResult<Data, Variables>
-  ): ReactElement;
-};
-
-// export default function UseQuery<Data = unknown, Variables = any>(
-//   props: UseQueryProps<Data> & UseLazyQueryProps<Data, Variables>
-// ): ReactElement;
-
-// export default function UseQuery<Data = unknown, Variables = any>(
-//   props: UseQueryProps<Data> & UseNonLazyQueryProps<Data>
-// ): ReactElement;
-
+type UseQueryProps<
+  Data extends Record<string, any> = Record<string, any>,
+  Variables extends Record<string, any> = Record<string, any>
+> = {
+  children: UseQueryRenderer<Data>
+  dontRenderError?: boolean
+  dontRenderLoading?: boolean
+  query: DocumentNode
+  queryProps?: Parameters<typeof useQuery>[1]
+  renderEach?: UseQueryEachRenderer<Data>
+  renderEmpty?: ReactElement
+  renderError?: ReactElement | ((e: Error) => ReactElement)
+  renderLoading?: ReactElement
+  renderNull?: ReactElement
+  variables?: Variables
+}
 export default function UseQuery<
   Data extends Record<string, any> = Record<string, any>,
-  Variables = any
->(props: UseQueryProps<Data> & UseNonLazyQueryProps<Data>) {
+  Variables extends Record<string, any> = Record<string, any>
+>(props: UseQueryProps<Data>) {
   try {
-    if (!props.query) {
+    const options: QueryHookOptions<Data, Variables> = {}
+
+    if (props.variables) {
+      options.variables = props.variables as Variables
     }
 
-    // if (props.lazy === true) {
-    //   const [get, tuple] = useLazyQuery<Data, Variables>(props.query);
-
-    //   if (tuple.error) {
-    //     throw tuple.error;
-    //   }
-
-    //   if (tuple.loading && props.renderLoading) {
-    //     return props.renderLoading;
-    //   }
-
-    //   return props.children(get, tuple);
-    // }
-
-    const tuple = useQuery<Data, Variables>(props.query, {
-      variables: props.variables,
-    });
+    const tuple = useQuery<Data, Variables>(props.query, options)
 
     if (tuple.error) {
-      throw tuple.error;
+      throw tuple.error
     }
 
     if (tuple.loading && props.renderLoading) {
-      return props.renderLoading;
+      return props.renderLoading
     }
 
-    return props.children(tuple.data as Data, tuple);
+    return props.children(tuple.data as Data, tuple)
   } catch (error) {
     if (typeof props.renderError === 'function') {
-      return props.renderError(error);
+      return props.renderError(error)
     }
     if (props.renderError) {
-      return props.renderError;
+      return props.renderError
     }
-    return <Fragment />;
+    return <Fragment />
   }
 }
-
-UseQuery.defaultProps = {
-  lazy: false,
-};
