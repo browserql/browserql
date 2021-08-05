@@ -1,6 +1,6 @@
 {
   "name": "@browserql/types",
-  "version": "5.14.0",
+  "version": "11.0.0",
   "main": "index.js",
   "types": "index.d.ts",
   "source": "index.ts",
@@ -24,11 +24,8 @@
     "test": "echo NO TEST",
     "prepublishOnly": " git tag | xargs git tag -d && yarn build && yarn workspaces run test"
   },
-  "devDependencies": {
-    "@apollo/client": "^3.3.12",
-    "apollo-cache-inmemory": "^1.6.6"
-  },
   "dependencies": {
+    "@apollo/client": "^3.4.5",
     "graphql": "^15.5.0"
   }
 }
