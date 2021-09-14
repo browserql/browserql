@@ -1,6 +1,6 @@
 {
   "name": "@browserql/react",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
@@ -22,7 +22,8 @@
     "build": "rm -rf dist && yarn tsc",
     "watch": "yarn build -w",
     "test": "echo NO TEST",
-    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
+    "prepublishOnly": " git tag | xargs git tag -d",
+    "prepublishOnly1": " git tag | xargs git tag -d && yarn build && yarn workspaces run test"
   },
   "dependencies": {
     "@apollo/client": "^3.3.15",
