@@ -1,6 +1,6 @@
 {
   "name": "@browserql/client",
-  "version": "4.6.0",
+  "version": "12.0.1",
   "main": "index.js",
   "types": "index.d.ts",
   "source": "index.ts",
@@ -22,19 +22,19 @@
     "build": "rm -rf dist && yarn tsc",
     "watch": "yarn build -w",
     "test": "echo NO TEST",
-    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
+    "prepublishOnly": " git tag | xargs git tag -d",
+    "prepublishOnly1": " git tag | xargs git tag -d && yarn build && yarn workspaces run test"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.12",
+    "@apollo/client": "^3.4.5",
     "@browserql/fpql": "^2.3.0",
     "@graphql-tools/schema": "^7.1.3",
-    "apollo-cache-inmemory": "^1.6.6",
     "apollo-link": "^1.2.14",
     "apollo-utilities": "^1.3.4",
     "graphql": "^15.5.0",
     "iterall": "^1.3.0"
   },
   "devDependencies": {
-    "@browserql/types": "^5.14.0"
+    "@browserql/types": "^11.0.0"
   }
 }
