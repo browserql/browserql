@@ -1,6 +1,6 @@
 {
   "name": "@browserql/fpql",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "main": "index.js",
   "types": "index.d.ts",
   "source": true,
@@ -22,7 +22,8 @@
     "build": "rm -rf dist && yarn tsc",
     "watch": "yarn build -w",
     "test": "echo NO TEST",
-    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
+    "prepublishOnly": " git tag | xargs git tag -d",
+    "prepublishOnly1": " git tag | xargs git tag -d && yarn build && yarn workspaces run test"
   },
   "peerDependencies": {
     "graphql": "^15.5.0"
