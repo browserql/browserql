@@ -1,6 +1,6 @@
 {
   "name": "@browserql/state",
-  "version": "8.1.0",
+  "version": "10.0.0",
   "main": "index.js",
   "types": "index.d.ts",
   "source": "index.ts",
@@ -22,7 +22,8 @@
     "build": "rm -rf dist && yarn tsc",
     "watch": "yarn build -w",
     "test": "echo NO TEST",
-    "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn workspaces run test"
+    "prepublishOnly": " git tag | xargs git tag -d",
+    "prepublishOnly1": " git tag | xargs git tag -d && yarn build && yarn workspaces run test"
   },
   "dependencies": {
     "@browserql/cache": "^2.0.0"
