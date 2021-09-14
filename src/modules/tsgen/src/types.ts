@@ -1,4 +1,4 @@
-import type { DocumentNode } from 'graphql';
+import type { DocumentNode } from 'graphql'
 
 export interface TSGeneratorOptions {
   useExport?: boolean
@@ -7,6 +7,7 @@ export interface TSGeneratorOptions {
   null?: NULL_STRATEGY | NULL_STRATEGY[]
   ID?: string
   schema?: DocumentNode
+  prepend?: string
 }
 
 export enum NULL_STRATEGY {

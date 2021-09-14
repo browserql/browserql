@@ -14,6 +14,7 @@ const QUERY = gql`
 `
 
 function ExampleError(error: Error) {
+  console.log(error)
   return <div>Error getting example: {error.message}</div>
 }
 

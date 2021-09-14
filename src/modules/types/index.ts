@@ -1,10 +1,7 @@
-import type { InMemoryCache } from 'apollo-cache-inmemory'
-import type { ApolloClient } from '@apollo/client'
+import type { ApolloClient, InMemoryCache } from '@apollo/client'
 import type { DocumentNode, GraphQLScalarType } from 'graphql'
 
-interface SchemaDirectiveVisitorClass {
-
-}
+interface SchemaDirectiveVisitorClass {}
 
 export type Context = Record<string, any>
 export type Directives = Record<string, SchemaDirectiveVisitorClass>
@@ -57,7 +54,8 @@ export type BrowserqlClientContext = Context & {
  * <br>&nbsp;&nbsp;require('graphql').parse('type Query { hello: String! }')
  * <br>)
  */
-export interface BrowserqlClient extends Omit<BrowserqlClientProperty, 'schema'> {
+export interface BrowserqlClient
+  extends Omit<BrowserqlClientProperty, 'schema'> {
   apollo: ApolloClient<any>
   cache: InMemoryCache
   schema: DocumentNode

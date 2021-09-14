@@ -5,7 +5,7 @@ import {
   getQueries,
   getTypes,
   getEnumerations,
-  getExecutableOperations
+  getExecutableOperations,
 } from '@browserql/fpql'
 
 import { TSGeneratorOptions } from './types'
@@ -23,15 +23,18 @@ export default function generatets(
     .map((type) => generateType(type, schema, options))
     .join('\n')
   const queries = getQueries(schema)
-  const executableOperations = getExecutableOperations(schema).map(operation => generateOperation(operation, schema, options)).join('\n')
+  const executableOperations = getExecutableOperations(schema)
+    .map((operation) => generateOperation(operation, schema, options))
+    .join('\n')
   const mutations = getMutations(schema)
   const inputs = getInputs(schema)
     .map((type) => generateType(type, schema, options))
     .join('\n')
-  const enums = getEnumerations(schema).map((enumeration) =>
-    generateEnumeration(enumeration, options)
-  )
+  const enums = getEnumerations(schema)
+    .map((enumeration) => generateEnumeration(enumeration, options))
+    .join('\n')
   return [
+    options.prepend,
     types,
     inputs,
     enums,

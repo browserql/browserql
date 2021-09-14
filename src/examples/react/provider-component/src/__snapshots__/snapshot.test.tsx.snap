@@ -1,3 +1,111 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `null`;
+exports[`renders correctly 1`] = `
+<BrowserqlProvider
+  queries={
+    Object {
+      "getUsers": [Function],
+    }
+  }
+  schema={
+    Object {
+      "definitions": Array [
+        Object {
+          "description": undefined,
+          "directives": Array [],
+          "fields": Array [
+            Object {
+              "arguments": Array [],
+              "description": undefined,
+              "directives": Array [],
+              "kind": "FieldDefinition",
+              "name": Object {
+                "kind": "Name",
+                "value": "getUsers",
+              },
+              "type": Object {
+                "kind": "ListType",
+                "type": Object {
+                  "kind": "NonNullType",
+                  "type": Object {
+                    "kind": "NamedType",
+                    "name": Object {
+                      "kind": "Name",
+                      "value": "User",
+                    },
+                  },
+                },
+              },
+            },
+          ],
+          "interfaces": Array [],
+          "kind": "ObjectTypeDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "Query",
+          },
+        },
+        Object {
+          "description": undefined,
+          "directives": Array [],
+          "fields": Array [
+            Object {
+              "arguments": Array [],
+              "description": undefined,
+              "directives": Array [],
+              "kind": "FieldDefinition",
+              "name": Object {
+                "kind": "Name",
+                "value": "id",
+              },
+              "type": Object {
+                "kind": "NonNullType",
+                "type": Object {
+                  "kind": "NamedType",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "ID",
+                  },
+                },
+              },
+            },
+            Object {
+              "arguments": Array [],
+              "description": undefined,
+              "directives": Array [],
+              "kind": "FieldDefinition",
+              "name": Object {
+                "kind": "Name",
+                "value": "login",
+              },
+              "type": Object {
+                "kind": "NonNullType",
+                "type": Object {
+                  "kind": "NamedType",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "String",
+                  },
+                },
+              },
+            },
+          ],
+          "interfaces": Array [],
+          "kind": "ObjectTypeDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "User",
+          },
+        },
+      ],
+      "kind": "Document",
+      "loc": Object {
+        "end": 79,
+        "start": 0,
+      },
+    }
+  }
+>
+  <Users />
+</BrowserqlProvider>
+`;

@@ -21,7 +21,7 @@
     "watch": "yarn build -w",
     "test": "echo NO TEST",
     "prepublishOnly": "git tag | xargs git tag -d && yarn build && yarn test",
-    "start": "parcel serve ./src/index.html --cache-dir .parcel-cache --dist-dir dev --port 6768",
+    "start": "parcel serve ./src/index.html --cache-dir .parcel-cache --dist-dir dev --port 6769",
     "start:clean": "rm -rf dev .parcel-cache && yarn start",
     "bundle": "parcel build ./src/index.html --cache-dir .parcel-cache --dist-dir dist",
     "bundle:clean": "rm -rf dist .parcel-cache && yarn bundle",

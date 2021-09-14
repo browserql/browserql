@@ -38,13 +38,14 @@ export default function Screens({ screens }: Props) {
   }
   const selectedScreen = screens[tab]
   return (
-    <div style={{ marginTop: 12 }}>
+    <div style={{ marginTop: 12, display: 'flex' }}>
       <Tabs
         value={tab}
         indicatorColor="primary"
         onChange={handleChange}
         variant="scrollable"
         scrollButtons="auto"
+        orientation="vertical"
       >
         {screens.map((screen) => (
           <Tab
@@ -55,75 +56,78 @@ export default function Screens({ screens }: Props) {
           />
         ))}
       </Tabs>
-      {selectedScreen.description && (
-        <Typography
-          style={{
-            padding: 12,
-            paddingLeft: 24,
-            paddingRight: 24,
-            borderLeft: '5px solid #ccc',
-            borderRight: '5px solid #ccc',
-            backgroundColor: '#efefef',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 24,
-          }}
-        >
-          <HelpOutlineIcon />
-          {selectedScreen.description}
-        </Typography>
-      )}
-      {selectedScreen.headsUp && (
-        <Typography
-          style={{
-            padding: 12,
-            paddingLeft: 24,
-            paddingRight: 24,
-            borderLeft: '5px solid #900',
-            borderRight: '5px solid #900',
-            backgroundColor: '#ffecea',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 24,
-            color: '#900',
-          }}
-        >
-          <ErrorOutlineIcon />
-          {selectedScreen.headsUp}
-        </Typography>
-      )}
-      <div style={{ paddingBottom: 12 }}>
-        {['json', 'typescript'].includes(selectedScreen.language) && (
-          <Code
-            language={(selectedScreen.language as unknown) as string}
-            value={
-              selectedScreen.language === ScreenLanguage.json
-                ? JSON.stringify(selectedScreen.source, null, 2)
-                : selectedScreen.source
-            }
-          />
+
+      <div style={{ flex: 1 }}>
+        {selectedScreen.description && (
+          <Typography
+            style={{
+              padding: 12,
+              paddingLeft: 24,
+              paddingRight: 24,
+              borderLeft: '5px solid #ccc',
+              borderRight: '5px solid #ccc',
+              backgroundColor: '#efefef',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 24,
+            }}
+          >
+            <HelpOutlineIcon />
+            {selectedScreen.description}
+          </Typography>
         )}
-        {selectedScreen.language === 'graphql' &&
-          typeof selectedScreen.source === 'string' && (
-            <Code language="graphql" value={selectedScreen.source} />
+        {selectedScreen.headsUp && (
+          <Typography
+            style={{
+              padding: 12,
+              paddingLeft: 24,
+              paddingRight: 24,
+              borderLeft: '5px solid #900',
+              borderRight: '5px solid #900',
+              backgroundColor: '#ffecea',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 24,
+              color: '#900',
+            }}
+          >
+            <ErrorOutlineIcon />
+            {selectedScreen.headsUp}
+          </Typography>
+        )}
+        <div style={{ paddingBottom: 12 }}>
+          {['json', 'typescript'].includes(selectedScreen.language) && (
+            <Code
+              language={(selectedScreen.language as unknown) as string}
+              value={
+                selectedScreen.language === ScreenLanguage.json
+                  ? JSON.stringify(selectedScreen.source, null, 2)
+                  : selectedScreen.source
+              }
+            />
           )}
-        {selectedScreen.language === 'graphql' &&
-          typeof selectedScreen.source !== 'string' && (
-            <>
-              <Code
-                language="graphql"
-                value={print(
-                  // @ts-ignore
-                  selectedScreen.source
-                )}
-              />
-              <Code
-                language="json"
-                value={JSON.stringify(selectedScreen.source, null, 2)}
-              />
-            </>
-          )}
-        {selectedScreen.language === 'react' && <Iframe />}
+          {selectedScreen.language === 'graphql' &&
+            typeof selectedScreen.source === 'string' && (
+              <Code language="graphql" value={selectedScreen.source} />
+            )}
+          {selectedScreen.language === 'graphql' &&
+            typeof selectedScreen.source !== 'string' && (
+              <>
+                <Code
+                  language="graphql"
+                  value={print(
+                    // @ts-ignore
+                    selectedScreen.source
+                  )}
+                />
+                <Code
+                  language="json"
+                  value={JSON.stringify(selectedScreen.source, null, 2)}
+                />
+              </>
+            )}
+          {selectedScreen.language === 'react' && <Iframe />}
+        </div>
       </div>
     </div>
   )

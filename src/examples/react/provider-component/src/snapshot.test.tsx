@@ -1,27 +1,34 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import View from './view';
+// import React from 'react';
+// import renderer from 'react-test-renderer';
+// import View from './view';
 
-const originalError = console.error;
+// const originalError = console.error;
 
-beforeAll(() => {
-  console.error = (...args: any[]) => {
-    if (/Warning.*not wrapped in act/.test(args[0])) {
-      return;
-    }
+// beforeAll(() => {
+//   console.error = (...args: any[]) => {
+//     if (/Warning.*not wrapped in act/.test(args[0])) {
+//       return;
+//     }
 
-    originalError.call(console, ...args);
-  };
-});
+//     originalError.call(console, ...args);
+//   };
+// });
 
-afterAll(() => {
-  console.error = originalError;
-});
+// afterAll(() => {
+//   console.error = originalError;
+// });
 
-it('renders correctly', () => {
-  let tree;
-  renderer.act(() => {
-    tree = renderer.create(<View />).toJSON();
-  });
-  expect(tree).toMatchSnapshot();
-});
+// it('renders correctly', () => {
+//   let tree;
+//   renderer.act(() => {
+//     tree = renderer.create(<View />).toJSON();
+//   });
+//   expect(tree).toMatchSnapshot();
+// });
+
+import result from './view'
+
+it('renders correctly', async () => {
+  const r = result()
+  expect(r).toMatchSnapshot()
+})

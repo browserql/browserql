@@ -1,7 +1,4 @@
-import {
-  InMemoryCache,
-  IntrospectionFragmentMatcher,
-} from 'apollo-cache-inmemory'
+import { InMemoryCache } from '@apollo/client'
 
 /**
  * Make cache
@@ -9,12 +6,12 @@ import {
 export default function makeCache() {
   return new InMemoryCache({
     addTypename: true,
-    fragmentMatcher: new IntrospectionFragmentMatcher({
-      introspectionQueryResultData: {
-        __schema: {
-          types: [],
-        },
-      },
-    }),
+    // fragmentMatcher: new IntrospectionFragmentMatcher({
+    //   introspectionQueryResultData: {
+    //     __schema: {
+    //       types: [],-
+    //     },
+    //   },
+    // }),
   })
 }
