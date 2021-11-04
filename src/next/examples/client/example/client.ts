@@ -1,6 +1,6 @@
 import connect from '@browserql/client'
 
-import { sayHello } from './resolvers'
 import schema from './schema.graphql'
+import { sayHello } from './resolvers'
 
 export default connect(schema, { queries: { sayHello } })

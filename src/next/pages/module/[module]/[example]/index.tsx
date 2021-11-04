@@ -1,11 +1,10 @@
-import { serialize } from 'next-mdx-remote/serialize'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
+import Tabs from '@material-ui/core/Tabs'
+import { compact, find, findIndex } from 'lodash'
+import { AppContext } from 'next/app'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { find, findIndex, compact } from 'lodash'
-import Render from './Render'
+import { modules } from '../../../components/ModulesTabs'
 
 interface Afile {
   files: {
@@ -14,7 +13,19 @@ interface Afile {
   }[]
 }
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
+  return {
+    paths: modules.map((mod) => ({
+      params: {
+        module: mod,
+      },
+    })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(ctx: AppContext) {
+  console.log(ctx)
   const res = await fetch('http://localhost:3000/api/files/client/example')
   const data: {
     files: {

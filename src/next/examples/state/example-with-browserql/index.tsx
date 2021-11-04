@@ -6,6 +6,7 @@ import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { find, findIndex, compact } from 'lodash'
 import Render from './Render'
+import { AppContext } from 'next/app'
 
 interface Afile {
   files: {
@@ -14,8 +15,11 @@ interface Afile {
   }[]
 }
 
-export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/files/state/example')
+export async function getStaticProps(ctx: AppContext) {
+  // const res = await fetch('http://localhost:3000/api/files/state/example')
+  console.log('ctx')
+  console.log(ctx)
+  const res = await fetch(`/api/files/`)
   const data: {
     files: {
       contents: string

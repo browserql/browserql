@@ -16,6 +16,10 @@ function MyApp({ Component, pageProps, router: { route } }: AppProps) {
         <ModuleTabs
           links={[
             {
+              title: 'README',
+              path: '/client/readme',
+            },
+            {
               title: 'Example',
               path: '/client/example',
             },
@@ -27,8 +31,12 @@ function MyApp({ Component, pageProps, router: { route } }: AppProps) {
         <ModuleTabs
           links={[
             {
-              title: 'Example',
-              path: '/state/example',
+              title: 'Example with Apollo',
+              path: '/state/example-with-apollo',
+            },
+            {
+              title: 'Example with browserql',
+              path: '/state/example-with-browserql',
             },
           ]}
         />

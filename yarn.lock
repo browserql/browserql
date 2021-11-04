@@ -714,6 +714,15 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@browserql/cache@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@browserql/cache/-/cache-2.0.1.tgz#67ca1910b02e6fefb7c4152b310b25e22a4f0ae0"
+  integrity sha512-9z8g8dpx5jwExmBjC6IKxjzWCX7B6XEj4djjJsadEw1iMPXXNwp5p7439wAvquWkMsC1vUY6eGkXy5ukvWMpEA==
+  dependencies:
+    "@browserql/fpql" "^2.1.0"
+    "@browserql/types" "^5.0.0"
+    graphql "^15.5.0"
+
 "@browserql/client@^4.2.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@browserql/client/-/client-4.6.0.tgz#e044fde31dbe27ee02186783726e5ae9cc11ea64"
@@ -727,6 +736,11 @@
     apollo-utilities "^1.3.4"
     graphql "^15.5.0"
     iterall "^1.3.0"
+
+"@browserql/fpql@^2.1.0", "@browserql/fpql@^2.3.0", "@browserql/fpql@^2.5.0":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@browserql/fpql/-/fpql-2.6.1.tgz#10078bae00839feb42cdbf7d162d587bb0feaf8e"
+  integrity sha512-GwCj9q3ekP2z7BJuxl03n9/d2tJBHzBfIOT5dzSyTnP80z3mC1pmNA4OLzGch9jRJNZlpGBOo8pnwr2iqMaicw==
 
 "@browserql/types@^5.0.0", "@browserql/types@^5.14.0", "@browserql/types@^5.7.0":
   version "5.14.0"
@@ -10464,6 +10478,11 @@ param-case@^3.0.4:
   dependencies:
     dot-case "^3.0.4"
     tslib "^2.0.3"
+
+paramizer@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/paramizer/-/paramizer-0.0.0.tgz#029b7cf40cac99cbbf570cb3abac091285d714f2"
+  integrity sha512-Dm1eBda1LOoYOu6Z2keEIzJjAyciexZtzFSpDPqc1trZQKh86spZ1ro+dbOyjQ58NajEzeJl9nvvhlq3Mc+wpQ==
 
 parcel-transformer-graphql-ast@^0.0.4:
   version "0.0.4"

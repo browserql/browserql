@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4500",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,6 +14,7 @@
     "next": "^11.0.2-canary.10",
     "next-mdx-remote": "^3.0.4",
     "node-fetch": "^2.6.1",
+    "paramizer": "^0.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-markdown": "^7.0.1",
